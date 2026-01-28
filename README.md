@@ -1,5 +1,7 @@
 # Heartopia Books
 
+🌐 **Live Demo:** https://heartopiabooks.vercel.app/
+
 Ringkasan singkat
 
 - Heartopia Books adalah aplikasi manajemen data untuk aset game Heartopia (ingredients, foods, seeds, insects, fish, locations). Aplikasi ini dibuat dengan React + Vite dan dirancang untuk digunakan sebagai admin/utility tool (lokal) untuk memasukkan, mengedit, dan menelusuri data game.
