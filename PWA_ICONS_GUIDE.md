@@ -5,17 +5,19 @@
 For PWA to work properly, you need these icons in the `public/` folder:
 
 - `pwa-192x192.png` - 192x192px PNG icon
-- `pwa-512x512.png` - 512x512px PNG icon  
+- `pwa-512x512.png` - 512x512px PNG icon
 - `apple-touch-icon.png` - 180x180px PNG icon for iOS
 - `favicon.ico` - 32x32px ICO favicon
 
 ## Creating Icons
 
 ### Option 1: Use an icon generator tool
+
 - https://realfavicongenerator.net/
 - https://www.pwabuilder.com/imageGenerator
 
 ### Option 2: Use a design tool
+
 1. Create a 512x512px square image with your logo/brand
 2. Export as PNG
 3. Resize to create other sizes:
@@ -25,6 +27,7 @@ For PWA to work properly, you need these icons in the `public/` folder:
 4. Convert smallest to ICO format for `favicon.ico`
 
 ### Option 3: Use ImageMagick (command line)
+
 ```bash
 cd public/
 
@@ -42,6 +45,7 @@ convert pwa-512x512.png -resize 32x32 favicon.ico
 ## Testing PWA
 
 After deploying:
+
 1. Open your site in Chrome/Edge
 2. Look for "Install" button in address bar
 3. Click to install as PWA

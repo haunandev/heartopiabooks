@@ -45,18 +45,23 @@ npm run dev
 **Build untuk produksi**
 
 **Web version (PWA - Progressive Web App):**
+
 ```bash
 npm run build:web
 ```
+
 Build akan menghasilkan folder `dist` dengan PWA support:
+
 - Service Worker untuk offline capability
 - Manifest untuk installable app
 - Optimized caching strategy
 
 **Desktop version (Tauri):**
+
 ```bash
 npm run tauri:build
 ```
+
 Build desktop executable untuk platform saat ini (Windows/Linux/macOS).
 
 **Deploy ke Vercel/Netlify (Web + PWA)**
@@ -70,6 +75,7 @@ Build desktop executable untuk platform saat ini (Windows/Linux/macOS).
 File `vercel.json` sudah disertakan untuk konfigurasi optimal.
 
 **PWA Features:**
+
 - ✅ Install ke desktop/home screen (Windows, Mac, Linux, Android, iOS)
 - ✅ Offline capability dengan service worker
 - ✅ Fast loading dengan precaching
