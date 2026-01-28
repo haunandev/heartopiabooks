@@ -6,13 +6,11 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "tomato.png",
+      "image": "images/ingredients/tomato.png",
       "sell_price_stars": {
         "1s": 30,
-        "2s": 45,
-        "3s": 60,
-        "4s": 75,
-        "5s": 90
+        "2s": 40,
+        "3s": 50
       }
     },
     {
@@ -21,13 +19,12 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "potato.png",
+      "image": "images/ingredients/potato.png",
       "sell_price_stars": {
         "1s": 90,
-        "2s": 135,
-        "3s": 180,
-        "4s": 225,
-        "5s": 270
+        "2s": 120,
+        "3s": 150,
+        "4s": 180
       }
     },
     {
@@ -36,13 +33,11 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "wheat.png",
+      "image": "images/ingredients/wheat.png",
       "sell_price_stars": {
         "1s": 285,
-        "2s": 428,
-        "3s": 570,
-        "4s": 713,
-        "5s": 855
+        "2s": 381,
+        "3s": 475
       }
     },
     {
@@ -51,13 +46,12 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "carrot.png",
+      "image": "images/ingredients/carrot.png",
       "sell_price_stars": {
         "1s": 155,
-        "2s": 233,
-        "3s": 310,
-        "4s": 388,
-        "5s": 465
+        "2s": 207,
+        "3s": 258,
+        "4s": 310
       }
     },
     {
@@ -66,13 +60,11 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "corn.png",
+      "image": "images/ingredients/corn.png",
       "sell_price_stars": {
         "1s": 515,
-        "2s": 773,
-        "3s": 1030,
-        "4s": 1288,
-        "5s": 1545
+        "2s": 690,
+        "3s": 860
       }
     },
     {
@@ -81,13 +73,11 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "strawberry.png",
+      "image": "images/ingredients/strawberry.png",
       "sell_price_stars": {
         "1s": 375,
-        "2s": 563,
-        "3s": 750,
-        "4s": 938,
-        "5s": 1125
+        "2s": 502,
+        "3s": 626
       }
     },
     {
@@ -96,13 +86,12 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "pineapple.png",
+      "image": "images/ingredients/pineapple.png",
       "sell_price_stars": {
         "1s": 52,
-        "2s": 78,
-        "3s": 104,
-        "4s": 130,
-        "5s": 156
+        "2s": 69,
+        "3s": 86,
+        "4s": 104
       }
     },
     {
@@ -111,37 +100,31 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "lettuce.png",
+      "image": "images/ingredients/lettuce.png",
       "sell_price_stars": {
         "1s": 435,
-        "2s": 653,
-        "3s": 870,
-        "4s": 1088,
-        "5s": 1305
+        "2s": 582,
+        "3s": 726
       }
     },
     {
       "id": 9,
       "name": "Apple",
-      "sell_price": null,
+      "sell_price": 28,
       "buy_price": null,
-      "source": "seed",
-      "image": "apple.png",
+      "source": "wild",
+      "image": "images/ingredients/apple.png",
       "sell_price_stars": {
-        "1s": 28,
-        "2s": 42,
-        "3s": 56,
-        "4s": 70,
-        "5s": 84
+        "1s": 28
       }
     },
     {
       "id": 10,
       "name": "Mandarin",
-      "sell_price": null,
+      "sell_price": 28,
       "buy_price": null,
-      "source": "seed",
-      "image": "mandarin.png",
+      "source": "wild",
+      "image": "images/ingredients/mandarin.png",
       "sell_price_stars": {
         "1s": 28,
         "2s": 42,
@@ -153,10 +136,10 @@
     {
       "id": 11,
       "name": "Blueberry",
-      "sell_price": null,
+      "sell_price": 16,
       "buy_price": null,
-      "source": "seed",
-      "image": "blueberry.png",
+      "source": "wild",
+      "image": "images/ingredients/blueberry.png",
       "sell_price_stars": {
         "1s": 16,
         "2s": 24,
@@ -168,10 +151,10 @@
     {
       "id": 12,
       "name": "Raspberry",
-      "sell_price": null,
+      "sell_price": 16,
       "buy_price": null,
-      "source": "seed",
-      "image": "raspberry.png",
+      "source": "wild",
+      "image": "images/ingredients/raspberry.png",
       "sell_price_stars": {
         "1s": 26,
         "2s": 39,
@@ -186,13 +169,11 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "grape.png",
+      "image": "images/ingredients/grape.png",
       "sell_price_stars": {
         "1s": 480,
-        "2s": 720,
-        "3s": 960,
-        "4s": 1200,
-        "5s": 1440
+        "2s": 643,
+        "3s": 801
       }
     },
     {
@@ -201,15 +182,7 @@
       "sell_price": 99,
       "buy_price": null,
       "source": "wild",
-      "image": "black-truffle.png"
-    },
-    {
-      "id": 15,
-      "name": "Mushroom",
-      "sell_price": 16,
-      "buy_price": null,
-      "source": "wild",
-      "image": "mushroom.png"
+      "image": "images/ingredients/black-truffle.png"
     },
     {
       "id": 16,
@@ -217,7 +190,7 @@
       "sell_price": 16,
       "buy_price": null,
       "source": "wild",
-      "image": "penny-bun.png"
+      "image": "images/ingredients/penny-bun.png"
     },
     {
       "id": 17,
@@ -225,7 +198,7 @@
       "sell_price": null,
       "buy_price": 100,
       "source": "buy",
-      "image": "egg.png"
+      "image": "images/ingredients/egg.png"
     },
     {
       "id": 18,
@@ -233,7 +206,7 @@
       "sell_price": null,
       "buy_price": 50,
       "source": "buy",
-      "image": "milk.png"
+      "image": "images/ingredients/milk.png"
     },
     {
       "id": 19,
@@ -241,7 +214,7 @@
       "sell_price": null,
       "buy_price": 150,
       "source": "buy",
-      "image": "butter.png"
+      "image": "images/ingredients/butter.png"
     },
     {
       "id": 20,
@@ -249,7 +222,7 @@
       "sell_price": null,
       "buy_price": 100,
       "source": "buy",
-      "image": "cheese.png"
+      "image": "images/ingredients/cheese.png"
     },
     {
       "id": 21,
@@ -257,7 +230,15 @@
       "sell_price": null,
       "buy_price": 200,
       "source": "buy",
-      "image": "meat.png"
+      "image": "images/ingredients/meat.png"
+    },
+    {
+      "id": 22,
+      "name": "Mushroom",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "images/ingredients/mushroom.png"
     }
   ],
   "foods": [
@@ -280,12 +261,10 @@
       ],
       "sell_price": {
         "1s": 830,
-        "2s": 996,
-        "3s": 1162,
-        "4s": 1328,
-        "5s": 1494
+        "2s": 1245,
+        "3s": 1660
       },
-      "image": "black-truffle-pie.png"
+      "image": "images/foods/black-truffle-pie.png"
     },
     {
       "id": 2,
@@ -305,13 +284,9 @@
         }
       ],
       "sell_price": {
-        "1s": 900,
-        "2s": 1080,
-        "3s": 1260,
-        "4s": 1440,
-        "5s": 1620
+        "1s": 900
       },
-      "image": "black-truffle-cream-pasta.png"
+      "image": "images/foods/black-truffle-cream-pasta.png"
     },
     {
       "id": 3,
@@ -331,13 +306,9 @@
         }
       ],
       "sell_price": {
-        "1s": 500,
-        "2s": 600,
-        "3s": 700,
-        "4s": 800,
-        "5s": 900
+        "1s": 500
       },
-      "image": "mushroom-pie.png"
+      "image": "images/foods/mushroom-pie.png"
     },
     {
       "id": 4,
@@ -357,13 +328,9 @@
         }
       ],
       "sell_price": {
-        "1s": 500,
-        "2s": 600,
-        "3s": 700,
-        "4s": 800,
-        "5s": 900
+        "1s": 500
       },
-      "image": "penny-bun-pie.png"
+      "image": "images/foods/penny-bun-pie.png"
     },
     {
       "id": 5,
@@ -375,13 +342,9 @@
         }
       ],
       "sell_price": {
-        "1s": 180,
-        "2s": 216,
-        "3s": 252,
-        "4s": 288,
-        "5s": 324
+        "1s": 180
       },
-      "image": "grilled-mushrooms.png"
+      "image": "images/foods/grilled-mushrooms.png"
     },
     {
       "id": 6,
@@ -405,13 +368,9 @@
         }
       ],
       "sell_price": {
-        "1s": 730,
-        "2s": 876,
-        "3s": 1022,
-        "4s": 1168,
-        "5s": 1314
+        "1s": 730
       },
-      "image": "apple-pie.png"
+      "image": "images/foods/apple-pie.png"
     },
     {
       "id": 7,
@@ -423,13 +382,9 @@
         }
       ],
       "sell_price": {
-        "1s": 270,
-        "2s": 324,
-        "3s": 378,
-        "4s": 432,
-        "5s": 486
+        "1s": 270
       },
-      "image": "apple-jam.png"
+      "image": "images/foods/apple-jam.png"
     },
     {
       "id": 8,
@@ -441,13 +396,9 @@
         }
       ],
       "sell_price": {
-        "1s": 270,
-        "2s": 324,
-        "3s": 378,
-        "4s": 432,
-        "5s": 486
+        "1s": 270
       },
-      "image": "mandarin-jam.png"
+      "image": "images/foods/mandarin-jam.png"
     },
     {
       "id": 9,
@@ -471,13 +422,9 @@
         }
       ],
       "sell_price": {
-        "1s": 160,
-        "2s": 192,
-        "3s": 224,
-        "4s": 256,
-        "5s": 288
+        "1s": 160
       },
-      "image": "mixed-jam.png"
+      "image": "images/foods/mixed-jam.png"
     },
     {
       "id": 10,
@@ -497,13 +444,9 @@
         }
       ],
       "sell_price": {
-        "1s": 1340,
-        "2s": 1608,
-        "3s": 1876,
-        "4s": 2144,
-        "5s": 2412
+        "1s": 1340
       },
-      "image": "corn-soup.png"
+      "image": "images/foods/corn-soup.png"
     },
     {
       "id": 11,
@@ -527,13 +470,9 @@
         }
       ],
       "sell_price": {
-        "1s": 670,
-        "2s": 804,
-        "3s": 938,
-        "4s": 1072,
-        "5s": 1206
+        "1s": 670
       },
-      "image": "meat-sauce-pasta.png"
+      "image": "images/foods/meat-sauce-pasta.png"
     }
   ],
   "seeds": [
@@ -577,7 +516,7 @@
       "id": 7,
       "name": "Wheat Seed",
       "price": 95,
-      "image": "wheat-seed.png"
+      "image": "images/seeds/wheat-seed.png"
     },
     {
       "id": 8,
@@ -601,95 +540,377 @@
   "insects": [
     {
       "id": 1,
-      "name": "Butterfly",
+      "name": "Bumblebee",
       "sell_price": {
-        "1s": 20,
-        "2s": 30,
-        "3s": 40,
-        "4s": 50,
-        "5s": 60
+        "1s": 110,
+        "2s": 165,
+        "3s": 220,
+        "4s": 0,
+        "5s": 0
       },
-      "locations": ["meadow", "forest", "farm"],
-      "image": ""
+      "locations": [],
+      "image": "images/insects/bumblebee.png"
     },
     {
       "id": 2,
-      "name": "Ladybug",
+      "name": "Splay-Footed Carpenter",
       "sell_price": {
-        "1s": 15,
-        "2s": 22,
-        "3s": 30,
-        "4s": 37,
-        "5s": 45
+        "2s": 247
       },
-      "locations": ["farm", "meadow"],
-      "image": ""
+      "locations": [],
+      "image": "images/insects/splay-footed-carpenter.png"
     },
     {
       "id": 3,
-      "name": "Dragonfly",
+      "name": "Common Blue Butterfly",
+      "sell_price": {
+        "1s": 105,
+        "2s": 157,
+        "3s": 210
+      },
+      "locations": [],
+      "image": "images/insects/common-blue-butterfly.png"
+    },
+    {
+      "id": 4,
+      "name": "Ant",
+      "sell_price": {
+        "1s": 220
+      },
+      "locations": [],
+      "image": "images/insects/ant.png"
+    },
+    {
+      "id": 5,
+      "name": "Waroona Cuckoo Bee",
+      "sell_price": {
+        "1s": 165,
+        "2s": 247
+      },
+      "locations": [],
+      "image": "images/insects/waroona-cuckoo-bee.png"
+    },
+    {
+      "id": 6,
+      "name": "Common Whitetail",
+      "sell_price": {
+        "1s": 75,
+        "2s": 112
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 7,
+      "name": "Four-Spotted Skimmer",
+      "sell_price": {
+        "1s": 75,
+        "2s": 112,
+        "3s": 150,
+        "4s": 300
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "Large Red Damselfly",
       "sell_price": {
         "1s": 35,
         "2s": 52,
         "3s": 70,
-        "4s": 87,
-        "5s": 105
+        "4s": 140
       },
-      "locations": ["lake", "river", "swamp"],
-      "image": ""
-    }
-  ],
-  "fish": [
-    {
-      "id": 1,
-      "name": "Salmon",
-      "sell_price": {
-        "1s": 50,
-        "2s": 75,
-        "3s": 100,
-        "4s": 125,
-        "5s": 150
-      },
-      "locations": ["river", "lake"],
+      "locations": [],
       "image": ""
     },
     {
-      "id": 2,
-      "name": "Tuna",
+      "id": 9,
+      "name": "Cicada",
       "sell_price": {
-        "1s": 80,
-        "2s": 120,
-        "3s": 160,
-        "4s": 200,
-        "5s": 240
+        "1s": 220
       },
-      "locations": ["beach"],
+      "locations": [],
       "image": ""
     },
     {
-      "id": 3,
-      "name": "Bass",
+      "id": 10,
+      "name": "Four-Spotted Ladybug",
       "sell_price": {
-        "1s": 40,
-        "2s": 60,
-        "3s": 80,
-        "4s": 100,
-        "5s": 120
+        "1s": 165,
+        "2s": 247,
+        "3s": 330
       },
-      "locations": ["lake", "river"],
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 11,
+      "name": "Seven-Spotted Ladybug",
+      "sell_price": {
+        "1s": 110,
+        "2s": 165
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 12,
+      "name": "European Firebug",
+      "sell_price": {
+        "1s": 35,
+        "2s": 52,
+        "3s": 70
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 13,
+      "name": "Katydid",
+      "sell_price": {
+        "1s": 180
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 14,
+      "name": "Large Banded Grasshopper",
+      "sell_price": {
+        "1s": 140
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 15,
+      "name": "Gold Grasshopper",
+      "sell_price": {
+        "1s": 45,
+        "2s": 67,
+        "3s": 90
+      },
+      "locations": [],
       "image": ""
     }
   ],
+  "fish": [],
   "locations": [
-    { "id": "farm", "name": "Farm", "image": "" },
-    { "id": "forest", "name": "Forest", "image": "" },
-    { "id": "beach", "name": "Beach", "image": "" },
-    { "id": "mountain", "name": "Mountain", "image": "" },
-    { "id": "lake", "name": "Lake", "image": "" },
-    { "id": "river", "name": "River", "image": "" },
-    { "id": "cave", "name": "Cave", "image": "" },
-    { "id": "desert", "name": "Desert", "image": "" },
-    { "id": "meadow", "name": "Meadow", "image": "" },
-    { "id": "swamp", "name": "Swamp", "image": "" }
+    {
+      "id": "old-sea",
+      "name": "Old Sea",
+      "image": ""
+    },
+    {
+      "id": "crater-lake",
+      "name": "Crater Lake",
+      "image": ""
+    },
+    {
+      "id": "stone-cliff",
+      "name": "Stone Cliff",
+      "image": ""
+    },
+    {
+      "id": "onsen-mountain-lake",
+      "name": "Onsen Mountain Lake",
+      "image": ""
+    },
+    {
+      "id": "onsen",
+      "name": "Onsen",
+      "image": ""
+    },
+    {
+      "id": "plot-1",
+      "name": "Plot 1",
+      "image": ""
+    },
+    {
+      "id": "plot-2",
+      "name": "Plot 2",
+      "image": ""
+    },
+    {
+      "id": "plot-3",
+      "name": "Plot 3",
+      "image": ""
+    },
+    {
+      "id": "plot-4",
+      "name": "Plot 4",
+      "image": ""
+    },
+    {
+      "id": "plot-5",
+      "name": "Plot 5",
+      "image": ""
+    },
+    {
+      "id": "plot-6",
+      "name": "Plot 6",
+      "image": ""
+    },
+    {
+      "id": "plot-7",
+      "name": "Plot 7",
+      "image": ""
+    },
+    {
+      "id": "plot-8",
+      "name": "Plot 8",
+      "image": ""
+    },
+    {
+      "id": "plot-9",
+      "name": "Plot 9",
+      "image": ""
+    },
+    {
+      "id": "plot-10",
+      "name": "Plot 10",
+      "image": ""
+    },
+    {
+      "id": "plot-11",
+      "name": "Plot 11",
+      "image": ""
+    },
+    {
+      "id": "plot-12",
+      "name": "Plot 12",
+      "image": ""
+    },
+    {
+      "id": "suburban-lake",
+      "name": "Suburban Lake",
+      "image": ""
+    },
+    {
+      "id": "residential-street",
+      "name": "Residential Street",
+      "image": ""
+    },
+    {
+      "id": "garden-street",
+      "name": "Garden Street",
+      "image": ""
+    },
+    {
+      "id": "central-square",
+      "name": "Central Square",
+      "image": ""
+    },
+    {
+      "id": "art-street",
+      "name": "Art Street",
+      "image": ""
+    },
+    {
+      "id": "rosy-river",
+      "name": "Rosy River",
+      "image": ""
+    },
+    {
+      "id": "whale-mountain",
+      "name": "Whale Mountain",
+      "image": ""
+    },
+    {
+      "id": "whale-sea",
+      "name": "Whale Sea",
+      "image": ""
+    },
+    {
+      "id": "meadow-lake",
+      "name": "Meadow Lake",
+      "image": ""
+    },
+    {
+      "id": "suburbs",
+      "name": "Suburbs",
+      "image": ""
+    },
+    {
+      "id": "shallow-river",
+      "name": "Shallow River",
+      "image": ""
+    },
+    {
+      "id": "deer-tower",
+      "name": "Deer Tower",
+      "image": ""
+    },
+    {
+      "id": "spirit-oak-pine-forest",
+      "name": "Spirit-Oak Pine Forest",
+      "image": ""
+    },
+    {
+      "id": "east-sea",
+      "name": "East Sea",
+      "image": ""
+    },
+    {
+      "id": "forest-island",
+      "name": "Forest Island",
+      "image": ""
+    },
+    {
+      "id": "forest-lake",
+      "name": "Forest Lake",
+      "image": ""
+    },
+    {
+      "id": "jump-puzzle",
+      "name": "Jump Puzzle",
+      "image": ""
+    },
+    {
+      "id": "giantwood-river",
+      "name": "Giantwood River",
+      "image": ""
+    },
+    {
+      "id": "east-pier-of-fishing-village",
+      "name": "East Pier of Fishing Village",
+      "image": ""
+    },
+    {
+      "id": "fishing-village-square",
+      "name": "Fishing Village Square",
+      "image": ""
+    },
+    {
+      "id": "wharf",
+      "name": "Wharf",
+      "image": ""
+    },
+    {
+      "id": "tranquil-river",
+      "name": "Tranquil River",
+      "image": ""
+    },
+    {
+      "id": "lighthouse",
+      "name": "Lighthouse",
+      "image": ""
+    },
+    {
+      "id": "zephyr-sea",
+      "name": "Zephyr Sea",
+      "image": ""
+    },
+    {
+      "id": "amethyst-beach",
+      "name": "Amethyst Beach",
+      "image": ""
+    },
+    {
+      "id": "windmill-flower-field",
+      "name": "Windmill Flower Field",
+      "image": ""
+    }
   ]
 }
