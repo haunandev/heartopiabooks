@@ -1,0 +1,695 @@
+{
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Tomato",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "tomato.png",
+      "sell_price_stars": {
+        "1s": 30,
+        "2s": 45,
+        "3s": 60,
+        "4s": 75,
+        "5s": 90
+      }
+    },
+    {
+      "id": 2,
+      "name": "Potato",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "potato.png",
+      "sell_price_stars": {
+        "1s": 90,
+        "2s": 135,
+        "3s": 180,
+        "4s": 225,
+        "5s": 270
+      }
+    },
+    {
+      "id": 3,
+      "name": "Wheat",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "wheat.png",
+      "sell_price_stars": {
+        "1s": 285,
+        "2s": 428,
+        "3s": 570,
+        "4s": 713,
+        "5s": 855
+      }
+    },
+    {
+      "id": 4,
+      "name": "Carrot",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "carrot.png",
+      "sell_price_stars": {
+        "1s": 155,
+        "2s": 233,
+        "3s": 310,
+        "4s": 388,
+        "5s": 465
+      }
+    },
+    {
+      "id": 5,
+      "name": "Corn",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "corn.png",
+      "sell_price_stars": {
+        "1s": 515,
+        "2s": 773,
+        "3s": 1030,
+        "4s": 1288,
+        "5s": 1545
+      }
+    },
+    {
+      "id": 6,
+      "name": "Strawberry",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "strawberry.png",
+      "sell_price_stars": {
+        "1s": 375,
+        "2s": 563,
+        "3s": 750,
+        "4s": 938,
+        "5s": 1125
+      }
+    },
+    {
+      "id": 7,
+      "name": "Pineapple",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "pineapple.png",
+      "sell_price_stars": {
+        "1s": 52,
+        "2s": 78,
+        "3s": 104,
+        "4s": 130,
+        "5s": 156
+      }
+    },
+    {
+      "id": 8,
+      "name": "Lettuce",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "lettuce.png",
+      "sell_price_stars": {
+        "1s": 435,
+        "2s": 653,
+        "3s": 870,
+        "4s": 1088,
+        "5s": 1305
+      }
+    },
+    {
+      "id": 9,
+      "name": "Apple",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "apple.png",
+      "sell_price_stars": {
+        "1s": 28,
+        "2s": 42,
+        "3s": 56,
+        "4s": 70,
+        "5s": 84
+      }
+    },
+    {
+      "id": 10,
+      "name": "Mandarin",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "mandarin.png",
+      "sell_price_stars": {
+        "1s": 28,
+        "2s": 42,
+        "3s": 56,
+        "4s": 70,
+        "5s": 84
+      }
+    },
+    {
+      "id": 11,
+      "name": "Blueberry",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "blueberry.png",
+      "sell_price_stars": {
+        "1s": 16,
+        "2s": 24,
+        "3s": 32,
+        "4s": 40,
+        "5s": 48
+      }
+    },
+    {
+      "id": 12,
+      "name": "Raspberry",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "raspberry.png",
+      "sell_price_stars": {
+        "1s": 26,
+        "2s": 39,
+        "3s": 52,
+        "4s": 65,
+        "5s": 78
+      }
+    },
+    {
+      "id": 13,
+      "name": "Grape",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "grape.png",
+      "sell_price_stars": {
+        "1s": 480,
+        "2s": 720,
+        "3s": 960,
+        "4s": 1200,
+        "5s": 1440
+      }
+    },
+    {
+      "id": 14,
+      "name": "Black Truffle",
+      "sell_price": 99,
+      "buy_price": null,
+      "source": "wild",
+      "image": "black-truffle.png"
+    },
+    {
+      "id": 15,
+      "name": "Mushroom",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "mushroom.png"
+    },
+    {
+      "id": 16,
+      "name": "Penny Bun",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "penny-bun.png"
+    },
+    {
+      "id": 17,
+      "name": "Egg",
+      "sell_price": null,
+      "buy_price": 100,
+      "source": "buy",
+      "image": "egg.png"
+    },
+    {
+      "id": 18,
+      "name": "Milk",
+      "sell_price": null,
+      "buy_price": 50,
+      "source": "buy",
+      "image": "milk.png"
+    },
+    {
+      "id": 19,
+      "name": "Butter",
+      "sell_price": null,
+      "buy_price": 150,
+      "source": "buy",
+      "image": "butter.png"
+    },
+    {
+      "id": 20,
+      "name": "Cheese",
+      "sell_price": null,
+      "buy_price": 100,
+      "source": "buy",
+      "image": "cheese.png"
+    },
+    {
+      "id": 21,
+      "name": "Meat",
+      "sell_price": null,
+      "buy_price": 200,
+      "source": "buy",
+      "image": "meat.png"
+    }
+  ],
+  "foods": [
+    {
+      "id": 1,
+      "name": "Black Truffle Pie",
+      "ingredients": [
+        {
+          "name": "Black Truffle",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 830,
+        "2s": 996,
+        "3s": 1162,
+        "4s": 1328,
+        "5s": 1494
+      },
+      "image": "black-truffle-pie.png"
+    },
+    {
+      "id": 2,
+      "name": "Black Truffle Cream Pasta",
+      "ingredients": [
+        {
+          "name": "Black Truffle",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 2
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 900,
+        "2s": 1080,
+        "3s": 1260,
+        "4s": 1440,
+        "5s": 1620
+      },
+      "image": "black-truffle-cream-pasta.png"
+    },
+    {
+      "id": 3,
+      "name": "Mushroom Pie",
+      "ingredients": [
+        {
+          "name": "Mushroom",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 500,
+        "2s": 600,
+        "3s": 700,
+        "4s": 800,
+        "5s": 900
+      },
+      "image": "mushroom-pie.png"
+    },
+    {
+      "id": 4,
+      "name": "Penny Bun Pie",
+      "ingredients": [
+        {
+          "name": "Penny Bun",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 500,
+        "2s": 600,
+        "3s": 700,
+        "4s": 800,
+        "5s": 900
+      },
+      "image": "penny-bun-pie.png"
+    },
+    {
+      "id": 5,
+      "name": "Grilled Mushrooms",
+      "ingredients": [
+        {
+          "name": "Mushroom",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 216,
+        "3s": 252,
+        "4s": 288,
+        "5s": 324
+      },
+      "image": "grilled-mushrooms.png"
+    },
+    {
+      "id": 6,
+      "name": "Apple Pie",
+      "ingredients": [
+        {
+          "name": "Apple",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Butter",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 730,
+        "2s": 876,
+        "3s": 1022,
+        "4s": 1168,
+        "5s": 1314
+      },
+      "image": "apple-pie.png"
+    },
+    {
+      "id": 7,
+      "name": "Apple Jam",
+      "ingredients": [
+        {
+          "name": "Apple",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 270,
+        "2s": 324,
+        "3s": 378,
+        "4s": 432,
+        "5s": 486
+      },
+      "image": "apple-jam.png"
+    },
+    {
+      "id": 8,
+      "name": "Mandarin Jam",
+      "ingredients": [
+        {
+          "name": "Mandarin",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 270,
+        "2s": 324,
+        "3s": 378,
+        "4s": 432,
+        "5s": 486
+      },
+      "image": "mandarin-jam.png"
+    },
+    {
+      "id": 9,
+      "name": "Mixed Jam",
+      "ingredients": [
+        {
+          "name": "Apple",
+          "quantity": 1
+        },
+        {
+          "name": "Mandarin",
+          "quantity": 1
+        },
+        {
+          "name": "Blueberry",
+          "quantity": 1
+        },
+        {
+          "name": "Raspberry",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 160,
+        "2s": 192,
+        "3s": 224,
+        "4s": 256,
+        "5s": 288
+      },
+      "image": "mixed-jam.png"
+    },
+    {
+      "id": 10,
+      "name": "Corn Soup",
+      "ingredients": [
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Butter",
+          "quantity": 1
+        },
+        {
+          "name": "Corn",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 1340,
+        "2s": 1608,
+        "3s": 1876,
+        "4s": 2144,
+        "5s": 2412
+      },
+      "image": "corn-soup.png"
+    },
+    {
+      "id": 11,
+      "name": "Meat Sauce Pasta",
+      "ingredients": [
+        {
+          "name": "Meat",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Tomato",
+          "quantity": 1
+        },
+        {
+          "name": "Cheese",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 670,
+        "2s": 804,
+        "3s": 938,
+        "4s": 1072,
+        "5s": 1206
+      },
+      "image": "meat-sauce-pasta.png"
+    }
+  ],
+  "seeds": [
+    {
+      "id": 1,
+      "name": "Grape Seed",
+      "price": 160,
+      "image": "grape-seed.png"
+    },
+    {
+      "id": 2,
+      "name": "Corn Seed",
+      "price": 170,
+      "image": "corn-seed.png"
+    },
+    {
+      "id": 3,
+      "name": "Strawberry Seed",
+      "price": 125,
+      "image": "strawberry-seed.png"
+    },
+    {
+      "id": 4,
+      "name": "Carrot Seed",
+      "price": 50,
+      "image": "carrot-seed.png"
+    },
+    {
+      "id": 5,
+      "name": "Pineapple Seed",
+      "price": 15,
+      "image": "pineapple-seed.png"
+    },
+    {
+      "id": 6,
+      "name": "Lettuce Seed",
+      "price": 145,
+      "image": "lettuce-seed.png"
+    },
+    {
+      "id": 7,
+      "name": "Wheat Seed",
+      "price": 95,
+      "image": "wheat-seed.png"
+    },
+    {
+      "id": 8,
+      "name": "Potato Seed",
+      "price": 30,
+      "image": "potato-seed.png"
+    },
+    {
+      "id": 9,
+      "name": "Tomato Seed",
+      "price": 10,
+      "image": "tomato-seed.png"
+    },
+    {
+      "id": 10,
+      "name": "Eggplant Seed",
+      "price": 135,
+      "image": "eggplant-seed.png"
+    }
+  ],
+  "insects": [
+    {
+      "id": 1,
+      "name": "Butterfly",
+      "sell_price": {
+        "1s": 20,
+        "2s": 30,
+        "3s": 40,
+        "4s": 50,
+        "5s": 60
+      },
+      "locations": ["meadow", "forest", "farm"],
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Ladybug",
+      "sell_price": {
+        "1s": 15,
+        "2s": 22,
+        "3s": 30,
+        "4s": 37,
+        "5s": 45
+      },
+      "locations": ["farm", "meadow"],
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Dragonfly",
+      "sell_price": {
+        "1s": 35,
+        "2s": 52,
+        "3s": 70,
+        "4s": 87,
+        "5s": 105
+      },
+      "locations": ["lake", "river", "swamp"],
+      "image": ""
+    }
+  ],
+  "fish": [
+    {
+      "id": 1,
+      "name": "Salmon",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 125,
+        "5s": 150
+      },
+      "locations": ["river", "lake"],
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Tuna",
+      "sell_price": {
+        "1s": 80,
+        "2s": 120,
+        "3s": 160,
+        "4s": 200,
+        "5s": 240
+      },
+      "locations": ["beach"],
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Bass",
+      "sell_price": {
+        "1s": 40,
+        "2s": 60,
+        "3s": 80,
+        "4s": 100,
+        "5s": 120
+      },
+      "locations": ["lake", "river"],
+      "image": ""
+    }
+  ],
+  "locations": [
+    { "id": "farm", "name": "Farm", "image": "" },
+    { "id": "forest", "name": "Forest", "image": "" },
+    { "id": "beach", "name": "Beach", "image": "" },
+    { "id": "mountain", "name": "Mountain", "image": "" },
+    { "id": "lake", "name": "Lake", "image": "" },
+    { "id": "river", "name": "River", "image": "" },
+    { "id": "cave", "name": "Cave", "image": "" },
+    { "id": "desert", "name": "Desert", "image": "" },
+    { "id": "meadow", "name": "Meadow", "image": "" },
+    { "id": "swamp", "name": "Swamp", "image": "" }
+  ]
+}
