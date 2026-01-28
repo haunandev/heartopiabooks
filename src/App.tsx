@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, LayoutGrid, Table } from "lucide-react";
 import { IngredientCard } from "./components/IngredientCard";
 import { FoodCard } from "./components/FoodCard";
 import { SeedCard } from "./components/SeedCard";
 import { InsectCard } from "./components/InsectCard";
 import { FishCard } from "./components/FishCard";
 import { LocationCard } from "./components/LocationCard";
+import { DataTable } from "./components/DataTable";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
 import { IngredientForm } from "./components/IngredientForm";
@@ -35,6 +36,10 @@ type TabType =
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabType>("ingredients");
+  const [viewMode, setViewMode] = useState<"card" | "table">(() => {
+    const saved = localStorage.getItem("viewMode");
+    return (saved as "card" | "table") || "card";
+  });
 
   // Use custom hooks
   const {
@@ -283,6 +288,40 @@ function App() {
           onAddNew={openAddModal}
         />
 
+        {/* View Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <div className="inline-flex rounded-lg border border-gray-300 bg-white p-1">
+            <button
+              onClick={() => {
+                setViewMode("card");
+                localStorage.setItem("viewMode", "card");
+              }}
+              className={`px-3 py-1.5 rounded-md transition-colors ${
+                viewMode === "card"
+                  ? "bg-red-600 text-white"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+              title="Card View"
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => {
+                setViewMode("table");
+                localStorage.setItem("viewMode", "table");
+              }}
+              className={`px-3 py-1.5 rounded-md transition-colors ${
+                viewMode === "table"
+                  ? "bg-red-600 text-white"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+              title="Table View"
+            >
+              <Table className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
         {/* Filters */}
         {showFilters && (
           <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
@@ -451,73 +490,134 @@ function App() {
         )}
 
         {/* Content Grid */}
-        <AnimatePresence mode="popLayout">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {activeTab === "ingredients" &&
-              filteredIngredients.map((ingredient) => (
-                <IngredientCard
-                  key={ingredient.id}
-                  ingredient={ingredient}
-                  seeds={gameData.seeds}
-                  onEdit={() => openEditModal(ingredient)}
-                  onDelete={() => handleDeleteIngredient(ingredient.id)}
-                />
-              ))}
+        {viewMode === "card" ? (
+          <AnimatePresence mode="popLayout">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {activeTab === "ingredients" &&
+                filteredIngredients.map((ingredient) => (
+                  <IngredientCard
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                    seeds={gameData.seeds}
+                    onEdit={() => openEditModal(ingredient)}
+                    onDelete={() => handleDeleteIngredient(ingredient.id)}
+                  />
+                ))}
 
-            {activeTab === "foods" &&
-              filteredFoods.map((food) => (
-                <FoodCard
-                  key={food.id}
-                  food={food}
-                  ingredients={gameData.ingredients}
-                  onEdit={() => openEditModal(food)}
-                  onDelete={() => handleDeleteFood(food.id)}
-                />
-              ))}
+              {activeTab === "foods" &&
+                filteredFoods.map((food) => (
+                  <FoodCard
+                    key={food.id}
+                    food={food}
+                    ingredients={gameData.ingredients}
+                    onEdit={() => openEditModal(food)}
+                    onDelete={() => handleDeleteFood(food.id)}
+                  />
+                ))}
 
-            {activeTab === "seeds" &&
-              filteredSeeds.map((seed) => (
-                <SeedCard
-                  key={seed.id}
-                  seed={seed}
-                  onEdit={() => openEditModal(seed)}
-                  onDelete={() => handleDeleteSeed(seed.id)}
-                />
-              ))}
+              {activeTab === "seeds" &&
+                filteredSeeds.map((seed) => (
+                  <SeedCard
+                    key={seed.id}
+                    seed={seed}
+                    onEdit={() => openEditModal(seed)}
+                    onDelete={() => handleDeleteSeed(seed.id)}
+                  />
+                ))}
 
-            {activeTab === "insects" &&
-              filteredInsects.map((insect) => (
-                <InsectCard
-                  key={insect.id}
-                  insect={insect}
-                  locations={gameData.locations || []}
-                  onEdit={() => openEditModal(insect)}
-                  onDelete={() => handleDeleteInsect(insect.id)}
-                />
-              ))}
+              {activeTab === "insects" &&
+                filteredInsects.map((insect) => (
+                  <InsectCard
+                    key={insect.id}
+                    insect={insect}
+                    locations={gameData.locations || []}
+                    onEdit={() => openEditModal(insect)}
+                    onDelete={() => handleDeleteInsect(insect.id)}
+                  />
+                ))}
 
-            {activeTab === "fish" &&
-              filteredFish.map((fish) => (
-                <FishCard
-                  key={fish.id}
-                  fish={fish}
-                  locations={gameData.locations || []}
-                  onEdit={() => openEditModal(fish)}
-                  onDelete={() => handleDeleteFish(fish.id)}
-                />
-              ))}
+              {activeTab === "fish" &&
+                filteredFish.map((fish) => (
+                  <FishCard
+                    key={fish.id}
+                    fish={fish}
+                    locations={gameData.locations || []}
+                    onEdit={() => openEditModal(fish)}
+                    onDelete={() => handleDeleteFish(fish.id)}
+                  />
+                ))}
 
-            {activeTab === "locations" &&
-              filteredLocations.map((location) => (
-                <LocationCard
-                  key={location.id}
-                  location={location}
-                  onEdit={() => openEditModal(location)}
-                  onDelete={() => handleDeleteLocation(location.id)}
-                />
-              ))}
-          </div>
-        </AnimatePresence>
+              {activeTab === "locations" &&
+                filteredLocations.map((location) => (
+                  <LocationCard
+                    key={location.id}
+                    location={location}
+                    onEdit={() => openEditModal(location)}
+                    onDelete={() => handleDeleteLocation(location.id)}
+                  />
+                ))}
+            </div>
+          </AnimatePresence>
+        ) : (
+          <>
+            {activeTab === "ingredients" && (
+              <DataTable
+                data={filteredIngredients}
+                type="ingredients"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteIngredient(item.id)}
+              />
+            )}
+
+            {activeTab === "foods" && (
+              <DataTable
+                data={filteredFoods}
+                type="foods"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteFood(item.id)}
+                ingredients={gameData.ingredients}
+              />
+            )}
+
+            {activeTab === "seeds" && (
+              <DataTable
+                data={filteredSeeds}
+                type="seeds"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteSeed(item.id)}
+              />
+            )}
+
+            {activeTab === "insects" && (
+              <DataTable
+                data={filteredInsects}
+                type="insects"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteInsect(item.id)}
+                locations={gameData.locations}
+              />
+            )}
+
+            {activeTab === "fish" && (
+              <DataTable
+                data={filteredFish}
+                type="fish"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteFish(item.id)}
+                locations={gameData.locations}
+              />
+            )}
+
+            {activeTab === "locations" && (
+              <DataTable
+                data={filteredLocations}
+                type="locations"
+                onEdit={openEditModal}
+                onDelete={(item: any) => handleDeleteLocation(item.id)}
+              />
+            )}
+          </>
+        )}
 
         {/* Empty State */}
         {((activeTab === "ingredients" && filteredIngredients.length === 0) ||

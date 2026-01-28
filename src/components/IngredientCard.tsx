@@ -54,8 +54,22 @@ export function IngredientCard({
                   alt={ingredient.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = "none";
+                    e.currentTarget.style.display = "none";
+                    const parent = e.currentTarget.parentElement;
+                    if (parent && parent.querySelector("svg") === null) {
+                      const icon = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "svg",
+                      );
+                      icon.setAttribute("class", "w-8 h-8 text-white");
+                      icon.setAttribute("viewBox", "0 0 24 24");
+                      icon.setAttribute("fill", "none");
+                      icon.setAttribute("stroke", "currentColor");
+                      icon.setAttribute("stroke-width", "2");
+                      icon.innerHTML =
+                        '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>';
+                      parent.appendChild(icon);
+                    }
                   }}
                 />
               ) : (
