@@ -545,6 +545,11 @@ function App() {
             Made with ❤️ for Heartopia Game • Built with Tauri + React +
             TypeScript
           </p>
+          {/* creator */}
+          <p className="text-center text-gray-500 text-xs mt-1">
+            by{" "}
+            <a href="https://github.com/haunandev/heartopiabooks">HaunanDev</a>
+          </p>
         </div>
       </footer>
 
