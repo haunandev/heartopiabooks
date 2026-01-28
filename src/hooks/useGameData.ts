@@ -381,6 +381,12 @@ export function useGameData() {
     localStorage.removeItem("heartopiaLogs");
   };
 
+  const deleteLog = (logId: string) => {
+    const updatedLogs = activityLogs.filter((log) => log.id !== logId);
+    setActivityLogs(updatedLogs);
+    localStorage.setItem("heartopiaLogs", JSON.stringify(updatedLogs));
+  };
+
   return {
     gameData,
     activityLogs,
@@ -406,5 +412,6 @@ export function useGameData() {
     importData,
     resetToDefault,
     clearLogs,
+    deleteLog,
   };
 }

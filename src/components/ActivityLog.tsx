@@ -24,6 +24,7 @@ interface ActivityLogProps {
   isOpen: boolean;
   onClose: () => void;
   onClearLogs: () => void;
+  onDeleteLog: (logId: string) => void;
 }
 
 export function ActivityLog({
@@ -31,6 +32,7 @@ export function ActivityLog({
   isOpen,
   onClose,
   onClearLogs,
+  onDeleteLog,
 }: ActivityLogProps) {
   const [expandedLog, setExpandedLog] = useState<string | null>(null);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -275,20 +277,29 @@ export function ActivityLog({
                                 {log.itemName}
                               </p>
                             </div>
-                            <button
-                              onClick={() =>
-                                setExpandedLog(
-                                  expandedLog === log.id ? null : log.id,
-                                )
-                              }
-                              className="p-1 hover:bg-white/50 rounded transition-colors"
-                            >
-                              {expandedLog === log.id ? (
-                                <ChevronUp className="w-4 h-4" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4" />
-                              )}
-                            </button>
+                            <div className="flex items-center gap-1">
+                              <button
+                                onClick={() => onDeleteLog(log.id)}
+                                className="p-1 hover:bg-red-100 rounded transition-colors text-red-600"
+                                title="Delete this log"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                onClick={() =>
+                                  setExpandedLog(
+                                    expandedLog === log.id ? null : log.id,
+                                  )
+                                }
+                                className="p-1 hover:bg-white/50 rounded transition-colors"
+                              >
+                                {expandedLog === log.id ? (
+                                  <ChevronUp className="w-4 h-4" />
+                                ) : (
+                                  <ChevronDown className="w-4 h-4" />
+                                )}
+                              </button>
+                            </div>
                           </div>
                           <p className="text-xs text-gray-500 mt-1">
                             {formatDate(log.timestamp)}

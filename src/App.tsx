@@ -68,6 +68,7 @@ function App() {
     importData,
     resetToDefault,
     clearLogs,
+    deleteLog,
   } = useGameData();
 
   const {
@@ -811,6 +812,7 @@ function App() {
         isOpen={isLogOpen}
         onClose={() => setIsLogOpen(false)}
         onClearLogs={clearLogs}
+        onDeleteLog={deleteLog}
       />
 
       {/* Data Sync */}
