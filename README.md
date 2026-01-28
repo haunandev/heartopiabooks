@@ -44,22 +44,38 @@ npm run dev
 
 **Build untuk produksi**
 
+**Web version (PWA - Progressive Web App):**
 ```bash
-npm run build
+npm run build:web
 ```
+Build akan menghasilkan folder `dist` dengan PWA support:
+- Service Worker untuk offline capability
+- Manifest untuk installable app
+- Optimized caching strategy
 
-Build akan menghasilkan folder `dist` siap dideploy ke static host (Vercel, Netlify, GitHub Pages, dsb.).
-
-**Catatan Deploy ke Vercel**
-
-- Frontend (React + Vite) dapat dideploy ke Vercel. Jika repo ini juga mengandung kode Tauri, itu tidak dieksekusi di Vercel — Tauri hanya untuk paket desktop.
-- Contoh vercel.json (opsional) untuk memastikan SPA rewrite:
-
-```json
-{
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
+**Desktop version (Tauri):**
+```bash
+npm run tauri:build
 ```
+Build desktop executable untuk platform saat ini (Windows/Linux/macOS).
+
+**Deploy ke Vercel/Netlify (Web + PWA)**
+
+1. Push code ke GitHub
+2. Connect repository di Vercel/Netlify
+3. Build command: `npm run build:web`
+4. Output directory: `dist`
+5. Setelah deploy, user bisa install sebagai PWA dari browser (Chrome, Edge, Safari)
+
+File `vercel.json` sudah disertakan untuk konfigurasi optimal.
+
+**PWA Features:**
+- ✅ Install ke desktop/home screen (Windows, Mac, Linux, Android, iOS)
+- ✅ Offline capability dengan service worker
+- ✅ Fast loading dengan precaching
+- ✅ Standalone app experience tanpa browser UI
+
+**Note:** Untuk icon PWA yang proper, ganti placeholder di `public/` dengan icon actual Anda. Lihat `PWA_ICONS_GUIDE.md` untuk panduan.
 
 **Data & Migrasi**
 
