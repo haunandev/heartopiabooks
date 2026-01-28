@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-  Ingredient,
-  Food,
-  Seed,
-  Insect,
-  Fish,
-  Location,
-  SortOption,
-} from "../types";
+import { Ingredient, Food, Seed, Insect, Fish, SortOption } from "../types";
 
 type TabType =
   | "ingredients"
