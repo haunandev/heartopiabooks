@@ -280,6 +280,107 @@ export function useGameData() {
     }
   };
 
+  // Data Sync Operations
+  const exportData = () => {
+    const dataStr = JSON.stringify(gameData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `heartopia-data-${new Date().toISOString().split("T")[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    addLog("edit", "ingredient", "Data Export", {
+      details: "Exported all data to JSON file",
+      count: {
+        ingredients: gameData.ingredients.length,
+        foods: gameData.foods.length,
+        seeds: gameData.seeds.length,
+        insects: gameData.insects?.length || 0,
+        fish: gameData.fish?.length || 0,
+        locations: gameData.locations?.length || 0,
+      },
+    });
+  };
+
+  const importData = (file: File) => {
+    return new Promise<void>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const importedData = JSON.parse(e.target?.result as string);
+
+          // Validate data structure
+          if (
+            !importedData.ingredients ||
+            !importedData.foods ||
+            !importedData.seeds
+          ) {
+            throw new Error("Invalid data format: missing required fields");
+          }
+
+          // Merge with existing data structure
+          const newData: GameData = {
+            ingredients: importedData.ingredients || [],
+            foods: importedData.foods || [],
+            seeds: importedData.seeds || [],
+            insects: importedData.insects || [],
+            fish: importedData.fish || [],
+            locations: importedData.locations || gameDataJson.locations || [],
+          };
+
+          saveData(newData);
+          addLog("edit", "ingredient", "Data Import", {
+            details: "Imported data from JSON file",
+            count: {
+              ingredients: newData.ingredients.length,
+              foods: newData.foods.length,
+              seeds: newData.seeds.length,
+              insects: newData.insects.length,
+              fish: newData.fish.length,
+              locations: newData.locations.length,
+            },
+          });
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      };
+      reader.onerror = () => reject(new Error("Failed to read file"));
+      reader.readAsText(file);
+    });
+  };
+
+  const resetToDefault = () => {
+    const defaultData: GameData = {
+      ...(gameDataJson as GameData),
+      insects: (gameDataJson as any).insects || [],
+      fish: (gameDataJson as any).fish || [],
+      locations: (gameDataJson as any).locations || [],
+    };
+
+    saveData(defaultData);
+    addLog("edit", "ingredient", "Data Reset", {
+      details: "Reset all data to default from gameData.json",
+      count: {
+        ingredients: defaultData.ingredients.length,
+        foods: defaultData.foods.length,
+        seeds: defaultData.seeds.length,
+        insects: defaultData.insects.length,
+        fish: defaultData.fish.length,
+        locations: defaultData.locations.length,
+      },
+    });
+  };
+
+  const clearLogs = () => {
+    setActivityLogs([]);
+    localStorage.removeItem("heartopiaLogs");
+  };
+
   return {
     gameData,
     activityLogs,
@@ -301,5 +402,9 @@ export function useGameData() {
     addLocation,
     updateLocation,
     deleteLocation,
+    exportData,
+    importData,
+    resetToDefault,
+    clearLogs,
   };
 }

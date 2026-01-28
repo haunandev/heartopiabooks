@@ -14,17 +14,26 @@ import {
   MapPin,
   ChevronDown,
   ChevronUp,
+  Trash,
 } from "lucide-react";
 import { useState } from "react";
+import { Button } from "./Button";
 
 interface ActivityLogProps {
   logs: ActivityLogType[];
   isOpen: boolean;
   onClose: () => void;
+  onClearLogs: () => void;
 }
 
-export function ActivityLog({ logs, isOpen, onClose }: ActivityLogProps) {
+export function ActivityLog({
+  logs,
+  isOpen,
+  onClose,
+  onClearLogs,
+}: ActivityLogProps) {
   const [expandedLog, setExpandedLog] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
@@ -173,14 +182,65 @@ export function ActivityLog({ logs, isOpen, onClose }: ActivityLogProps) {
                 <h2 className="text-lg font-semibold text-gray-900">
                   Activity Log
                 </h2>
+                {logs.length > 0 && (
+                  <span className="px-2 py-0.5 text-xs bg-purple-100 text-purple-700 rounded-full font-medium">
+                    {logs.length}
+                  </span>
+                )}
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                {logs.length > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowConfirm(true)}
+                    className="text-red-600 hover:bg-red-50"
+                  >
+                    <Trash className="w-4 h-4" />
+                  </Button>
+                )}
+                <button
+                  onClick={onClose}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
+
+            {/* Confirm Delete Dialog */}
+            {showConfirm && (
+              <div className="absolute inset-0 bg-white z-10 flex items-center justify-center p-6">
+                <div className="text-center">
+                  <Trash className="w-12 h-12 mx-auto text-red-600 mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Clear All Logs?
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-6">
+                    This will permanently delete all {logs.length} activity
+                    logs. This action cannot be undone.
+                  </p>
+                  <div className="flex gap-3 justify-center">
+                    <Button
+                      variant="ghost"
+                      onClick={() => setShowConfirm(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        onClearLogs();
+                        setShowConfirm(false);
+                      }}
+                      className="bg-red-600 hover:bg-red-700"
+                    >
+                      Delete All
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Log List */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3">

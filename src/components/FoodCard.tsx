@@ -48,11 +48,11 @@ export function FoodCard({
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.2 }}
     >
-      <Card className="hover:shadow-xl transition-shadow duration-200">
+      <Card className="hover:shadow-xl transition-shadow duration-200 h-full bg-[#f9ca8b] border-orange-300">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
             {/* Image with fallback */}
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-200 to-red-300 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-300 to-orange-400 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden shadow-sm">
               {food.image ? (
                 <img
                   src={food.image}
@@ -114,7 +114,7 @@ export function FoodCard({
                 {food.ingredients.map((ing, idx) => (
                   <span
                     key={idx}
-                    className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-700"
+                    className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-orange-200 text-gray-800 font-medium"
                   >
                     {ing.name} ×{ing.quantity}
                   </span>
@@ -122,10 +122,10 @@ export function FoodCard({
               </div>
 
               {/* Cost */}
-              <div className="mt-2 pt-2 border-t border-gray-200">
+              <div className="mt-2 pt-2 border-t border-orange-300">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Cost:</span>
-                  <span className="font-semibold text-red-600">
+                  <span className="text-gray-700 font-medium">Cost:</span>
+                  <span className="font-semibold text-red-700">
                     {formatPrice(totalCost)} 💰
                   </span>
                 </div>
@@ -135,12 +135,12 @@ export function FoodCard({
               <div className="mt-3 space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                    <span className="font-semibold text-green-600">
+                    <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
+                    <span className="font-semibold text-green-700">
                       {formatPrice(food.sell_price["1s"])} 💰
                     </span>
                   </div>
-                  <span className="text-xs font-medium text-blue-600">
+                  <span className="text-xs font-semibold text-blue-700">
                     +{formatPrice(food.sell_price["1s"] - totalCost)} (
                     {Math.round(
                       ((food.sell_price["1s"] - totalCost) / totalCost) * 100,
@@ -153,14 +153,14 @@ export function FoodCard({
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="flex">
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
                       </div>
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-green-700">
                         {formatPrice(food.sell_price["2s"])} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-blue-600">
+                    <span className="text-xs font-semibold text-blue-700">
                       +{formatPrice(food.sell_price["2s"] - totalCost)} (
                       {Math.round(
                         ((food.sell_price["2s"] - totalCost) / totalCost) * 100,
@@ -174,15 +174,15 @@ export function FoodCard({
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="flex">
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
+                        <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
                       </div>
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-green-700">
                         {formatPrice(food.sell_price["3s"])} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-blue-600">
+                    <span className="text-xs font-semibold text-blue-700">
                       +{formatPrice(food.sell_price["3s"] - totalCost)} (
                       {Math.round(
                         ((food.sell_price["3s"] - totalCost) / totalCost) * 100,
@@ -199,15 +199,15 @@ export function FoodCard({
                         {[1, 2, 3, 4].map((i) => (
                           <Star
                             key={i}
-                            className="w-4 h-4 text-yellow-500 fill-yellow-500"
+                            className="w-4 h-4 text-yellow-600 fill-yellow-500"
                           />
                         ))}
                       </div>
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-green-700">
                         {formatPrice(food.sell_price["4s"])} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-blue-600">
+                    <span className="text-xs font-semibold text-blue-700">
                       +{formatPrice(food.sell_price["4s"] - totalCost)} (
                       {Math.round(
                         ((food.sell_price["4s"] - totalCost) / totalCost) * 100,
@@ -224,15 +224,15 @@ export function FoodCard({
                         {[1, 2, 3, 4, 5].map((i) => (
                           <Star
                             key={i}
-                            className="w-4 h-4 text-yellow-500 fill-yellow-500"
+                            className="w-4 h-4 text-yellow-600 fill-yellow-500"
                           />
                         ))}
                       </div>
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-green-700">
                         {formatPrice(food.sell_price["5s"])} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-blue-600">
+                    <span className="text-xs font-semibold text-blue-700">
                       +{formatPrice(food.sell_price["5s"] - totalCost)} (
                       {Math.round(
                         ((food.sell_price["5s"] - totalCost) / totalCost) * 100,

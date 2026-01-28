@@ -19,7 +19,7 @@ export function SeedCard({ seed, onEdit, onDelete }: SeedCardProps) {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.2 }}
     >
-      <Card className="hover:shadow-xl transition-shadow duration-200">
+      <Card className="hover:shadow-xl transition-shadow duration-200 bg-[#faf8f5]">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
             {/* Image with fallback */}

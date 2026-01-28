@@ -16,6 +16,8 @@ Ringkasan singkat
 - CRUD untuk: ingredients, foods, seeds, insects, fish, locations
 - Pencarian dan filter (searchable multi-select untuk lokasi)
 - Sort termasuk: nama, harga, bintang, dan profit (untuk foods)
+- **View Mode**: Toggle antara Card view dan Table view
+- **Data Sync**: Export, Import, dan Reset data gameData.json
 - Activity log untuk melacak perubahan data
 - Penyimpanan lokal (localStorage) dengan migrasi otomatis untuk penambahan skema baru
 
@@ -95,6 +97,11 @@ File `vercel.json` sudah disertakan untuk konfigurasi optimal.
 - Buka tab yang sesuai (Ingredients, Foods, Seeds, Insects, Fish, Locations)
 - Gunakan tombol Add untuk menambah item baru
 - Klik Edit atau Delete pada kartu item untuk mengubah atau menghapus
+- Toggle View Mode: Switch antara Card view (grid) dan Table view (list)
+- **Data Sync**: Klik tombol "Data Sync" di header untuk:
+  - **Export**: Download data saat ini sebagai file JSON (backup)
+  - **Import**: Upload file JSON untuk mengganti data saat ini
+  - **Reset**: Kembalikan ke data default dari gameData.json
 - Untuk Locations: setiap lokasi punya ID (tidak bisa diubah setelah dibuat), nama, dan optional image URL
 - Untuk Foods: tersedia fitur sort by profit yang menghitung berdasarkan harga bahan
 
@@ -229,12 +236,13 @@ npm run tauri build
 
 ## 🎯 Roadmap / Future Features
 
-- [ ] CRUD Operations (Add, Edit, Delete items)
-- [ ] Export/Import JSON
-- [ ] Calculate profit margins
+- [x] CRUD Operations (Add, Edit, Delete items)
+- [x] Export/Import JSON
+- [x] Calculate profit margins
+- [x] Card & Table view modes
 - [ ] Recipe calculator
 - [ ] Dark mode
-- [ ] Backup & restore data
+- [ ] Cloud backup & restore data
 
 ## Recommended IDE Setup
 

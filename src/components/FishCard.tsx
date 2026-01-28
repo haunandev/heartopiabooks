@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Fish, Location } from "../types";
-import { Edit, Trash2, Fish as FishIcon, MapPin } from "lucide-react";
-import { Button } from "./Button";
+import { Edit, Trash2, Fish as FishIcon, MapPin, Star } from "lucide-react";
+import { Card, CardContent } from "./Card";
+import { formatPrice } from "../lib/utils";
 
 interface FishCardProps {
   fish: Fish;
@@ -14,93 +15,136 @@ export function FishCard({ fish, locations, onEdit, onDelete }: FishCardProps) {
   const getLocationNames = () => {
     return fish.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)
-      .filter(Boolean)
-      .join(", ");
+      .filter(Boolean);
   };
 
-  const getStarCount = () => {
-    if (fish.sell_price["5s"]) return 5;
-    if (fish.sell_price["4s"]) return 4;
-    if (fish.sell_price["3s"]) return 3;
-    if (fish.sell_price["2s"]) return 2;
-    return 1;
-  };
+  const locationNames = getLocationNames();
+
+  const starCount = fish.sell_price["5s"]
+    ? 5
+    : fish.sell_price["4s"]
+      ? 4
+      : fish.sell_price["3s"]
+        ? 3
+        : fish.sell_price["2s"]
+          ? 2
+          : 1;
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+      transition={{ duration: 0.2 }}
     >
-      {/* Image */}
-      <div className="h-48 bg-gradient-to-br from-blue-100 to-cyan-200 flex items-center justify-center">
-        {fish.image ? (
-          <img
-            src={fish.image}
-            alt={fish.name}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <FishIcon className="w-20 h-20 text-blue-600" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          {fish.name}
-        </h3>
-
-        {/* Stars */}
-        <div className="flex gap-1 mb-3">
-          {[...Array(5)].map((_, i) => (
-            <span
-              key={i}
-              className={`text-lg ${
-                i < getStarCount() ? "text-yellow-400" : "text-gray-300"
-              }`}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-
-        {/* Locations */}
-        <div className="mb-3">
-          <div className="flex items-start gap-2 text-sm text-gray-600">
-            <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-            <span>{getLocationNames() || "No location"}</span>
-          </div>
-        </div>
-
-        {/* Prices */}
-        <div className="space-y-1 mb-3">
-          {Object.entries(fish.sell_price).map(([star, price]) => (
-            <div key={star} className="flex justify-between text-sm">
-              <span className="text-gray-600">{star}:</span>
-              <span className="font-medium text-gray-900">{price}g</span>
+      <Card className="hover:shadow-xl transition-shadow duration-200 h-full bg-[#faf8f5]">
+        <CardContent className="p-4">
+          <div className="flex items-start gap-3">
+            {/* Image with fallback */}
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-200 to-cyan-300 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+              {fish.image ? (
+                <img
+                  src={fish.image}
+                  alt={fish.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    const parent = e.currentTarget.parentElement;
+                    if (parent && parent.querySelector("svg") === null) {
+                      const icon = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "svg",
+                      );
+                      icon.setAttribute("class", "w-8 h-8 text-white");
+                      icon.setAttribute("viewBox", "0 0 24 24");
+                      icon.setAttribute("fill", "none");
+                      icon.setAttribute("stroke", "currentColor");
+                      icon.setAttribute("stroke-width", "2");
+                      icon.innerHTML =
+                        '<path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/><path d="M18 12v.5M16 17.93a9.77 9.77 0 0 1 0-11.86M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"/>';
+                      parent.appendChild(icon);
+                    }
+                  }}
+                />
+              ) : (
+                <FishIcon className="w-8 h-8 text-white" />
+              )}
             </div>
-          ))}
-        </div>
 
-        {/* Actions */}
-        <div className="flex gap-2 pt-3 border-t border-gray-200">
-          <Button variant="ghost" size="sm" onClick={onEdit} className="flex-1">
-            <Edit className="w-4 h-4" />
-            Edit
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onDelete}
-            className="flex-1 text-red-600 hover:text-red-700 hover:bg-red-50"
-          >
-            <Trash2 className="w-4 h-4" />
-            Delete
-          </Button>
-        </div>
-      </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between">
+                <h4 className="font-semibold text-gray-900 truncate">
+                  {fish.name}
+                </h4>
+                <div className="flex gap-1 ml-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onEdit();
+                    }}
+                    className="p-1.5 text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                    title="Edit"
+                  >
+                    <Edit className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDelete();
+                    }}
+                    className="p-1.5 text-red-600 hover:bg-red-50 rounded transition-colors"
+                    title="Delete"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Stars */}
+              <div className="flex gap-0.5 mt-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-3 h-3 ${
+                      i < starCount
+                        ? "text-yellow-500 fill-yellow-500"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Locations */}
+              {locationNames.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {locationNames.map((name, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full"
+                    >
+                      <MapPin className="w-3 h-3" />
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Prices */}
+              <div className="mt-2 space-y-1">
+                {Object.entries(fish.sell_price).map(([star, price]) => (
+                  <div key={star} className="flex justify-between text-sm">
+                    <span className="text-gray-600">{star}:</span>
+                    <span className="font-semibold text-green-600">
+                      {formatPrice(price)} 💰
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
