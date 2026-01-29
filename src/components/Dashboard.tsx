@@ -215,6 +215,31 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
                       </li>
                     </ol>
                   </div>
+                  <div className="bg-green-50 border border-green-300 rounded-lg p-3 mt-3">
+                    <p className="font-semibold text-green-900 mb-2">
+                      🌐 Share Your Data with Community:
+                    </p>
+                    <p className="mb-2">
+                      Upload your exported JSON file to our shared folder to
+                      help other players!
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/1UXyNQ2RTXIqq9tcim-e6eC5Ngge0kdQs?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-3 py-2 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z" />
+                      </svg>
+                      Upload to Google Drive
+                    </a>
+                  </div>
                   <p className="text-xs text-amber-700 italic mt-2">
                     💡 Tip: Export your data regularly, especially after making
                     important changes. Keep multiple backup copies for safety!
