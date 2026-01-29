@@ -663,8 +663,20 @@ function App() {
                 <a
                   target="blank"
                   href="https://github.com/haunandev/heartopiabooks"
+                  className="hover:text-gray-700 underline"
                 >
                   HaunanDev
+                </a>
+              </p>
+              {/* data source */}
+              <p className="text-center text-gray-500 text-xs mt-2">
+                📦 Data Source:{" "}
+                <a
+                  target="blank"
+                  href="https://drive.google.com/drive/folders/1UXyNQ2RTXIqq9tcim-e6eC5Ngge0kdQs?usp=sharing"
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
+                  Download Latest Updates (.json)
                 </a>
               </p>
             </div>
