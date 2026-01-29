@@ -9,7 +9,6 @@ import {
   GitMerge,
 } from "lucide-react";
 import { Button } from "./Button";
-import { GameData } from "../types";
 
 interface DataSyncProps {
   onExport: () => void;
