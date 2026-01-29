@@ -21,6 +21,8 @@ import { DataSync } from "./components/DataSync";
 import { SortControls } from "./components/SortControls";
 import { AppHeader } from "./components/AppHeader";
 import { Sidebar } from "./components/Sidebar";
+import { Dashboard } from "./components/Dashboard";
+import { SellCalculator } from "./components/SellCalculator";
 import { SearchBar } from "./components/SearchBar";
 import { AnimatePresence } from "framer-motion";
 import { useGameData } from "./hooks/useGameData";
@@ -28,6 +30,7 @@ import { useFilters } from "./hooks/useFilters";
 import "./index.css";
 
 type TabType =
+  | "dashboard"
   | "ingredients"
   | "foods"
   | "seeds"
@@ -36,7 +39,7 @@ type TabType =
   | "locations";
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabType>("ingredients");
+  const [activeTab, setActiveTab] = useState<TabType>("dashboard");
   const [viewMode, setViewMode] = useState<"card" | "table">(() => {
     const saved = localStorage.getItem("viewMode");
     return (saved as "card" | "table") || "card";
@@ -263,6 +266,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-pink-50">
+      {/* Sell Calculator */}
+      <SellCalculator gameData={gameData} />
       {/* Header */}
       <AppHeader
         activityLogCount={activityLogs.length}
@@ -290,364 +295,383 @@ function App() {
 
         {/* Main Content */}
         <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 lg:ml-0">
-          {/* Search and Action Bar */}
-          <SearchBar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            showFilters={showFilters}
-            onToggleFilters={() => setShowFilters(!showFilters)}
-            onAddNew={openAddModal}
-          />
-
-          {/* View Mode Toggle */}
-          <div className="flex justify-end mb-4">
-            <div className="inline-flex rounded-lg border border-gray-300 bg-white p-1">
-              <button
-                onClick={() => {
-                  setViewMode("card");
-                  localStorage.setItem("viewMode", "card");
-                }}
-                className={`px-3 py-1.5 rounded-md transition-colors ${
-                  viewMode === "card"
-                    ? "bg-red-600 text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-                title="Card View"
-              >
-                <LayoutGrid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("table");
-                  localStorage.setItem("viewMode", "table");
-                }}
-                className={`px-3 py-1.5 rounded-md transition-colors ${
-                  viewMode === "table"
-                    ? "bg-red-600 text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-                title="Table View"
-              >
-                <Table className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Filters */}
-          {showFilters && (
-            <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold text-gray-900">Filters</h3>
-                <button
-                  onClick={() => {
-                    resetFilters();
-                    setShowFilters(false);
-                  }}
-                  className="text-sm text-gray-600 hover:text-gray-900"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Ingredient Filters */}
-              {activeTab === "ingredients" && (
-                <>
-                  <div className="flex gap-2 flex-wrap">
-                    <Button
-                      variant={sourceFilter === "all" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setSourceFilter("all")}
-                    >
-                      All
-                    </Button>
-                    <Button
-                      variant={sourceFilter === "seed" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setSourceFilter("seed")}
-                    >
-                      Seed
-                    </Button>
-                    <Button
-                      variant={sourceFilter === "wild" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setSourceFilter("wild")}
-                    >
-                      Wild
-                    </Button>
-                    <Button
-                      variant={sourceFilter === "buy" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setSourceFilter("buy")}
-                    >
-                      Buy
-                    </Button>
-                  </div>
-                  <div className="border-t border-gray-200 my-3" />
-                  <SortControls sortBy={sortBy} onSortChange={setSortBy} />
-                </>
-              )}
-
-              {/* Food Filters */}
-              {activeTab === "foods" && (
-                <>
-                  <div className="flex gap-2 flex-wrap">
-                    <Button
-                      variant={starFilter === "all" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("all")}
-                    >
-                      All Stars
-                    </Button>
-                    <Button
-                      variant={starFilter === "1" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("1")}
-                    >
-                      1★ Only
-                    </Button>
-                    <Button
-                      variant={starFilter === "2" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("2")}
-                    >
-                      2★ Max
-                    </Button>
-                    <Button
-                      variant={starFilter === "3" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("3")}
-                    >
-                      3★ Max
-                    </Button>
-                    <Button
-                      variant={starFilter === "4" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("4")}
-                    >
-                      4★ Max
-                    </Button>
-                    <Button
-                      variant={starFilter === "5" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setStarFilter("5")}
-                    >
-                      5★ Available
-                    </Button>
-                  </div>
-                  <div className="border-t border-gray-200 my-3" />
-                  <SortControls
-                    sortBy={sortBy}
-                    onSortChange={setSortBy}
-                    showStarSort
-                    showProfitSort
-                  />
-                </>
-              )}
-
-              {/* Seed Filters */}
-              {activeTab === "seeds" && (
-                <>
-                  <div className="flex gap-2 flex-wrap">
-                    <Button
-                      variant={priceRangeFilter === "all" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setPriceRangeFilter("all")}
-                    >
-                      All Prices
-                    </Button>
-                    <Button
-                      variant={priceRangeFilter === "low" ? "primary" : "ghost"}
-                      size="sm"
-                      onClick={() => setPriceRangeFilter("low")}
-                    >
-                      &lt; 50
-                    </Button>
-                    <Button
-                      variant={
-                        priceRangeFilter === "medium" ? "primary" : "ghost"
-                      }
-                      size="sm"
-                      onClick={() => setPriceRangeFilter("medium")}
-                    >
-                      50 - 99
-                    </Button>
-                    <Button
-                      variant={
-                        priceRangeFilter === "high" ? "primary" : "ghost"
-                      }
-                      size="sm"
-                      onClick={() => setPriceRangeFilter("high")}
-                    >
-                      ≥ 100
-                    </Button>
-                  </div>
-                  <div className="border-t border-gray-200 my-3" />
-                  <SortControls sortBy={sortBy} onSortChange={setSortBy} />
-                </>
-              )}
-
-              {/* Insect/Fish Filters */}
-              {(activeTab === "insects" || activeTab === "fish") && (
-                <SortControls
-                  sortBy={sortBy}
-                  onSortChange={setSortBy}
-                  showStarSort
-                />
-              )}
-
-              {/* Location Filters */}
-              {activeTab === "locations" && (
-                <SortControls sortBy={sortBy} onSortChange={setSortBy} />
-              )}
-            </div>
-          )}
-
-          {/* Content Grid */}
-          {viewMode === "card" ? (
-            <AnimatePresence mode="popLayout">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {activeTab === "ingredients" &&
-                  filteredIngredients.map((ingredient) => (
-                    <IngredientCard
-                      key={ingredient.id}
-                      ingredient={ingredient}
-                      seeds={gameData.seeds}
-                      onEdit={() => openEditModal(ingredient)}
-                      onDelete={() => handleDeleteIngredient(ingredient.id)}
-                    />
-                  ))}
-
-                {activeTab === "foods" &&
-                  filteredFoods.map((food) => (
-                    <FoodCard
-                      key={food.id}
-                      food={food}
-                      ingredients={gameData.ingredients}
-                      onEdit={() => openEditModal(food)}
-                      onDelete={() => handleDeleteFood(food.id)}
-                    />
-                  ))}
-
-                {activeTab === "seeds" &&
-                  filteredSeeds.map((seed) => (
-                    <SeedCard
-                      key={seed.id}
-                      seed={seed}
-                      onEdit={() => openEditModal(seed)}
-                      onDelete={() => handleDeleteSeed(seed.id)}
-                    />
-                  ))}
-
-                {activeTab === "insects" &&
-                  filteredInsects.map((insect) => (
-                    <InsectCard
-                      key={insect.id}
-                      insect={insect}
-                      locations={gameData.locations || []}
-                      onEdit={() => openEditModal(insect)}
-                      onDelete={() => handleDeleteInsect(insect.id)}
-                    />
-                  ))}
-
-                {activeTab === "fish" &&
-                  filteredFish.map((fish) => (
-                    <FishCard
-                      key={fish.id}
-                      fish={fish}
-                      locations={gameData.locations || []}
-                      onEdit={() => openEditModal(fish)}
-                      onDelete={() => handleDeleteFish(fish.id)}
-                    />
-                  ))}
-
-                {activeTab === "locations" &&
-                  filteredLocations.map((location) => (
-                    <LocationCard
-                      key={location.id}
-                      location={location}
-                      onEdit={() => openEditModal(location)}
-                      onDelete={() => handleDeleteLocation(location.id)}
-                    />
-                  ))}
-              </div>
-            </AnimatePresence>
+          {activeTab === "dashboard" ? (
+            <Dashboard
+              gameData={gameData}
+              activityCount={activityLogs.length}
+            />
           ) : (
             <>
-              {activeTab === "ingredients" && (
-                <DataTable
-                  data={filteredIngredients}
-                  type="ingredients"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteIngredient(item.id)}
-                />
+              {/* Search and Action Bar */}
+              <SearchBar
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                showFilters={showFilters}
+                onToggleFilters={() => setShowFilters(!showFilters)}
+                onAddNew={openAddModal}
+              />
+
+              {/* View Mode Toggle */}
+              <div className="flex justify-end mb-4">
+                <div className="inline-flex rounded-lg border border-gray-300 bg-white p-1">
+                  <button
+                    onClick={() => {
+                      setViewMode("card");
+                      localStorage.setItem("viewMode", "card");
+                    }}
+                    className={`px-3 py-1.5 rounded-md transition-colors ${
+                      viewMode === "card"
+                        ? "bg-red-600 text-white"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                    title="Card View"
+                  >
+                    <LayoutGrid className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setViewMode("table");
+                      localStorage.setItem("viewMode", "table");
+                    }}
+                    className={`px-3 py-1.5 rounded-md transition-colors ${
+                      viewMode === "table"
+                        ? "bg-red-600 text-white"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                    title="Table View"
+                  >
+                    <Table className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Filters */}
+              {showFilters && (
+                <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-semibold text-gray-900">Filters</h3>
+                    <button
+                      onClick={() => {
+                        resetFilters();
+                        setShowFilters(false);
+                      }}
+                      className="text-sm text-gray-600 hover:text-gray-900"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Ingredient Filters */}
+                  {activeTab === "ingredients" && (
+                    <>
+                      <div className="flex gap-2 flex-wrap">
+                        <Button
+                          variant={sourceFilter === "all" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setSourceFilter("all")}
+                        >
+                          All
+                        </Button>
+                        <Button
+                          variant={
+                            sourceFilter === "seed" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setSourceFilter("seed")}
+                        >
+                          Seed
+                        </Button>
+                        <Button
+                          variant={
+                            sourceFilter === "wild" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setSourceFilter("wild")}
+                        >
+                          Wild
+                        </Button>
+                        <Button
+                          variant={sourceFilter === "buy" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setSourceFilter("buy")}
+                        >
+                          Buy
+                        </Button>
+                      </div>
+                      <div className="border-t border-gray-200 my-3" />
+                      <SortControls sortBy={sortBy} onSortChange={setSortBy} />
+                    </>
+                  )}
+
+                  {/* Food Filters */}
+                  {activeTab === "foods" && (
+                    <>
+                      <div className="flex gap-2 flex-wrap">
+                        <Button
+                          variant={starFilter === "all" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("all")}
+                        >
+                          All Stars
+                        </Button>
+                        <Button
+                          variant={starFilter === "1" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("1")}
+                        >
+                          1★ Only
+                        </Button>
+                        <Button
+                          variant={starFilter === "2" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("2")}
+                        >
+                          2★ Max
+                        </Button>
+                        <Button
+                          variant={starFilter === "3" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("3")}
+                        >
+                          3★ Max
+                        </Button>
+                        <Button
+                          variant={starFilter === "4" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("4")}
+                        >
+                          4★ Max
+                        </Button>
+                        <Button
+                          variant={starFilter === "5" ? "primary" : "ghost"}
+                          size="sm"
+                          onClick={() => setStarFilter("5")}
+                        >
+                          5★ Available
+                        </Button>
+                      </div>
+                      <div className="border-t border-gray-200 my-3" />
+                      <SortControls
+                        sortBy={sortBy}
+                        onSortChange={setSortBy}
+                        showStarSort
+                        showProfitSort
+                      />
+                    </>
+                  )}
+
+                  {/* Seed Filters */}
+                  {activeTab === "seeds" && (
+                    <>
+                      <div className="flex gap-2 flex-wrap">
+                        <Button
+                          variant={
+                            priceRangeFilter === "all" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setPriceRangeFilter("all")}
+                        >
+                          All Prices
+                        </Button>
+                        <Button
+                          variant={
+                            priceRangeFilter === "low" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setPriceRangeFilter("low")}
+                        >
+                          &lt; 50
+                        </Button>
+                        <Button
+                          variant={
+                            priceRangeFilter === "medium" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setPriceRangeFilter("medium")}
+                        >
+                          50 - 99
+                        </Button>
+                        <Button
+                          variant={
+                            priceRangeFilter === "high" ? "primary" : "ghost"
+                          }
+                          size="sm"
+                          onClick={() => setPriceRangeFilter("high")}
+                        >
+                          ≥ 100
+                        </Button>
+                      </div>
+                      <div className="border-t border-gray-200 my-3" />
+                      <SortControls sortBy={sortBy} onSortChange={setSortBy} />
+                    </>
+                  )}
+
+                  {/* Insect/Fish Filters */}
+                  {(activeTab === "insects" || activeTab === "fish") && (
+                    <SortControls
+                      sortBy={sortBy}
+                      onSortChange={setSortBy}
+                      showStarSort
+                    />
+                  )}
+
+                  {/* Location Filters */}
+                  {activeTab === "locations" && (
+                    <SortControls sortBy={sortBy} onSortChange={setSortBy} />
+                  )}
+                </div>
               )}
 
-              {activeTab === "foods" && (
-                <DataTable
-                  data={filteredFoods}
-                  type="foods"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteFood(item.id)}
-                  ingredients={gameData.ingredients}
-                />
+              {/* Content Grid */}
+              {viewMode === "card" ? (
+                <AnimatePresence mode="popLayout">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {activeTab === "ingredients" &&
+                      filteredIngredients.map((ingredient) => (
+                        <IngredientCard
+                          key={ingredient.id}
+                          ingredient={ingredient}
+                          seeds={gameData.seeds}
+                          onEdit={() => openEditModal(ingredient)}
+                          onDelete={() => handleDeleteIngredient(ingredient.id)}
+                        />
+                      ))}
+
+                    {activeTab === "foods" &&
+                      filteredFoods.map((food) => (
+                        <FoodCard
+                          key={food.id}
+                          food={food}
+                          ingredients={gameData.ingredients}
+                          onEdit={() => openEditModal(food)}
+                          onDelete={() => handleDeleteFood(food.id)}
+                        />
+                      ))}
+
+                    {activeTab === "seeds" &&
+                      filteredSeeds.map((seed) => (
+                        <SeedCard
+                          key={seed.id}
+                          seed={seed}
+                          onEdit={() => openEditModal(seed)}
+                          onDelete={() => handleDeleteSeed(seed.id)}
+                        />
+                      ))}
+
+                    {activeTab === "insects" &&
+                      filteredInsects.map((insect) => (
+                        <InsectCard
+                          key={insect.id}
+                          insect={insect}
+                          locations={gameData.locations || []}
+                          onEdit={() => openEditModal(insect)}
+                          onDelete={() => handleDeleteInsect(insect.id)}
+                        />
+                      ))}
+
+                    {activeTab === "fish" &&
+                      filteredFish.map((fish) => (
+                        <FishCard
+                          key={fish.id}
+                          fish={fish}
+                          locations={gameData.locations || []}
+                          onEdit={() => openEditModal(fish)}
+                          onDelete={() => handleDeleteFish(fish.id)}
+                        />
+                      ))}
+
+                    {activeTab === "locations" &&
+                      filteredLocations.map((location) => (
+                        <LocationCard
+                          key={location.id}
+                          location={location}
+                          onEdit={() => openEditModal(location)}
+                          onDelete={() => handleDeleteLocation(location.id)}
+                        />
+                      ))}
+                  </div>
+                </AnimatePresence>
+              ) : (
+                <>
+                  {activeTab === "ingredients" && (
+                    <DataTable
+                      data={filteredIngredients}
+                      type="ingredients"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteIngredient(item.id)}
+                    />
+                  )}
+
+                  {activeTab === "foods" && (
+                    <DataTable
+                      data={filteredFoods}
+                      type="foods"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteFood(item.id)}
+                      ingredients={gameData.ingredients}
+                    />
+                  )}
+
+                  {activeTab === "seeds" && (
+                    <DataTable
+                      data={filteredSeeds}
+                      type="seeds"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteSeed(item.id)}
+                    />
+                  )}
+
+                  {activeTab === "insects" && (
+                    <DataTable
+                      data={filteredInsects}
+                      type="insects"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteInsect(item.id)}
+                      locations={gameData.locations}
+                    />
+                  )}
+
+                  {activeTab === "fish" && (
+                    <DataTable
+                      data={filteredFish}
+                      type="fish"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteFish(item.id)}
+                      locations={gameData.locations}
+                    />
+                  )}
+
+                  {activeTab === "locations" && (
+                    <DataTable
+                      data={filteredLocations}
+                      type="locations"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteLocation(item.id)}
+                    />
+                  )}
+                </>
               )}
 
-              {activeTab === "seeds" && (
-                <DataTable
-                  data={filteredSeeds}
-                  type="seeds"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteSeed(item.id)}
-                />
-              )}
-
-              {activeTab === "insects" && (
-                <DataTable
-                  data={filteredInsects}
-                  type="insects"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteInsect(item.id)}
-                  locations={gameData.locations}
-                />
-              )}
-
-              {activeTab === "fish" && (
-                <DataTable
-                  data={filteredFish}
-                  type="fish"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteFish(item.id)}
-                  locations={gameData.locations}
-                />
-              )}
-
-              {activeTab === "locations" && (
-                <DataTable
-                  data={filteredLocations}
-                  type="locations"
-                  onEdit={openEditModal}
-                  onDelete={(item: any) => handleDeleteLocation(item.id)}
-                />
+              {/* Empty State */}
+              {((activeTab === "ingredients" &&
+                filteredIngredients.length === 0) ||
+                (activeTab === "foods" && filteredFoods.length === 0) ||
+                (activeTab === "seeds" && filteredSeeds.length === 0) ||
+                (activeTab === "insects" && filteredInsects.length === 0) ||
+                (activeTab === "fish" && filteredFish.length === 0) ||
+                (activeTab === "locations" &&
+                  filteredLocations.length === 0)) && (
+                <div className="text-center py-12">
+                  <div className="text-gray-400 mb-2">
+                    <Search className="w-16 h-16 mx-auto" />
+                  </div>
+                  <p className="text-gray-600 text-lg">No results found</p>
+                  <p className="text-gray-500 text-sm mt-1">
+                    Try a different search term or adjust filters
+                  </p>
+                </div>
               )}
             </>
-          )}
-
-          {/* Empty State */}
-          {((activeTab === "ingredients" && filteredIngredients.length === 0) ||
-            (activeTab === "foods" && filteredFoods.length === 0) ||
-            (activeTab === "seeds" && filteredSeeds.length === 0) ||
-            (activeTab === "insects" && filteredInsects.length === 0) ||
-            (activeTab === "fish" && filteredFish.length === 0) ||
-            (activeTab === "locations" && filteredLocations.length === 0)) && (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-2">
-                <Search className="w-16 h-16 mx-auto" />
-              </div>
-              <p className="text-gray-600 text-lg">No results found</p>
-              <p className="text-gray-500 text-sm mt-1">
-                Try a different search term or adjust filters
-              </p>
-            </div>
           )}
 
           {/* Footer */}
@@ -666,17 +690,6 @@ function App() {
                   className="hover:text-gray-700 underline"
                 >
                   HaunanDev
-                </a>
-              </p>
-              {/* data source */}
-              <p className="text-center text-gray-500 text-xs mt-2">
-                📦 Data Source:{" "}
-                <a
-                  target="blank"
-                  href="https://drive.google.com/drive/folders/1UXyNQ2RTXIqq9tcim-e6eC5Ngge0kdQs?usp=sharing"
-                  className="text-blue-600 hover:text-blue-700 underline"
-                >
-                  Download Latest Updates (.json)
                 </a>
               </p>
             </div>

@@ -3,6 +3,7 @@ import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
 import { Star, Edit, Trash2, ChefHat } from "lucide-react";
 import { motion } from "framer-motion";
+import { calculateFoodRating, getRatingColor } from "../lib/rating";
 
 interface FoodCardProps {
   food: Food;
@@ -40,6 +41,8 @@ export function FoodCard({
   };
 
   const totalCost = calculateCost();
+  const rating = calculateFoodRating(food, ingredients);
+
   return (
     <motion.div
       layout
@@ -84,7 +87,14 @@ export function FoodCard({
 
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between">
-                <h4 className="font-semibold text-gray-900">{food.name}</h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-semibold text-gray-900">{food.name}</h4>
+                  <span
+                    className={`${getRatingColor(rating)} px-2 py-0.5 rounded text-xs font-bold shadow-sm`}
+                  >
+                    {rating}
+                  </span>
+                </div>
                 <div className="flex gap-1 ml-2">
                   <button
                     onClick={(e) => {

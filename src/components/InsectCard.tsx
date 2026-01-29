@@ -3,6 +3,7 @@ import { Insect, Location } from "../types";
 import { Edit, Trash2, Bug, MapPin, Star } from "lucide-react";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
+import { calculateCreatureRating, getRatingColor } from "../lib/rating";
 
 interface InsectCardProps {
   insect: Insect;
@@ -34,6 +35,8 @@ export function InsectCard({
         : insect.sell_price["2s"]
           ? 2
           : 1;
+
+  const rating = calculateCreatureRating(insect);
 
   return (
     <motion.div
@@ -79,9 +82,16 @@ export function InsectCard({
 
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between">
-                <h4 className="font-semibold text-gray-900 truncate">
-                  {insect.name}
-                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-semibold text-gray-900 truncate">
+                    {insect.name}
+                  </h4>
+                  <span
+                    className={`${getRatingColor(rating)} px-2 py-0.5 rounded text-xs font-bold shadow-sm`}
+                  >
+                    {rating}
+                  </span>
+                </div>
                 <div className="flex gap-1 ml-2">
                   <button
                     onClick={(e) => {

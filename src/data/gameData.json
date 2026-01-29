@@ -239,6 +239,35 @@
       "buy_price": null,
       "source": "wild",
       "image": "images/ingredients/mushroom.png"
+    },
+    {
+      "id": 23,
+      "name": "Eggplant",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "seed",
+      "image": "default.png",
+      "sell_price_stars": {
+        "1s": 406,
+        "2s": 544,
+        "3s": 678
+      }
+    },
+    {
+      "id": 24,
+      "name": "Coffee Bean",
+      "sell_price": null,
+      "buy_price": 50,
+      "source": "buy",
+      "image": "images/ingredients/coffee-bean.png"
+    },
+    {
+      "id": 25,
+      "name": "Fish",
+      "sell_price": 150,
+      "buy_price": null,
+      "source": "wild",
+      "image": "default.png"
     }
   ],
   "foods": [
@@ -262,7 +291,8 @@
       "sell_price": {
         "1s": 830,
         "2s": 1245,
-        "3s": 1660
+        "3s": 1660,
+        "4s": 3320
       },
       "image": "images/foods/black-truffle-pie.png"
     },
@@ -473,6 +503,212 @@
         "1s": 670
       },
       "image": "images/foods/meat-sauce-pasta.png"
+    },
+    {
+      "id": 12,
+      "name": "House Salad",
+      "ingredients": [
+        {
+          "name": "Tomato",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 90,
+        "3s": 180
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 13,
+      "name": "Latte",
+      "ingredients": [
+        {
+          "name": "Milk",
+          "quantity": 2
+        },
+        {
+          "name": "Coffee Bean",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 300,
+        "2s": 450,
+        "3s": 600
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 14,
+      "name": "Carrot Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Carrot",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 840,
+        "2s": 1260,
+        "4s": 3360
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 15,
+      "name": "Raspberry Jam",
+      "ingredients": [
+        {
+          "name": "Raspberry",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 16,
+      "name": "Tomato Sauce",
+      "ingredients": [
+        {
+          "name": "Tomato",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 17,
+      "name": "Blueberry Jam",
+      "ingredients": [
+        {
+          "name": "Blueberry",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 18,
+      "name": "Strawberry Jam",
+      "ingredients": [
+        {
+          "name": "Strawberry",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 19,
+      "name": "Pineapple Jam",
+      "ingredients": [
+        {
+          "name": "Pineapple",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 20,
+      "name": "Grape Jam",
+      "ingredients": [
+        {
+          "name": "Grape",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 21,
+      "name": "Fish & Chips",
+      "ingredients": [
+        {
+          "name": "Fish",
+          "quantity": 2
+        },
+        {
+          "name": "Potato",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 22,
+      "name": "Cheese Cake",
+      "ingredients": [
+        {
+          "name": "Cheese",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 0
+      },
+      "image": "default.png"
+    },
+    {
+      "id": 23,
+      "name": "Rustic Ratatouille",
+      "ingredients": [
+        {
+          "name": "Tomato",
+          "quantity": 1
+        },
+        {
+          "name": "Potato",
+          "quantity": 1
+        },
+        {
+          "name": "Lettuce",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 640,
+        "2s": 960
+      },
+      "image": "default.png"
     }
   ],
   "seeds": [
@@ -568,7 +804,7 @@
         "2s": 157,
         "3s": 210
       },
-      "locations": [],
+      "locations": ["residential-street"],
       "image": "images/insects/common-blue-butterfly.png"
     },
     {
@@ -695,7 +931,469 @@
       "image": ""
     }
   ],
-  "fish": [],
+  "fish": [
+    {
+      "id": 1,
+      "name": "Common Chub",
+      "sell_price": {
+        "1s": 0,
+        "3s": 150,
+        "2s": 112
+      },
+      "locations": ["suburban-lake"],
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Mussel",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "European Perch",
+      "sell_price": {
+        "1s": 75,
+        "2s": 112
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "Edible Frog",
+      "sell_price": {
+        "1s": 320
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 5,
+      "name": "Burbot",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 6,
+      "name": "Spined Loach",
+      "sell_price": {
+        "1s": 50
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 7,
+      "name": "Goby",
+      "sell_price": {
+        "1s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "Common Barbel",
+      "sell_price": {
+        "1s": 75
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 9,
+      "name": "Stone Loach",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 10,
+      "name": "Minnow",
+      "sell_price": {
+        "1s": 0,
+        "2s": 75
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 11,
+      "name": "European Smelt",
+      "sell_price": {
+        "1s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 12,
+      "name": "Tench",
+      "sell_price": {
+        "1s": 50
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 13,
+      "name": "Zander",
+      "sell_price": {
+        "1s": 230
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 14,
+      "name": "Grayling",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 15,
+      "name": "Common Whitefish",
+      "sell_price": {
+        "1s": 105
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 16,
+      "name": "Tadpole",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 17,
+      "name": "River Crab",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150,
+        "3s": 200
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 18,
+      "name": "Crucian Carp",
+      "sell_price": {
+        "1s": 75,
+        "2s": 112,
+        "3s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 19,
+      "name": "Common Bleak",
+      "sell_price": {
+        "1s": 0,
+        "2s": 75,
+        "3s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 20,
+      "name": "Common Rud",
+      "sell_price": {
+        "1s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 21,
+      "name": "Schneider",
+      "sell_price": {
+        "1s": 0,
+        "3s": 100,
+        "4s": 200
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 22,
+      "name": "Ruffe",
+      "sell_price": {
+        "1s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 23,
+      "name": "Oriental Shrimp",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75,
+        "3s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 24,
+      "name": "Sardine",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75,
+        "3s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 25,
+      "name": "Sea Bass",
+      "sell_price": {
+        "1s": 0,
+        "2s": 112,
+        "3s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 26,
+      "name": "Skipjack Tuna",
+      "sell_price": {
+        "1s": 210,
+        "2s": 315,
+        "3s": 420
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 27,
+      "name": "Atlantic Mackerel",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 28,
+      "name": "False Scad",
+      "sell_price": {
+        "1s": 155,
+        "2s": 232,
+        "3s": 310
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 29,
+      "name": "Giant Oarfish",
+      "sell_price": {
+        "1s": 535
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 30,
+      "name": "Common Octopus",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 31,
+      "name": "Seahorse",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 32,
+      "name": "Atlantic Salmon",
+      "sell_price": {
+        "1s": 155,
+        "2s": 232
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 33,
+      "name": "Anglerfish",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 34,
+      "name": "Beltfish",
+      "sell_price": {
+        "1s": 105,
+        "2s": 157,
+        "3s": 210,
+        "4s": 420
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 35,
+      "name": "Turbot",
+      "sell_price": {
+        "1s": 320,
+        "3s": 640
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 36,
+      "name": "Common Shrimp",
+      "sell_price": {
+        "1s": 50
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 37,
+      "name": "European Plaice",
+      "sell_price": {
+        "1s": 230
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 38,
+      "name": "Scad",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 39,
+      "name": "Nursehound",
+      "sell_price": {
+        "1s": 535,
+        "2s": 802,
+        "3s": 1070
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 40,
+      "name": "Atlantic Pygmy Octopus",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 41,
+      "name": "Sea Stickleback",
+      "sell_price": {
+        "1s": 50
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 42,
+      "name": "European Lobster",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 43,
+      "name": "European Flying Squid",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480,
+        "3s": 640
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 44,
+      "name": "Striped Red Mullet",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480,
+        "3s": 640,
+        "5s": 2560
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 45,
+      "name": "Hermit Crab",
+      "sell_price": {
+        "1s": 100
+      },
+      "locations": [],
+      "image": ""
+    },
+    {
+      "id": 46,
+      "name": "Butterfly Koi",
+      "sell_price": {
+        "1s": 320
+      },
+      "locations": [],
+      "image": ""
+    }
+  ],
   "locations": [
     {
       "id": "old-sea",

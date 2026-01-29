@@ -1,4 +1,5 @@
 import {
+  Home,
   Leaf,
   Utensils,
   Sprout,
@@ -11,6 +12,7 @@ import {
 import { useState } from "react";
 
 type TabType =
+  | "dashboard"
   | "ingredients"
   | "foods"
   | "seeds"
@@ -35,6 +37,12 @@ export function Sidebar({ activeTab, onTabChange, counts }: SidebarProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const tabs = [
+    {
+      id: "dashboard" as TabType,
+      label: "Dashboard",
+      icon: Home,
+      count: 0,
+    },
     {
       id: "ingredients" as TabType,
       label: "Ingredients",
@@ -130,18 +138,20 @@ export function Sidebar({ activeTab, onTabChange, counts }: SidebarProps) {
                     className={`w-5 h-5 ${isActive ? "text-red-600" : "text-gray-400"}`}
                   />
                   <span className="flex-1">{tab.label}</span>
-                  <span
-                    className={`
-                      px-2 py-0.5 text-xs rounded-full font-medium
-                      ${
-                        isActive
-                          ? "bg-red-100 text-red-700"
-                          : "bg-gray-100 text-gray-600"
-                      }
-                    `}
-                  >
-                    {tab.count}
-                  </span>
+                  {tab.id !== "dashboard" && (
+                    <span
+                      className={`
+                        px-2 py-0.5 text-xs rounded-full font-medium
+                        ${
+                          isActive
+                            ? "bg-red-100 text-red-700"
+                            : "bg-gray-100 text-gray-600"
+                        }
+                      `}
+                    >
+                      {tab.count}
+                    </span>
+                  )}
                 </button>
               );
             })}

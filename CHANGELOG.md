@@ -2,7 +2,59 @@
 
 All notable changes to Heartopia Books will be documented here.
 
-## [1.0.0] - 2026-01-28
+## [1.0.0] - 2026-01-29
+
+### ✨ Major Release
+
+This is the first stable release with comprehensive features and improvements.
+
+#### New Features
+
+- 📊 **Dashboard/Home Page**
+  - Overview statistics for all data categories
+  - Interactive charts using Recharts library
+  - Data distribution pie chart
+  - Ingredient source bar chart
+  - Food star rating distribution
+  - Latest updates section with version info
+  - Quick tips for users
+
+- 🗂️ **Enhanced Activity Log**
+  - Delete individual log entries
+  - Confirmation dialog before clearing all logs
+  - Improved UI with expandable details
+  - Activity count badge
+
+- 🖼️ **Table View Improvements**
+  - Image column added to all table views
+  - Fallback icons for missing images
+  - Better visual consistency
+
+- 🔗 **Data Source Integration**
+  - Footer link to download latest .json updates
+  - Direct link to Google Drive folder
+
+- 📱 **Sidebar Navigation**
+  - Responsive mobile menu with hamburger icon
+  - Fixed z-index for proper overlay behavior
+  - Active tab highlighting
+  - Item count badges
+
+- 📦 **Versioning System**
+  - Semantic versioning implementation
+  - Version display in Dashboard
+  - VERSIONING.md guide for contributors
+
+#### Technical Improvements
+
+- Added recharts library for data visualization
+- Improved component organization
+- Better TypeScript type definitions
+- Enhanced mobile responsiveness
+
+---
+
+## [0.1.0] - 2026-01-28
 
 ### ✨ Initial Release
 
