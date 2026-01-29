@@ -75,12 +75,27 @@ export interface Fish {
   image: string;
 }
 
+export interface Bird {
+  id: number;
+  name: string;
+  sell_price: {
+    "1s": number;
+    "2s"?: number;
+    "3s"?: number;
+    "4s"?: number;
+    "5s"?: number;
+  };
+  locations: string[]; // Array of location IDs
+  image: string;
+}
+
 export interface GameData {
   ingredients: Ingredient[];
   foods: Food[];
   seeds: Seed[];
   insects: Insect[];
   fish: Fish[];
+  birds: Bird[];
   locations: Location[];
 }
 
@@ -91,6 +106,7 @@ export type ItemType =
   | "seed"
   | "insect"
   | "fish"
+  | "bird"
   | "location";
 
 export interface ActivityLog {

@@ -13,13 +13,15 @@ Ringkasan singkat
 
 **Fitur Utama**
 
-- CRUD untuk: ingredients, foods, seeds, insects, fish, locations
+- CRUD untuk: ingredients, foods, seeds, insects, fish, **birds**, locations
 - Pencarian dan filter (searchable multi-select untuk lokasi)
 - Sort termasuk: nama, harga, bintang, dan profit (untuk foods)
-- **Rating System (S-D)**: Rating otomatis untuk foods (berdasarkan profit %), insects & fish (berdasarkan max sell price)
-- **Multi-item Sell Calculator**: Kalkulator invoice-style dengan total cost, sell, profit, dan profit percentage
+- **Rating System (S-D)**: Rating otomatis untuk foods (berdasarkan profit %), insects, fish, & birds (berdasarkan max sell price)
+- **Multi-item Sell Calculator**: Kalkulator invoice-style dengan total cost, sell, profit, dan profit percentage (termasuk birds)
 - **View Mode**: Toggle antara Card view dan Table view
-- **Data Sync**: Export, Import, dan Reset data gameData.json
+- **Data Sync**: Export, Import, **Merge Preview**, dan Reset data gameData.json
+- **Merge Preview**: Preview perubahan sebelum merge/replace data dengan detailed diff dan checkbox selection
+- **Image Upload**: Upload gambar ke Cloudinary dengan fitur crop, atau input URL manual
 - **SEO Optimized**: Meta tags lengkap untuk Open Graph, Twitter Card, dan PWA
 - Activity log untuk melacak perubahan data
 - Penyimpanan lokal (localStorage) dengan migrasi otomatis untuk penambahan skema baru

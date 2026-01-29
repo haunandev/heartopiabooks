@@ -50,6 +50,7 @@ export function IngredientCard({
             <div className="w-16 h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
               {ingredient.image ? (
                 <img
+                  key={ingredient.image}
                   src={ingredient.image}
                   alt={ingredient.name}
                   className="w-full h-full object-cover"

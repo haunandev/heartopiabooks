@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Food, FoodIngredient, Ingredient } from "../types";
 import { Button } from "./Button";
 import { Plus, Trash2 } from "lucide-react";
+import { ImageUpload } from "./ImageUpload";
 
 interface FoodFormProps {
   food?: Food;
@@ -236,36 +237,12 @@ export function FoodForm({
         </div>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Image URL
-        </label>
-        <input
-          type="text"
-          value={formData.image}
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-          placeholder="https://example.com/image.png"
-        />
-        {formData.image && (
-          <div className="mt-3">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Preview
-            </label>
-            <div className="w-32 h-32 bg-gradient-to-br from-orange-200 to-red-300 rounded-lg flex items-center justify-center overflow-hidden">
-              <img
-                src={formData.image}
-                alt="Preview"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.style.display = "none";
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </div>
+      <ImageUpload
+        value={formData.image}
+        onChange={(url) => setFormData({ ...formData, image: url })}
+        label="Image"
+        aspectRatio={1}
+      />
 
       <div className="flex gap-3 pt-4 sticky bottom-0 bg-white">
         <Button type="submit" variant="primary" className="flex-1">

@@ -5,6 +5,7 @@ import {
   Sprout,
   Bug,
   Fish,
+  Bird,
   MapPin,
   Menu,
   X,
@@ -18,6 +19,7 @@ type TabType =
   | "seeds"
   | "insects"
   | "fish"
+  | "birds"
   | "locations";
 
 interface SidebarProps {
@@ -29,6 +31,7 @@ interface SidebarProps {
     seeds: number;
     insects: number;
     fish: number;
+    birds: number;
     locations: number;
   };
 }
@@ -68,6 +71,7 @@ export function Sidebar({ activeTab, onTabChange, counts }: SidebarProps) {
       count: counts.insects,
     },
     { id: "fish" as TabType, label: "Fish", icon: Fish, count: counts.fish },
+    { id: "birds" as TabType, label: "Birds", icon: Bird, count: counts.birds },
     {
       id: "locations" as TabType,
       label: "Locations",

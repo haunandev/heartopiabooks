@@ -1,24 +1,19 @@
 import { useState } from "react";
-import { Insect, Location } from "../types";
+import { Bird, Location } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
 
-interface InsectFormProps {
-  insect: Insect | null;
+interface BirdFormProps {
+  bird: Bird | null;
   locations: Location[];
-  onSave: (insect: Insect) => void;
+  onSave: (bird: Bird) => void;
   onCancel: () => void;
 }
 
-export function InsectForm({
-  insect,
-  locations,
-  onSave,
-  onCancel,
-}: InsectFormProps) {
-  const [formData, setFormData] = useState<Insect>(
-    insect || {
+export function BirdForm({ bird, locations, onSave, onCancel }: BirdFormProps) {
+  const [formData, setFormData] = useState<Bird>(
+    bird || {
       id: 0,
       name: "",
       sell_price: { "1s": 0 },

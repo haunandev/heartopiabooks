@@ -5,6 +5,7 @@ import { FoodCard } from "./components/FoodCard";
 import { SeedCard } from "./components/SeedCard";
 import { InsectCard } from "./components/InsectCard";
 import { FishCard } from "./components/FishCard";
+import { BirdCard } from "./components/BirdCard";
 import { LocationCard } from "./components/LocationCard";
 import { DataTable } from "./components/DataTable";
 import { Button } from "./components/Button";
@@ -14,6 +15,7 @@ import { FoodForm } from "./components/FoodForm";
 import { SeedForm } from "./components/SeedForm";
 import { InsectForm } from "./components/InsectForm";
 import { FishForm } from "./components/FishForm";
+import { BirdForm } from "./components/BirdForm";
 import { LocationForm } from "./components/LocationForm";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { ActivityLog } from "./components/ActivityLog";
@@ -24,11 +26,13 @@ import { Sidebar } from "./components/Sidebar";
 import { Dashboard } from "./components/Dashboard";
 import { SellCalculator } from "./components/SellCalculator";
 import { SearchBar } from "./components/SearchBar";
+import { DataMergePreview } from "./components/DataMergePreview";
 import { AnimatePresence } from "framer-motion";
 import { useGameData } from "./hooks/useGameData";
 import { useFilters } from "./hooks/useFilters";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
+import { GameData, Bird } from "./types";
 
 type TabType =
   | "dashboard"
@@ -37,6 +41,7 @@ type TabType =
   | "seeds"
   | "insects"
   | "fish"
+  | "birds"
   | "locations";
 
 function App() {
@@ -65,11 +70,15 @@ function App() {
     addFish,
     updateFish,
     deleteFish,
+    addBird,
+    updateBird,
+    deleteBird,
     addLocation,
     updateLocation,
     deleteLocation,
     exportData,
     importData,
+    mergeData,
     resetToDefault,
     clearLogs,
     deleteLog,
@@ -107,6 +116,10 @@ function App() {
 
   // Data Sync states
   const [isSyncOpen, setIsSyncOpen] = useState(false);
+  const [mergePreviewData, setMergePreviewData] = useState<{
+    current: GameData;
+    incoming: GameData;
+  } | null>(null);
 
   // Handlers for CRUD operations with modal management
   const handleAddIngredient = (ingredient: any) => {
@@ -209,6 +222,26 @@ function App() {
     setIsConfirmOpen(true);
   };
 
+  const handleAddBird = (bird: Bird) => {
+    addBird(bird);
+    setIsModalOpen(false);
+  };
+
+  const handleUpdateBird = (bird: Bird) => {
+    updateBird(bird, editingItem);
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleDeleteBird = (id: number) => {
+    setConfirmMessage("Are you sure you want to delete this bird?");
+    setConfirmAction(() => () => {
+      deleteBird(id);
+      setIsConfirmOpen(false);
+    });
+    setIsConfirmOpen(true);
+  };
+
   const handleAddLocation = (location: any) => {
     addLocation(location);
     setIsModalOpen(false);
@@ -251,10 +284,40 @@ function App() {
     applyFilters(gameData.fish || [], "fish"),
     "fish",
   );
+  const filteredBirds = applySorting(
+    applyFilters(gameData.birds || [], "birds"),
+    "birds",
+  );
   const filteredLocations = applySorting(
     applyFilters(gameData.locations || [], "locations"),
     "locations",
   );
+
+  // Handle merge
+  const handleMerge = async (file: File) => {
+    try {
+      const text = await file.text();
+      const incomingData = JSON.parse(text) as GameData;
+
+      // Show preview
+      setMergePreviewData({
+        current: gameData,
+        incoming: incomingData,
+      });
+      setIsSyncOpen(false);
+    } catch (error) {
+      throw new Error("Invalid JSON file");
+    }
+  };
+
+  const handleMergeConfirm = (mergedData: GameData) => {
+    mergeData(mergedData);
+    setMergePreviewData(null);
+  };
+
+  const handleMergeCancel = () => {
+    setMergePreviewData(null);
+  };
   const openAddModal = () => {
     setEditingItem(null);
     setIsModalOpen(true);
@@ -290,6 +353,7 @@ function App() {
             seeds: gameData.seeds?.length || 0,
             insects: gameData.insects?.length || 0,
             fish: gameData.fish?.length || 0,
+            birds: gameData.birds?.length || 0,
             locations: gameData.locations?.length || 0,
           }}
         />
@@ -507,8 +571,10 @@ function App() {
                     </>
                   )}
 
-                  {/* Insect/Fish Filters */}
-                  {(activeTab === "insects" || activeTab === "fish") && (
+                  {/* Insect/Fish/Bird Filters */}
+                  {(activeTab === "insects" ||
+                    activeTab === "fish" ||
+                    activeTab === "birds") && (
                     <SortControls
                       sortBy={sortBy}
                       onSortChange={setSortBy}
@@ -581,6 +647,17 @@ function App() {
                         />
                       ))}
 
+                    {activeTab === "birds" &&
+                      filteredBirds.map((bird) => (
+                        <BirdCard
+                          key={bird.id}
+                          bird={bird}
+                          locations={gameData.locations || []}
+                          onEdit={() => openEditModal(bird)}
+                          onDelete={() => handleDeleteBird(bird.id)}
+                        />
+                      ))}
+
                     {activeTab === "locations" &&
                       filteredLocations.map((location) => (
                         <LocationCard
@@ -642,6 +719,16 @@ function App() {
                     />
                   )}
 
+                  {activeTab === "birds" && (
+                    <DataTable
+                      data={filteredBirds}
+                      type="birds"
+                      onEdit={openEditModal}
+                      onDelete={(item: any) => handleDeleteBird(item.id)}
+                      locations={gameData.locations}
+                    />
+                  )}
+
                   {activeTab === "locations" && (
                     <DataTable
                       data={filteredLocations}
@@ -660,6 +747,7 @@ function App() {
                 (activeTab === "seeds" && filteredSeeds.length === 0) ||
                 (activeTab === "insects" && filteredInsects.length === 0) ||
                 (activeTab === "fish" && filteredFish.length === 0) ||
+                (activeTab === "birds" && filteredBirds.length === 0) ||
                 (activeTab === "locations" &&
                   filteredLocations.length === 0)) && (
                 <div className="text-center py-12">
@@ -803,6 +891,27 @@ function App() {
         </Modal>
       )}
 
+      {activeTab === "birds" && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingItem(null);
+          }}
+          title={editingItem ? "Edit Bird" : "Add New Bird"}
+        >
+          <BirdForm
+            bird={editingItem}
+            locations={gameData.locations || []}
+            onSave={editingItem ? handleUpdateBird : handleAddBird}
+            onCancel={() => {
+              setIsModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </Modal>
+      )}
+
       {activeTab === "locations" && (
         <Modal
           isOpen={isModalOpen}
@@ -847,8 +956,19 @@ function App() {
         onClose={() => setIsSyncOpen(false)}
         onExport={exportData}
         onImport={importData}
+        onMerge={handleMerge}
         onReset={resetToDefault}
       />
+
+      {/* Merge Preview */}
+      {mergePreviewData && (
+        <DataMergePreview
+          currentData={mergePreviewData.current}
+          newData={mergePreviewData.incoming}
+          onConfirm={handleMergeConfirm}
+          onCancel={handleMergeCancel}
+        />
+      )}
 
       {/* Vercel Analytics */}
       <Analytics />

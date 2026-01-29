@@ -6,12 +6,15 @@ import {
   Database,
   X,
   AlertTriangle,
+  GitMerge,
 } from "lucide-react";
 import { Button } from "./Button";
+import { GameData } from "../types";
 
 interface DataSyncProps {
   onExport: () => void;
   onImport: (file: File) => Promise<void>;
+  onMerge: (file: File) => Promise<void>;
   onReset: () => void;
   isOpen: boolean;
   onClose: () => void;
@@ -20,6 +23,7 @@ interface DataSyncProps {
 export function DataSync({
   onExport,
   onImport,
+  onMerge,
   onReset,
   isOpen,
   onClose,
@@ -28,6 +32,7 @@ export function DataSync({
   const [error, setError] = useState<string | null>(null);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const mergeFileInputRef = useRef<HTMLInputElement>(null);
 
   if (!isOpen) return null;
 
@@ -48,6 +53,28 @@ export function DataSync({
       }, 500);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to import data");
+    } finally {
+      setImporting(false);
+    }
+  };
+
+  const handleMerge = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImporting(true);
+    setError(null);
+
+    try {
+      await onMerge(file);
+      if (mergeFileInputRef.current) {
+        mergeFileInputRef.current.value = "";
+      }
+      setTimeout(() => {
+        onClose();
+      }, 500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to merge data");
     } finally {
       setImporting(false);
     }
@@ -166,6 +193,42 @@ export function DataSync({
                   >
                     <Upload className="w-4 h-4 mr-2" />
                     {importing ? "Importing..." : "Choose File"}
+                  </Button>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {/* Merge Data */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:border-purple-300 transition-colors">
+            <div className="flex items-start gap-3">
+              <div className="p-2 bg-purple-100 rounded-lg">
+                <GitMerge className="w-5 h-5 text-purple-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900 mb-1">Merge Data</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Upload JSON file to merge with current data (preview changes
+                  before applying)
+                </p>
+                <input
+                  ref={mergeFileInputRef}
+                  type="file"
+                  accept=".json"
+                  onChange={handleMerge}
+                  className="hidden"
+                  id="merge-upload"
+                />
+                <label htmlFor="merge-upload">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => mergeFileInputRef.current?.click()}
+                    disabled={importing}
+                    className="bg-purple-600 hover:bg-purple-700"
+                  >
+                    <GitMerge className="w-4 h-4 mr-2" />
+                    {importing ? "Processing..." : "Choose File to Merge"}
                   </Button>
                 </label>
               </div>

@@ -12,7 +12,7 @@ interface SellCalculatorProps {
 
 interface CartItem {
   id: string;
-  category: "ingredients" | "foods" | "insects" | "fish";
+  category: "ingredients" | "foods" | "insects" | "fish" | "birds";
   name: string;
   quantity: number;
   starRating: string;
@@ -23,7 +23,7 @@ interface CartItem {
 export function SellCalculator({ gameData }: SellCalculatorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<
-    "ingredients" | "foods" | "insects" | "fish"
+    "ingredients" | "foods" | "insects" | "fish" | "birds"
   >("ingredients");
   const [selectedItem, setSelectedItem] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
@@ -86,6 +86,11 @@ export function SellCalculator({ gameData }: SellCalculatorProps) {
       if (item) {
         return item.sell_price[star as keyof typeof item.sell_price] || 0;
       }
+    } else if (category === "birds") {
+      const item = gameData.birds?.find((b) => b.name === itemName);
+      if (item) {
+        return item.sell_price[star as keyof typeof item.sell_price] || 0;
+      }
     }
     return 0;
   };
@@ -100,7 +105,7 @@ export function SellCalculator({ gameData }: SellCalculatorProps) {
     } else if (category === "foods") {
       return calculateFoodCost(itemName);
     }
-    // Insects and fish have no cost (caught/found)
+    // Insects, fish, and birds have no cost (caught/found)
     return 0;
   };
 
@@ -179,6 +184,14 @@ export function SellCalculator({ gameData }: SellCalculatorProps) {
             (item.sell_price[key as keyof typeof item.sell_price] || 0) > 0,
         );
       }
+    } else if (selectedCategory === "birds") {
+      const item = gameData.birds?.find((b) => b.name === selectedItem);
+      if (item) {
+        return Object.keys(item.sell_price).filter(
+          (key) =>
+            (item.sell_price[key as keyof typeof item.sell_price] || 0) > 0,
+        );
+      }
     }
     return [];
   };
@@ -193,6 +206,8 @@ export function SellCalculator({ gameData }: SellCalculatorProps) {
         return gameData.insects?.map((i) => i.name) || [];
       case "fish":
         return gameData.fish?.map((f) => f.name) || [];
+      case "birds":
+        return gameData.birds?.map((b) => b.name) || [];
       default:
         return [];
     }
@@ -273,7 +288,13 @@ export function SellCalculator({ gameData }: SellCalculatorProps) {
                         </label>
                         <div className="grid grid-cols-2 gap-2">
                           {(
-                            ["ingredients", "foods", "insects", "fish"] as const
+                            [
+                              "ingredients",
+                              "foods",
+                              "insects",
+                              "fish",
+                              "birds",
+                            ] as const
                           ).map((cat) => (
                             <button
                               key={cat}

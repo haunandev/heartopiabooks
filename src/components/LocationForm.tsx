@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Location } from "../types";
 import { Button } from "./Button";
+import { ImageUpload } from "./ImageUpload";
 
 interface LocationFormProps {
   location: Location | null;
@@ -67,18 +68,12 @@ export function LocationForm({
         />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Image URL
-        </label>
-        <input
-          type="url"
-          value={formData.image}
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
-          placeholder="https://example.com/image.jpg"
-        />
-      </div>
+      <ImageUpload
+        value={formData.image}
+        onChange={(url) => setFormData({ ...formData, image: url })}
+        label="Image"
+        aspectRatio={1}
+      />
 
       <div className="flex gap-2 pt-4">
         <Button type="submit" variant="primary" className="flex-1">

@@ -58,6 +58,7 @@ export function FoodCard({
             <div className="w-20 h-20 bg-gradient-to-br from-orange-300 to-orange-400 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden shadow-sm">
               {food.image ? (
                 <img
+                  key={food.image}
                   src={food.image}
                   alt={food.name}
                   className="w-full h-full object-cover"

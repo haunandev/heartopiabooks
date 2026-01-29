@@ -1,14 +1,15 @@
-import { Ingredient, Food, Seed, Insect, Fish, Location } from "../types";
+import { Ingredient, Food, Seed, Insect, Fish, Bird, Location } from "../types";
 import { Edit, Trash2, Star } from "lucide-react";
 import { formatPrice } from "../lib/utils";
 
-type DataItem = Ingredient | Food | Seed | Insect | Fish | Location;
+type DataItem = Ingredient | Food | Seed | Insect | Fish | Bird | Location;
 type DataType =
   | "ingredients"
   | "foods"
   | "seeds"
   | "insects"
   | "fish"
+  | "birds"
   | "locations";
 
 interface DataTableProps {
@@ -382,13 +383,20 @@ export function DataTable({
     );
   }
 
-  if (type === "insects" || type === "fish") {
-    const items = data as (Insect | Fish)[];
-    const iconColor = type === "insects" ? "%2310b981" : "%233b82f6";
+  if (type === "insects" || type === "fish" || type === "birds") {
+    const items = data as (Insect | Fish | Bird)[];
+    const iconColor =
+      type === "insects"
+        ? "%2310b981"
+        : type === "fish"
+          ? "%233b82f6"
+          : "%239333ea";
     const defaultIcon =
       type === "insects"
         ? `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="m8 2 1.88 1.88"%3E%3C/path%3E%3Cpath d="M14.12 3.88 16 2"%3E%3C/path%3E%3Cpath d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"%3E%3C/path%3E%3Cpath d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"%3E%3C/path%3E%3Cpath d="M12 20v-9"%3E%3C/path%3E%3Cpath d="M6.53 9C4.6 8.8 3 7.1 3 5"%3E%3C/path%3E%3Cpath d="M6 13H2"%3E%3C/path%3E%3Cpath d="M3 21c0-2.1 1.7-3.9 3.8-4"%3E%3C/path%3E%3Cpath d="M20.97 5c0 2.1-1.6 3.8-3.5 4"%3E%3C/path%3E%3Cpath d="M22 13h-4"%3E%3C/path%3E%3Cpath d="M17.2 17c2.1.1 3.8 1.9 3.8 4"%3E%3C/path%3E%3C/svg%3E`
-        : `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"%3E%3C/path%3E%3Cpath d="M18 12v.5"%3E%3C/path%3E%3Cpath d="M16 17.93a9.77 9.77 0 0 1 0 0"%3E%3C/path%3E%3Cpath d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"%3E%3C/path%3E%3Cpath d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4"%3E%3C/path%3E%3Cpath d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98"%3E%3C/path%3E%3C/svg%3E`;
+        : type === "fish"
+          ? `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"%3E%3C/path%3E%3Cpath d="M18 12v.5"%3E%3C/path%3E%3Cpath d="M16 17.93a9.77 9.77 0 0 1 0 0"%3E%3C/path%3E%3Cpath d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"%3E%3C/path%3E%3Cpath d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4"%3E%3C/path%3E%3Cpath d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98"%3E%3C/path%3E%3C/svg%3E`
+          : `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M16 7h.01M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"%3E%3C/path%3E%3C/svg%3E`;
     return (
       <div className="overflow-x-auto bg-[#faf8f5] rounded-lg shadow">
         <table className="min-w-full divide-y divide-gray-200">

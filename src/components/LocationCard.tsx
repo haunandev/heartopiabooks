@@ -27,6 +27,7 @@ export function LocationCard({
           <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-pink-200 rounded-lg flex items-center justify-center overflow-hidden">
             {location.image ? (
               <img
+                key={location.image}
                 src={location.image}
                 alt={location.name}
                 className="w-full h-full object-cover"

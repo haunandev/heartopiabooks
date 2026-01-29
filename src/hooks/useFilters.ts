@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Ingredient, Food, Seed, Insect, Fish, SortOption } from "../types";
+import {
+  Ingredient,
+  Food,
+  Seed,
+  Insect,
+  Fish,
+  Bird,
+  SortOption,
+} from "../types";
 
 type TabType =
   | "ingredients"
@@ -7,6 +15,7 @@ type TabType =
   | "seeds"
   | "insects"
   | "fish"
+  | "birds"
   | "locations";
 
 export function useFilters() {
@@ -114,6 +123,9 @@ export function useFilters() {
         } else if (type === "fish") {
           priceA = (a as Fish).sell_price["1s"];
           priceB = (b as Fish).sell_price["1s"];
+        } else if (type === "birds") {
+          priceA = (a as Bird).sell_price["1s"];
+          priceB = (b as Bird).sell_price["1s"];
         } else if (type === "locations") {
           // Locations don't have price, return 0
           return 0;
@@ -170,6 +182,21 @@ export function useFilters() {
             (fishB.sell_price["4s"] ? 4 : 0) ||
             (fishB.sell_price["3s"] ? 3 : 0) ||
             (fishB.sell_price["2s"] ? 2 : 0) ||
+            1;
+        } else if (type === "birds") {
+          const birdA = a as Bird;
+          const birdB = b as Bird;
+          starsA =
+            (birdA.sell_price["5s"] ? 5 : 0) ||
+            (birdA.sell_price["4s"] ? 4 : 0) ||
+            (birdA.sell_price["3s"] ? 3 : 0) ||
+            (birdA.sell_price["2s"] ? 2 : 0) ||
+            1;
+          starsB =
+            (birdB.sell_price["5s"] ? 5 : 0) ||
+            (birdB.sell_price["4s"] ? 4 : 0) ||
+            (birdB.sell_price["3s"] ? 3 : 0) ||
+            (birdB.sell_price["2s"] ? 2 : 0) ||
             1;
         }
 

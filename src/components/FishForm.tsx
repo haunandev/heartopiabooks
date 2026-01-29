@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Fish, Location } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
+import { ImageUpload } from "./ImageUpload";
 
 interface FishFormProps {
   fish: Fish | null;
@@ -46,17 +47,12 @@ export function FishForm({ fish, locations, onSave, onCancel }: FishFormProps) {
         />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Image URL
-        </label>
-        <input
-          type="text"
-          value={formData.image}
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
-        />
-      </div>
+      <ImageUpload
+        value={formData.image}
+        onChange={(url) => setFormData({ ...formData, image: url })}
+        label="Image"
+        aspectRatio={1}
+      />
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">

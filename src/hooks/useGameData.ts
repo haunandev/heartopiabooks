@@ -7,6 +7,7 @@ import {
   Seed,
   Insect,
   Fish,
+  Bird,
   Location,
 } from "../types";
 import gameDataJson from "../data/gameData.json";
@@ -25,6 +26,7 @@ export function useGameData() {
         ...parsedData,
         insects: parsedData.insects || [],
         fish: parsedData.fish || [],
+        birds: parsedData.birds || [],
         locations: parsedData.locations || gameDataJson.locations || [],
       });
     }
@@ -329,6 +331,7 @@ export function useGameData() {
             seeds: importedData.seeds || [],
             insects: importedData.insects || [],
             fish: importedData.fish || [],
+            birds: importedData.birds || [],
             locations: importedData.locations || gameDataJson.locations || [],
           };
 
@@ -341,6 +344,7 @@ export function useGameData() {
               seeds: newData.seeds.length,
               insects: newData.insects.length,
               fish: newData.fish.length,
+              birds: newData.birds.length,
               locations: newData.locations.length,
             },
           });
@@ -387,6 +391,57 @@ export function useGameData() {
     localStorage.setItem("heartopiaLogs", JSON.stringify(updatedLogs));
   };
 
+  // CRUD Operations - Birds
+  const addBird = (bird: Bird) => {
+    const newBird = {
+      ...bird,
+      id: Math.max(...gameData.birds.map((b) => b.id), 0) + 1,
+    };
+    saveData({
+      ...gameData,
+      birds: [...gameData.birds, newBird],
+    });
+    addLog("add", "bird", newBird.name, { data: newBird });
+  };
+
+  const updateBird = (bird: Bird, oldBird: Bird) => {
+    saveData({
+      ...gameData,
+      birds: gameData.birds.map((b) => (b.id === bird.id ? bird : b)),
+    });
+    addLog("edit", "bird", bird.name, {
+      before: oldBird,
+      after: bird,
+    });
+  };
+
+  const deleteBird = (id: number) => {
+    const bird = gameData.birds.find((b) => b.id === id);
+    if (bird) {
+      saveData({
+        ...gameData,
+        birds: gameData.birds.filter((b) => b.id !== id),
+      });
+      addLog("delete", "bird", bird.name, { data: bird });
+    }
+  };
+
+  const mergeData = (mergedData: GameData) => {
+    saveData(mergedData);
+    addLog("edit", "ingredient", "Data Merge", {
+      details: "Merged data from JSON file",
+      count: {
+        ingredients: mergedData.ingredients.length,
+        foods: mergedData.foods.length,
+        seeds: mergedData.seeds.length,
+        insects: mergedData.insects.length,
+        fish: mergedData.fish.length,
+        birds: mergedData.birds.length,
+        locations: mergedData.locations.length,
+      },
+    });
+  };
+
   return {
     gameData,
     activityLogs,
@@ -405,11 +460,15 @@ export function useGameData() {
     addFish,
     updateFish,
     deleteFish,
+    addBird,
+    updateBird,
+    deleteBird,
     addLocation,
     updateLocation,
     deleteLocation,
     exportData,
     importData,
+    mergeData,
     resetToDefault,
     clearLogs,
     deleteLog,

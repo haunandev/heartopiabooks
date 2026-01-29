@@ -2,6 +2,119 @@
 
 All notable changes to Heartopia Books will be documented here.
 
+## [1.2.0] - 2026-01-29
+
+### ✨ New Features
+
+#### 🐦 Birds Data Category
+
+- Added complete Birds data management (same structure as Fish)
+- Birds card with purple/pink gradient theme
+- Full CRUD operations for birds
+- Birds included in sell calculator
+- Rating system for birds (S-D based on max sell price)
+- Sort and filter support for birds
+
+#### 🔀 Data Merge Preview
+
+- **Merge mode**: Combine existing data with new imports (preserves items not in file)
+- **Replace mode**: Complete data replacement with warning
+- Detailed diff view showing added/updated/unchanged items per category
+- Checkbox selection for individual changes
+- Preview changes before applying to localStorage
+- Real-time change count and statistics
+
+#### 📸 Cloudinary Image Upload
+
+- Upload images directly to Cloudinary CDN
+- Image crop functionality before upload with adjustable aspect ratio
+- Drag & drop file support
+- Alternative URL input option
+- Real-time preview
+- Integrated into all forms (Ingredients, Foods, Seeds, Insects, Fish, Birds, Locations)
+- Environment variable configuration (.env)
+- Setup guide (CLOUDINARY_SETUP.md)
+
+#### 🖼️ Image Handling Improvements
+
+- Fixed image preview not updating after edit
+- Added key prop to force re-render on image change
+- Removed duplicate image URL inputs (now unified in ImageUpload component)
+- Better error handling for missing images
+
+### 🔧 Technical Improvements
+
+- Installed `cloudinary` package for CDN integration
+- Installed `react-image-crop` for crop functionality
+- Updated all form components to use ImageUpload
+- Enhanced image cache management
+- Improved type safety across components
+
+### 📚 Documentation
+
+- Added CLOUDINARY_SETUP.md with setup instructions
+- Updated README.md with new features
+- Updated Dashboard with v1.2.0 changelog
+- Added .env.example template
+
+---
+
+## [1.1.0] - 2026-01-29
+
+### ✨ New Features
+
+#### ⭐ Rating System (S-D)
+
+- Automatic quality rating for Foods based on profit percentage
+  - S Rank: > 150% profit
+  - A Rank: > 100% profit
+  - B Rank: > 50% profit
+  - C Rank: > 25% profit
+  - D Rank: ≤ 25% profit
+- Automatic rating for Insects and Fish based on max sell price
+  - S Rank: ≥ 200 coins
+  - A Rank: ≥ 150 coins
+  - B Rank: ≥ 100 coins
+  - C Rank: ≥ 50 coins
+  - D Rank: < 50 coins
+- Color-coded badges in cards
+
+#### 🧮 Multi-item Sell Calculator
+
+- Invoice-style calculator interface
+- Add multiple items with different quantities and star ratings
+- Calculate total cost, sell price, and profit
+- Profit percentage calculation
+- Shopping cart functionality
+- Support for all categories (Ingredients, Foods, Insects, Fish)
+- Remove individual items from cart
+- Clear all functionality
+
+#### 🔍 SEO Optimization
+
+- Complete meta tags for Open Graph
+- Twitter Card support
+- Structured data for better search visibility
+- PWA optimization
+- Sitemap and robots.txt
+- Performance improvements
+
+#### 🔗 Data Source Link
+
+- Quick access link in Dashboard
+- Direct link to Google Drive folder with latest .json updates
+- "Buy Me a Coffee" support button
+
+### 🎨 UI/UX Improvements
+
+- Enhanced Dashboard with charts and statistics
+- Better mobile responsiveness
+- Improved card layouts
+- Activity log with individual deletion
+- Version display in Dashboard
+
+---
+
 ## [1.0.0] - 2026-01-29
 
 ### ✨ Major Release
