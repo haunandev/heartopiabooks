@@ -23,6 +23,7 @@ import {
   Package,
   History,
   Info,
+  Coffee,
 } from "lucide-react";
 import { GameData } from "../types";
 import { Card } from "./Card";
@@ -131,6 +132,15 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
               Download Latest Updates (.json)
             </a>
           </div>
+          <a
+            href="https://buymeacoffee.com/grims"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-semibold rounded-lg px-4 py-2 transition-all hover:scale-105 shadow-lg"
+          >
+            <Coffee className="w-4 h-4" />
+            <span>☕ Support Developer</span>
+          </a>
         </div>
       </div>
 
@@ -155,8 +165,11 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
               <li>Complete CRUD operations for all data categories</li>
               <li>Search and filter functionality</li>
               <li>Card and Table view modes</li>
+              <li>Rating system (S-D) for foods, insects, and fish</li>
+              <li>Multi-item sell calculator with profit analysis</li>
               <li>Activity logging with individual deletion</li>
               <li>Data export/import for backup and sharing</li>
+              <li>SEO optimized for web deployment</li>
               <li>Responsive design for mobile and desktop</li>
               <li>Offline support with localStorage</li>
             </ul>

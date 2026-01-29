@@ -16,8 +16,11 @@ Ringkasan singkat
 - CRUD untuk: ingredients, foods, seeds, insects, fish, locations
 - Pencarian dan filter (searchable multi-select untuk lokasi)
 - Sort termasuk: nama, harga, bintang, dan profit (untuk foods)
+- **Rating System (S-D)**: Rating otomatis untuk foods (berdasarkan profit %), insects & fish (berdasarkan max sell price)
+- **Multi-item Sell Calculator**: Kalkulator invoice-style dengan total cost, sell, profit, dan profit percentage
 - **View Mode**: Toggle antara Card view dan Table view
 - **Data Sync**: Export, Import, dan Reset data gameData.json
+- **SEO Optimized**: Meta tags lengkap untuk Open Graph, Twitter Card, dan PWA
 - Activity log untuk melacak perubahan data
 - Penyimpanan lokal (localStorage) dengan migrasi otomatis untuk penambahan skema baru
 
@@ -133,8 +136,11 @@ Aplikasi desktop modern untuk mengelola data game Heartopia. Dibangun dengan **T
 - 🎨 **Modern UI** - Interface yang cantik dengan Tailwind CSS
 - ⚡ **Super Ringan** - Ukuran aplikasi ~5-10 MB (thanks to Tauri!)
 - 🔍 **Search Functionality** - Cari data dengan cepat
+- ⭐ **Rating System** - Rating otomatis S-D untuk foods, insects, dan fish
+- 🧮 **Sell Calculator** - Multi-item calculator dengan analisis profit
 - 📱 **Responsive** - UI yang responsive untuk berbagai ukuran layar
 - 💾 **JSON Database** - Data tersimpan di file JSON yang mudah di-edit
+- 🌐 **SEO Ready** - Optimized untuk web deployment dengan meta tags lengkap
 
 ## 🚀 Quick Start
 
@@ -247,6 +253,12 @@ npm run tauri build
 ## Recommended IDE Setup
 
 - [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+
+## 💖 Support
+
+Jika aplikasi ini membantu, consider untuk support developer:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/grims)
 
 ---
 
