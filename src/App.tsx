@@ -27,6 +27,7 @@ import { SearchBar } from "./components/SearchBar";
 import { AnimatePresence } from "framer-motion";
 import { useGameData } from "./hooks/useGameData";
 import { useFilters } from "./hooks/useFilters";
+import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 
 type TabType =
@@ -848,6 +849,9 @@ function App() {
         onImport={importData}
         onReset={resetToDefault}
       />
+
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 }
