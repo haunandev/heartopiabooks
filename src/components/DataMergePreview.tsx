@@ -46,6 +46,30 @@ export function DataMergePreview({
     new Set(),
   );
 
+  // Helper function to generate location ID from name
+  const generateLocationId = (
+    name: string,
+    existingIds: Set<string>,
+  ): string => {
+    // Convert to lowercase and replace spaces with hyphens
+    let baseId = name.toLowerCase().replace(/\s+/g, "-");
+
+    // If ID doesn't exist, return it
+    if (!existingIds.has(baseId)) {
+      return baseId;
+    }
+
+    // If ID exists, add suffix number
+    let counter = 1;
+    let newId = `${baseId}-${counter}`;
+    while (existingIds.has(newId)) {
+      counter++;
+      newId = `${baseId}-${counter}`;
+    }
+
+    return newId;
+  };
+
   // Calculate all individual changes
   const allChanges = useMemo((): ItemChange[] => {
     const changes: ItemChange[] = [];
@@ -178,7 +202,17 @@ export function DataMergePreview({
       const current = currentData[category] || [];
       const incoming = newData[category] || [];
 
-      // Find the highest existing ID in current data
+      // For locations, track used IDs to generate slug-based IDs
+      const usedLocationIds = new Set<string>();
+      if (category === "locations") {
+        current.forEach((item: any) => {
+          if (item.id) {
+            usedLocationIds.add(item.id.toString());
+          }
+        });
+      }
+
+      // Find the highest existing ID in current data (for non-location categories)
       const maxId = current.reduce((max: number, item: any) => {
         return Math.max(max, item.id || 0);
       }, 0);
@@ -202,7 +236,18 @@ export function DataMergePreview({
             itemMap.set(item.name, { ...item, id: existingItem.id });
           } else {
             // New item - assign new unique ID
-            itemMap.set(item.name, { ...item, id: nextId++ });
+            let newId: string | number;
+
+            if (category === "locations") {
+              // For locations, generate slug-based ID from name
+              newId = generateLocationId(item.name, usedLocationIds);
+              usedLocationIds.add(newId);
+            } else {
+              // For other categories, use numeric ID
+              newId = nextId++;
+            }
+
+            itemMap.set(item.name, { ...item, id: newId });
           }
         }
       });
