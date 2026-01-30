@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Fish, Location } from "../types";
+import { Fish, Location, Weather } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
@@ -7,17 +7,25 @@ import { ImageUpload } from "./ImageUpload";
 interface FishFormProps {
   fish: Fish | null;
   locations: Location[];
+  weather: Weather[];
   onSave: (fish: Fish) => void;
   onCancel: () => void;
 }
 
-export function FishForm({ fish, locations, onSave, onCancel }: FishFormProps) {
+export function FishForm({
+  fish,
+  locations,
+  weather,
+  onSave,
+  onCancel,
+}: FishFormProps) {
   const [formData, setFormData] = useState<Fish>(
     fish || {
       id: 0,
       name: "",
       sell_price: { "1s": 0 },
       locations: [],
+      weather: [],
       image: "",
     },
   );
@@ -30,6 +38,11 @@ export function FishForm({ fish, locations, onSave, onCancel }: FishFormProps) {
   const locationOptions = locations.map((loc) => ({
     value: loc.id,
     label: loc.name,
+  }));
+
+  const weatherOptions = weather.map((w) => ({
+    value: w.name,
+    label: w.name,
   }));
 
   return (
@@ -65,6 +78,21 @@ export function FishForm({ fish, locations, onSave, onCancel }: FishFormProps) {
             setFormData({ ...formData, locations: value as string[] })
           }
           placeholder="Select locations..."
+          isMulti
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Weather
+        </label>
+        <SearchableSelect
+          options={weatherOptions}
+          value={formData.weather}
+          onChange={(value) =>
+            setFormData({ ...formData, weather: value as string[] })
+          }
+          placeholder="Select weather..."
           isMulti
         />
       </div>

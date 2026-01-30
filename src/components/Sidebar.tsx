@@ -7,6 +7,7 @@ import {
   Fish,
   Bird,
   MapPin,
+  CloudRain,
   Menu,
   X,
 } from "lucide-react";
@@ -20,7 +21,8 @@ type TabType =
   | "insects"
   | "fish"
   | "birds"
-  | "locations";
+  | "locations"
+  | "weather";
 
 interface SidebarProps {
   activeTab: TabType;
@@ -33,6 +35,7 @@ interface SidebarProps {
     fish: number;
     birds: number;
     locations: number;
+    weather: number;
   };
 }
 
@@ -77,6 +80,12 @@ export function Sidebar({ activeTab, onTabChange, counts }: SidebarProps) {
       label: "Locations",
       icon: MapPin,
       count: counts.locations,
+    },
+    {
+      id: "weather" as TabType,
+      label: "Weather",
+      icon: CloudRain,
+      count: counts.weather,
     },
   ];
 

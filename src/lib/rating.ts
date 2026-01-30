@@ -68,20 +68,18 @@ export function calculateFoodCost(
 }
 
 /**
- * Calculate rating for insects/fish based on max sell price
+ * Calculate rating for insects/fish based on 1-star sell price
  * @param item Insect or Fish item
  * @returns Rating (S, A, B, C, D) or "-" if invalid
  */
 export function calculateCreatureRating(item: Insect | Fish): Rating {
-  const prices = Object.values(item.sell_price).filter((p) => p > 0);
-  if (prices.length === 0) return "-";
+  const price = item.sell_price["1s"] || 0;
+  if (price === 0) return "-";
 
-  const maxPrice = Math.max(...prices);
-
-  if (maxPrice >= FISH_INSECT_RATING_THRESHOLDS.S) return "S";
-  if (maxPrice >= FISH_INSECT_RATING_THRESHOLDS.A) return "A";
-  if (maxPrice >= FISH_INSECT_RATING_THRESHOLDS.B) return "B";
-  if (maxPrice >= FISH_INSECT_RATING_THRESHOLDS.C) return "C";
+  if (price >= FISH_INSECT_RATING_THRESHOLDS.S) return "S";
+  if (price >= FISH_INSECT_RATING_THRESHOLDS.A) return "A";
+  if (price >= FISH_INSECT_RATING_THRESHOLDS.B) return "B";
+  if (price >= FISH_INSECT_RATING_THRESHOLDS.C) return "C";
   return "D";
 }
 

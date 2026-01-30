@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
-import { Bird, Location } from "../types";
-import { Edit, Trash2, Bird as BirdIcon, MapPin, Star } from "lucide-react";
+import { Bird, Location, Weather } from "../types";
+import {
+  Edit,
+  Trash2,
+  Bird as BirdIcon,
+  MapPin,
+  Star,
+  CloudRain,
+} from "lucide-react";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
 import { calculateCreatureRating, getRatingColor } from "../lib/rating";
@@ -8,11 +15,18 @@ import { calculateCreatureRating, getRatingColor } from "../lib/rating";
 interface BirdCardProps {
   bird: Bird;
   locations: Location[];
+  weather: Weather[];
   onEdit: () => void;
   onDelete: () => void;
 }
 
-export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
+export function BirdCard({
+  bird,
+  locations,
+  weather,
+  onEdit,
+  onDelete,
+}: BirdCardProps) {
   const getLocationNames = () => {
     return bird.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)
@@ -135,6 +149,21 @@ export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
                     >
                       <MapPin className="w-3 h-3" />
                       {name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Weather */}
+              {bird.weather && bird.weather.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {bird.weather.map((weatherName) => (
+                    <span
+                      key={weatherName}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs"
+                    >
+                      <CloudRain className="w-3 h-3" />
+                      {weatherName}
                     </span>
                   ))}
                 </div>

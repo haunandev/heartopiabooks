@@ -9,6 +9,7 @@ import {
   Fish,
   Bird,
   Location,
+  Weather,
 } from "../types";
 import gameDataJson from "../data/gameData.json";
 
@@ -28,6 +29,7 @@ export function useGameData() {
         fish: parsedData.fish || [],
         birds: parsedData.birds || [],
         locations: parsedData.locations || gameDataJson.locations || [],
+        weather: parsedData.weather || [],
       });
     }
     const savedLogs = localStorage.getItem("heartopiaLogs");
@@ -304,6 +306,7 @@ export function useGameData() {
         insects: gameData.insects?.length || 0,
         fish: gameData.fish?.length || 0,
         locations: gameData.locations?.length || 0,
+        weather: gameData.weather?.length || 0,
       },
     });
   };
@@ -333,6 +336,7 @@ export function useGameData() {
             fish: importedData.fish || [],
             birds: importedData.birds || [],
             locations: importedData.locations || gameDataJson.locations || [],
+            weather: importedData.weather || [],
           };
 
           saveData(newData);
@@ -346,6 +350,7 @@ export function useGameData() {
               fish: newData.fish.length,
               birds: newData.birds.length,
               locations: newData.locations.length,
+              weather: newData.weather.length,
             },
           });
           resolve();
@@ -364,6 +369,7 @@ export function useGameData() {
       insects: (gameDataJson as any).insects || [],
       fish: (gameDataJson as any).fish || [],
       locations: (gameDataJson as any).locations || [],
+      weather: [],
     };
 
     saveData(defaultData);
@@ -376,6 +382,7 @@ export function useGameData() {
         insects: defaultData.insects.length,
         fish: defaultData.fish.length,
         locations: defaultData.locations.length,
+        weather: defaultData.weather.length,
       },
     });
   };
@@ -426,6 +433,41 @@ export function useGameData() {
     }
   };
 
+  // CRUD Operations - Weather
+  const addWeather = (weather: Weather) => {
+    const newWeather = {
+      ...weather,
+      id: Math.max(...gameData.weather.map((w) => w.id), 0) + 1,
+    };
+    saveData({
+      ...gameData,
+      weather: [...gameData.weather, newWeather],
+    });
+    addLog("add", "weather", newWeather.name, { data: newWeather });
+  };
+
+  const updateWeather = (weather: Weather, oldWeather: Weather) => {
+    saveData({
+      ...gameData,
+      weather: gameData.weather.map((w) => (w.id === weather.id ? weather : w)),
+    });
+    addLog("edit", "weather", weather.name, {
+      before: oldWeather,
+      after: weather,
+    });
+  };
+
+  const deleteWeather = (id: number) => {
+    const weather = gameData.weather.find((w) => w.id === id);
+    if (weather) {
+      saveData({
+        ...gameData,
+        weather: gameData.weather.filter((w) => w.id !== id),
+      });
+      addLog("delete", "weather", weather.name, { data: weather });
+    }
+  };
+
   const mergeData = (mergedData: GameData) => {
     saveData(mergedData);
     addLog("edit", "ingredient", "Data Merge", {
@@ -438,6 +480,7 @@ export function useGameData() {
         fish: mergedData.fish.length,
         birds: mergedData.birds.length,
         locations: mergedData.locations.length,
+        weather: mergedData.weather.length,
       },
     });
   };
@@ -466,6 +509,9 @@ export function useGameData() {
     addLocation,
     updateLocation,
     deleteLocation,
+    addWeather,
+    updateWeather,
+    deleteWeather,
     exportData,
     importData,
     mergeData,

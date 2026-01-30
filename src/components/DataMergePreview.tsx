@@ -57,35 +57,40 @@ export function DataMergePreview({
       "fish",
       "birds",
       "locations",
+      "weather",
     ];
 
     categories.forEach((category) => {
       const current = currentData[category] || [];
       const incoming = newData[category] || [];
 
-      // Create a map of existing items
+      // Create a map of existing items by NAME only (not ID)
       const currentMap = new Map();
       current.forEach((item: any) => {
-        const key = item.id || item.name;
-        currentMap.set(key, item);
+        currentMap.set(item.name, item);
       });
 
       // Check each incoming item
       incoming.forEach((item: any) => {
-        const key = item.id || item.name;
-        const changeId = `${category}-${key}`;
+        const changeId = `${category}-${item.name}`;
 
-        if (currentMap.has(key)) {
-          // Item exists - it's an update
-          changes.push({
-            id: changeId,
-            category,
-            type: "updated",
-            item,
-            oldItem: currentMap.get(key),
-          });
+        if (currentMap.has(item.name)) {
+          // Item exists - check if there are actual changes
+          const oldItem = currentMap.get(item.name);
+          const hasChanges = JSON.stringify(oldItem) !== JSON.stringify(item);
+
+          // Only add to changes if there are actual differences
+          if (hasChanges) {
+            changes.push({
+              id: changeId,
+              category,
+              type: "updated",
+              item,
+              oldItem,
+            });
+          }
         } else {
-          // New item
+          // New item (name doesn't exist in current data)
           changes.push({
             id: changeId,
             category,
@@ -114,6 +119,7 @@ export function DataMergePreview({
       "fish",
       "birds",
       "locations",
+      "weather",
     ];
 
     return categories.map((category) => {
@@ -126,11 +132,9 @@ export function DataMergePreview({
         (c) => c.type === "updated",
       ).length;
 
-      const incomingIds = new Set(
-        incoming.map((item: any) => item.id || item.name),
-      );
+      const incomingNames = new Set(incoming.map((item: any) => item.name));
       const unchanged = current.filter(
-        (item: any) => !incomingIds.has(item.id || item.name),
+        (item: any) => !incomingNames.has(item.name),
       ).length;
 
       return {
@@ -156,6 +160,7 @@ export function DataMergePreview({
       fish: [],
       birds: [],
       locations: [],
+      weather: [],
     };
 
     const categories: (keyof GameData)[] = [
@@ -166,27 +171,39 @@ export function DataMergePreview({
       "fish",
       "birds",
       "locations",
+      "weather",
     ];
 
     categories.forEach((category) => {
       const current = currentData[category] || [];
       const incoming = newData[category] || [];
 
-      // Create a map of existing items by id
+      // Find the highest existing ID in current data
+      const maxId = current.reduce((max: number, item: any) => {
+        return Math.max(max, item.id || 0);
+      }, 0);
+      let nextId = maxId + 1;
+
+      // Create a map of existing items by name
       const itemMap = new Map();
       current.forEach((item: any) => {
-        const key = item.id || item.name;
-        itemMap.set(key, item);
+        itemMap.set(item.name, item);
       });
 
       // Apply only selected changes
       incoming.forEach((item: any) => {
-        const key = item.id || item.name;
-        const changeId = `${category}-${key}`;
+        const changeId = `${category}-${item.name}`;
 
         // Only apply if this change is selected
         if (selectedChanges.has(changeId)) {
-          itemMap.set(key, item);
+          if (itemMap.has(item.name)) {
+            // Update existing item - keep the old ID
+            const existingItem = itemMap.get(item.name);
+            itemMap.set(item.name, { ...item, id: existingItem.id });
+          } else {
+            // New item - assign new unique ID
+            itemMap.set(item.name, { ...item, id: nextId++ });
+          }
         }
       });
 

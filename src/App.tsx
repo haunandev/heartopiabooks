@@ -7,6 +7,7 @@ import { InsectCard } from "./components/InsectCard";
 import { FishCard } from "./components/FishCard";
 import { BirdCard } from "./components/BirdCard";
 import { LocationCard } from "./components/LocationCard";
+import { WeatherCard } from "./components/WeatherCard";
 import { DataTable } from "./components/DataTable";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
@@ -17,6 +18,7 @@ import { InsectForm } from "./components/InsectForm";
 import { FishForm } from "./components/FishForm";
 import { BirdForm } from "./components/BirdForm";
 import { LocationForm } from "./components/LocationForm";
+import { WeatherForm } from "./components/WeatherForm";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { ActivityLog } from "./components/ActivityLog";
 import { DataSync } from "./components/DataSync";
@@ -32,7 +34,7 @@ import { useGameData } from "./hooks/useGameData";
 import { useFilters } from "./hooks/useFilters";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
-import { GameData, Bird } from "./types";
+import { GameData, Bird, Weather } from "./types";
 
 type TabType =
   | "dashboard"
@@ -42,7 +44,8 @@ type TabType =
   | "insects"
   | "fish"
   | "birds"
-  | "locations";
+  | "locations"
+  | "weather";
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabType>("dashboard");
@@ -76,6 +79,9 @@ function App() {
     addLocation,
     updateLocation,
     deleteLocation,
+    addWeather,
+    updateWeather,
+    deleteWeather,
     exportData,
     importData,
     mergeData,
@@ -262,6 +268,27 @@ function App() {
     setIsConfirmOpen(true);
   };
 
+  // Weather handlers
+  const handleAddWeather = (weather: Weather) => {
+    addWeather(weather);
+    setIsModalOpen(false);
+  };
+
+  const handleUpdateWeather = (weather: Weather) => {
+    updateWeather(weather, editingItem);
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleDeleteWeather = (id: number) => {
+    setConfirmMessage("Are you sure you want to delete this weather?");
+    setConfirmAction(() => () => {
+      deleteWeather(id);
+      setIsConfirmOpen(false);
+    });
+    setIsConfirmOpen(true);
+  };
+
   // Apply filters and sorting
   const filteredIngredients = applySorting(
     applyFilters(gameData.ingredients || [], "ingredients"),
@@ -355,6 +382,7 @@ function App() {
             fish: gameData.fish?.length || 0,
             birds: gameData.birds?.length || 0,
             locations: gameData.locations?.length || 0,
+            weather: gameData.weather?.length || 0,
           }}
         />
 
@@ -599,6 +627,7 @@ function App() {
                           key={ingredient.id}
                           ingredient={ingredient}
                           seeds={gameData.seeds}
+                          locations={gameData.locations}
                           onEdit={() => openEditModal(ingredient)}
                           onDelete={() => handleDeleteIngredient(ingredient.id)}
                         />
@@ -631,6 +660,7 @@ function App() {
                           key={insect.id}
                           insect={insect}
                           locations={gameData.locations || []}
+                          weather={gameData.weather || []}
                           onEdit={() => openEditModal(insect)}
                           onDelete={() => handleDeleteInsect(insect.id)}
                         />
@@ -642,6 +672,7 @@ function App() {
                           key={fish.id}
                           fish={fish}
                           locations={gameData.locations || []}
+                          weather={gameData.weather || []}
                           onEdit={() => openEditModal(fish)}
                           onDelete={() => handleDeleteFish(fish.id)}
                         />
@@ -653,6 +684,7 @@ function App() {
                           key={bird.id}
                           bird={bird}
                           locations={gameData.locations || []}
+                          weather={gameData.weather || []}
                           onEdit={() => openEditModal(bird)}
                           onDelete={() => handleDeleteBird(bird.id)}
                         />
@@ -665,6 +697,16 @@ function App() {
                           location={location}
                           onEdit={() => openEditModal(location)}
                           onDelete={() => handleDeleteLocation(location.id)}
+                        />
+                      ))}
+
+                    {activeTab === "weather" &&
+                      gameData.weather?.map((weather) => (
+                        <WeatherCard
+                          key={weather.id}
+                          weather={weather}
+                          onEdit={() => openEditModal(weather)}
+                          onDelete={() => handleDeleteWeather(weather.id)}
                         />
                       ))}
                   </div>
@@ -748,8 +790,9 @@ function App() {
                 (activeTab === "insects" && filteredInsects.length === 0) ||
                 (activeTab === "fish" && filteredFish.length === 0) ||
                 (activeTab === "birds" && filteredBirds.length === 0) ||
-                (activeTab === "locations" &&
-                  filteredLocations.length === 0)) && (
+                (activeTab === "locations" && filteredLocations.length === 0) ||
+                (activeTab === "weather" &&
+                  (gameData.weather?.length || 0) === 0)) && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 mb-2">
                     <Search className="w-16 h-16 mx-auto" />
@@ -798,6 +841,7 @@ function App() {
         >
           <IngredientForm
             ingredient={editingItem}
+            locations={gameData.locations}
             onSave={editingItem ? handleUpdateIngredient : handleAddIngredient}
             onCancel={() => {
               setIsModalOpen(false);
@@ -861,6 +905,7 @@ function App() {
           <InsectForm
             insect={editingItem}
             locations={gameData.locations || []}
+            weather={gameData.weather}
             onSave={editingItem ? handleUpdateInsect : handleAddInsect}
             onCancel={() => {
               setIsModalOpen(false);
@@ -882,6 +927,7 @@ function App() {
           <FishForm
             fish={editingItem}
             locations={gameData.locations || []}
+            weather={gameData.weather}
             onSave={editingItem ? handleUpdateFish : handleAddFish}
             onCancel={() => {
               setIsModalOpen(false);
@@ -903,6 +949,7 @@ function App() {
           <BirdForm
             bird={editingItem}
             locations={gameData.locations || []}
+            weather={gameData.weather}
             onSave={editingItem ? handleUpdateBird : handleAddBird}
             onCancel={() => {
               setIsModalOpen(false);
@@ -924,6 +971,26 @@ function App() {
           <LocationForm
             location={editingItem}
             onSave={editingItem ? handleUpdateLocation : handleAddLocation}
+            onCancel={() => {
+              setIsModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </Modal>
+      )}
+
+      {activeTab === "weather" && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingItem(null);
+          }}
+          title={editingItem ? "Edit Weather" : "Add New Weather"}
+        >
+          <WeatherForm
+            weather={editingItem}
+            onSave={editingItem ? handleUpdateWeather : handleAddWeather}
             onCancel={() => {
               setIsModalOpen(false);
               setEditingItem(null);

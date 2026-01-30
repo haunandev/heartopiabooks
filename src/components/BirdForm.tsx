@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bird, Location } from "../types";
+import { Bird, Location, Weather } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
@@ -7,17 +7,25 @@ import { ImageUpload } from "./ImageUpload";
 interface BirdFormProps {
   bird: Bird | null;
   locations: Location[];
+  weather: Weather[];
   onSave: (bird: Bird) => void;
   onCancel: () => void;
 }
 
-export function BirdForm({ bird, locations, onSave, onCancel }: BirdFormProps) {
+export function BirdForm({
+  bird,
+  locations,
+  weather,
+  onSave,
+  onCancel,
+}: BirdFormProps) {
   const [formData, setFormData] = useState<Bird>(
     bird || {
       id: 0,
       name: "",
       sell_price: { "1s": 0 },
       locations: [],
+      weather: [],
       image: "",
     },
   );
@@ -30,6 +38,11 @@ export function BirdForm({ bird, locations, onSave, onCancel }: BirdFormProps) {
   const locationOptions = locations.map((loc) => ({
     value: loc.id,
     label: loc.name,
+  }));
+
+  const weatherOptions = weather.map((w) => ({
+    value: w.name,
+    label: w.name,
   }));
 
   return (
@@ -65,6 +78,21 @@ export function BirdForm({ bird, locations, onSave, onCancel }: BirdFormProps) {
             setFormData({ ...formData, locations: value as string[] })
           }
           placeholder="Select locations..."
+          isMulti
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Weather
+        </label>
+        <SearchableSelect
+          options={weatherOptions}
+          value={formData.weather}
+          onChange={(value) =>
+            setFormData({ ...formData, weather: value as string[] })
+          }
+          placeholder="Select weather..."
           isMulti
         />
       </div>

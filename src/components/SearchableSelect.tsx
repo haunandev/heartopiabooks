@@ -44,6 +44,10 @@ export function SearchableSelect({
   isMulti = false,
   className = "",
 }: SearchableSelectProps) {
+  // Sort options alphabetically by label
+  const sortedOptions = [...options].sort((a, b) =>
+    a.label.localeCompare(b.label),
+  );
   const handleChange = (selected: Option | MultiValue<Option> | null) => {
     if (isMulti) {
       const values = (selected as MultiValue<Option>).map(
@@ -56,13 +60,15 @@ export function SearchableSelect({
   };
 
   const selectedValue = isMulti
-    ? options.filter((opt) => (value as string[]).includes(opt.value))
-    : options.find((opt) => opt.value === value) || null;
+    ? sortedOptions.filter((opt) =>
+        ((value as string[]) || []).includes(opt.value),
+      )
+    : sortedOptions.find((opt) => opt.value === value) || null;
 
   return (
     <Select
       className={className}
-      options={options}
+      options={sortedOptions}
       value={selectedValue}
       onChange={handleChange}
       placeholder={placeholder}

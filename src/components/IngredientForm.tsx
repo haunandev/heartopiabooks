@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
-import { Ingredient } from "../types";
+import { Ingredient, Location } from "../types";
 import { Button } from "./Button";
 import { Star } from "lucide-react";
 import { ImageUpload } from "./ImageUpload";
+import { SearchableSelect } from "./SearchableSelect";
 
 interface IngredientFormProps {
   ingredient?: Ingredient;
+  locations: Location[];
   onSave: (ingredient: Ingredient) => void;
   onCancel: () => void;
 }
 
 export function IngredientForm({
   ingredient,
+  locations,
   onSave,
   onCancel,
 }: IngredientFormProps) {
@@ -21,6 +24,7 @@ export function IngredientForm({
     sell_price: null,
     buy_price: null,
     source: "seed",
+    locations: [],
     image: "default.png",
   });
 
@@ -150,6 +154,24 @@ export function IngredientForm({
           <option value="wild">Wild</option>
           <option value="buy">Buy</option>
         </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Locations
+        </label>
+        <SearchableSelect
+          options={locations.map((loc) => ({
+            value: loc.id,
+            label: loc.name,
+          }))}
+          value={formData.locations}
+          onChange={(value) =>
+            setFormData({ ...formData, locations: value as string[] })
+          }
+          placeholder="Select locations..."
+          isMulti
+        />
       </div>
 
       <ImageUpload

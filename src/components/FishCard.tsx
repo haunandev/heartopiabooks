@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
-import { Fish, Location } from "../types";
-import { Edit, Trash2, Fish as FishIcon, MapPin, Star } from "lucide-react";
+import { Fish, Location, Weather } from "../types";
+import {
+  Edit,
+  Trash2,
+  Fish as FishIcon,
+  MapPin,
+  Star,
+  CloudRain,
+} from "lucide-react";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
 import { calculateCreatureRating, getRatingColor } from "../lib/rating";
@@ -8,11 +15,18 @@ import { calculateCreatureRating, getRatingColor } from "../lib/rating";
 interface FishCardProps {
   fish: Fish;
   locations: Location[];
+  weather: Weather[];
   onEdit: () => void;
   onDelete: () => void;
 }
 
-export function FishCard({ fish, locations, onEdit, onDelete }: FishCardProps) {
+export function FishCard({
+  fish,
+  locations,
+  weather,
+  onEdit,
+  onDelete,
+}: FishCardProps) {
   const getLocationNames = () => {
     return fish.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)
@@ -135,6 +149,21 @@ export function FishCard({ fish, locations, onEdit, onDelete }: FishCardProps) {
                     >
                       <MapPin className="w-3 h-3" />
                       {name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Weather */}
+              {fish.weather && fish.weather.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {fish.weather.map((weatherName) => (
+                    <span
+                      key={weatherName}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs"
+                    >
+                      <CloudRain className="w-3 h-3" />
+                      {weatherName}
                     </span>
                   ))}
                 </div>

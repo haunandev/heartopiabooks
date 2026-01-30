@@ -1,12 +1,21 @@
-import { Ingredient, Seed } from "../types";
+import { Ingredient, Seed, Location } from "../types";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
-import { Leaf, ShoppingCart, Sprout, Edit, Trash2, Star } from "lucide-react";
+import {
+  Leaf,
+  ShoppingCart,
+  Sprout,
+  Edit,
+  Trash2,
+  Star,
+  MapPin,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 interface IngredientCardProps {
   ingredient: Ingredient;
   seeds: Seed[];
+  locations: Location[];
   onEdit?: () => void;
   onDelete?: () => void;
 }
@@ -14,6 +23,7 @@ interface IngredientCardProps {
 export function IngredientCard({
   ingredient,
   seeds,
+  locations,
   onEdit,
   onDelete,
 }: IngredientCardProps) {
@@ -244,6 +254,24 @@ export function IngredientCard({
                 {sourceIcons[ingredient.source]}
                 <span className="capitalize">{ingredient.source}</span>
               </div>
+
+              {/* Locations */}
+              {ingredient.locations && ingredient.locations.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {ingredient.locations.map((locId) => {
+                    const location = locations.find((l) => l.id === locId);
+                    return location ? (
+                      <span
+                        key={locId}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-700 rounded text-xs"
+                      >
+                        <MapPin className="w-3 h-3" />
+                        {location.name}
+                      </span>
+                    ) : null;
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </CardContent>

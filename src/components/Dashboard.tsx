@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   PieChart,
   Pie,
@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { GameData } from "../types";
 import { Card } from "./Card";
+import changelogData from "../data/changelog.json";
 
 interface DashboardProps {
   gameData: GameData;
@@ -35,6 +36,10 @@ interface DashboardProps {
 }
 
 export function Dashboard({ gameData, activityCount }: DashboardProps) {
+  const [changelogTab, setChangelogTab] = useState(
+    changelogData.versions[0].version,
+  );
+
   const stats = useMemo(() => {
     const ingredientCount = gameData.ingredients?.length || 0;
     const foodCount = gameData.foods?.length || 0;
@@ -123,7 +128,7 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
         <div className="mt-4 space-y-2">
           <div className="flex items-center gap-2 text-sm">
             <Info className="w-4 h-4" />
-            <span>Version 1.2.0 • Last Updated: January 29, 2026</span>
+            <span>Version 1.2.1 • Last Updated: January 30, 2026</span>
           </div>
           <div className="flex items-center gap-2 text-sm bg-white/10 rounded-lg px-3 py-2">
             <Package className="w-4 h-4" />
@@ -476,110 +481,52 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
           </div>
         </Card>
 
-        {/* Recent Updates - v1.2.0 */}
-        <Card className="bg-purple-50 border-purple-200">
+        {/* Changelog with Tabs */}
+        <Card>
           <div className="p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-purple-600" />
-              Latest Updates (v1.2.0)
+              Updates & Changelog
             </h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-purple-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Birds Data Category
-                  </p>
-                  <p className="text-gray-600">
-                    New category for managing bird data with same features as
-                    fish
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-purple-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Data Merge Preview
-                  </p>
-                  <p className="text-gray-600">
-                    Preview changes before applying with detailed diff and
-                    checkbox selection per item
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-purple-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Cloudinary Image Upload
-                  </p>
-                  <p className="text-gray-600">
-                    Upload images with crop functionality or paste URL manually
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-purple-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Enhanced Image Preview
-                  </p>
-                  <p className="text-gray-600">
-                    Real-time image updates in cards without page refresh
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
 
-        {/* Previous Updates - v1.1.0 */}
-        <Card className="bg-green-50 border-green-200">
-          <div className="p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-green-600" />
-              Previous Updates (v1.1.0)
-            </h3>
+            {/* Tabs */}
+            <div className="flex gap-2 mb-4 border-b border-gray-200">
+              {changelogData.versions.map((v) => (
+                <button
+                  key={v.version}
+                  onClick={() => setChangelogTab(v.version)}
+                  className={`px-4 py-2 font-medium text-sm transition-colors ${
+                    changelogTab === v.version
+                      ? `text-${v.color}-600 border-b-2 border-${v.color}-600`
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
             <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Rating System (S-D)
-                  </p>
-                  <p className="text-gray-600">
-                    Foods, insects, and fish now have quality ratings
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">Sell Calculator</p>
-                  <p className="text-gray-600">
-                    Calculate total sell price with quantity and star ratings
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">SEO Optimization</p>
-                  <p className="text-gray-600">
-                    Enhanced search engine visibility and meta tags
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5"></div>
-                <div>
-                  <p className="font-medium text-gray-900">Data Source Link</p>
-                  <p className="text-gray-600">
-                    Quick access to latest .json updates in dashboard
-                  </p>
-                </div>
-              </div>
+              {changelogData.versions
+                .filter((v) => v.version === changelogTab)
+                .map((v) => (
+                  <div key={v.version}>
+                    {v.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2 mb-3">
+                        <div
+                          className={`w-2 h-2 bg-${v.color}-600 rounded-full mt-1.5`}
+                        ></div>
+                        <div>
+                          <p className="font-medium text-gray-900">
+                            {feature.title}
+                          </p>
+                          <p className="text-gray-600">{feature.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
             </div>
           </div>
         </Card>

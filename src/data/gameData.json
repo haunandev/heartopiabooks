@@ -11,7 +11,8 @@
         "1s": 30,
         "2s": 40,
         "3s": 50
-      }
+      },
+      "locations": []
     },
     {
       "id": 2,
@@ -25,7 +26,8 @@
         "2s": 120,
         "3s": 150,
         "4s": 180
-      }
+      },
+      "locations": []
     },
     {
       "id": 3,
@@ -38,7 +40,8 @@
         "1s": 285,
         "2s": 381,
         "3s": 475
-      }
+      },
+      "locations": []
     },
     {
       "id": 4,
@@ -52,7 +55,8 @@
         "2s": 207,
         "3s": 258,
         "4s": 310
-      }
+      },
+      "locations": []
     },
     {
       "id": 5,
@@ -65,7 +69,8 @@
         "1s": 515,
         "2s": 690,
         "3s": 860
-      }
+      },
+      "locations": []
     },
     {
       "id": 6,
@@ -78,7 +83,8 @@
         "1s": 375,
         "2s": 502,
         "3s": 626
-      }
+      },
+      "locations": []
     },
     {
       "id": 7,
@@ -92,7 +98,8 @@
         "2s": 69,
         "3s": 86,
         "4s": 104
-      }
+      },
+      "locations": []
     },
     {
       "id": 8,
@@ -105,7 +112,8 @@
         "1s": 435,
         "2s": 582,
         "3s": 726
-      }
+      },
+      "locations": []
     },
     {
       "id": 9,
@@ -116,7 +124,8 @@
       "image": "images/ingredients/apple.png",
       "sell_price_stars": {
         "1s": 28
-      }
+      },
+      "locations": []
     },
     {
       "id": 10,
@@ -131,7 +140,8 @@
         "3s": 56,
         "4s": 70,
         "5s": 84
-      }
+      },
+      "locations": []
     },
     {
       "id": 11,
@@ -146,7 +156,8 @@
         "3s": 32,
         "4s": 40,
         "5s": 48
-      }
+      },
+      "locations": []
     },
     {
       "id": 12,
@@ -161,7 +172,8 @@
         "3s": 52,
         "4s": 65,
         "5s": 78
-      }
+      },
+      "locations": []
     },
     {
       "id": 13,
@@ -174,7 +186,8 @@
         "1s": 480,
         "2s": 643,
         "3s": 801
-      }
+      },
+      "locations": []
     },
     {
       "id": 14,
@@ -182,7 +195,8 @@
       "sell_price": 99,
       "buy_price": null,
       "source": "wild",
-      "image": "images/ingredients/black-truffle.png"
+      "image": "images/ingredients/black-truffle.png",
+      "locations": []
     },
     {
       "id": 16,
@@ -190,7 +204,8 @@
       "sell_price": 16,
       "buy_price": null,
       "source": "wild",
-      "image": "images/ingredients/penny-bun.png"
+      "image": "images/ingredients/penny-bun.png",
+      "locations": []
     },
     {
       "id": 17,
@@ -198,7 +213,8 @@
       "sell_price": null,
       "buy_price": 100,
       "source": "buy",
-      "image": "images/ingredients/egg.png"
+      "image": "images/ingredients/egg.png",
+      "locations": []
     },
     {
       "id": 18,
@@ -206,7 +222,8 @@
       "sell_price": null,
       "buy_price": 50,
       "source": "buy",
-      "image": "images/ingredients/milk.png"
+      "image": "images/ingredients/milk.png",
+      "locations": []
     },
     {
       "id": 19,
@@ -214,7 +231,8 @@
       "sell_price": null,
       "buy_price": 150,
       "source": "buy",
-      "image": "images/ingredients/butter.png"
+      "image": "images/ingredients/butter.png",
+      "locations": []
     },
     {
       "id": 20,
@@ -222,7 +240,8 @@
       "sell_price": null,
       "buy_price": 100,
       "source": "buy",
-      "image": "images/ingredients/cheese.png"
+      "image": "images/ingredients/cheese.png",
+      "locations": []
     },
     {
       "id": 21,
@@ -230,7 +249,8 @@
       "sell_price": null,
       "buy_price": 200,
       "source": "buy",
-      "image": "images/ingredients/meat.png"
+      "image": "images/ingredients/meat.png",
+      "locations": []
     },
     {
       "id": 22,
@@ -238,7 +258,8 @@
       "sell_price": 16,
       "buy_price": null,
       "source": "wild",
-      "image": "images/ingredients/mushroom.png"
+      "image": "images/ingredients/mushroom.png",
+      "locations": []
     },
     {
       "id": 23,
@@ -251,7 +272,8 @@
         "1s": 406,
         "2s": 544,
         "3s": 678
-      }
+      },
+      "locations": []
     },
     {
       "id": 24,
@@ -259,7 +281,8 @@
       "sell_price": null,
       "buy_price": 50,
       "source": "buy",
-      "image": "images/ingredients/coffee-bean.png"
+      "image": "images/ingredients/coffee-bean.png",
+      "locations": []
     },
     {
       "id": 25,
@@ -267,7 +290,8 @@
       "sell_price": 150,
       "buy_price": null,
       "source": "wild",
-      "image": "default.png"
+      "image": "default.png",
+      "locations": []
     }
   ],
   "foods": [
@@ -785,7 +809,8 @@
         "5s": 0
       },
       "locations": [],
-      "image": "images/insects/bumblebee.png"
+      "image": "images/insects/bumblebee.png",
+      "weather": []
     },
     {
       "id": 2,
@@ -794,7 +819,8 @@
         "2s": 247
       },
       "locations": [],
-      "image": "images/insects/splay-footed-carpenter.png"
+      "image": "images/insects/splay-footed-carpenter.png",
+      "weather": []
     },
     {
       "id": 3,
@@ -804,8 +830,11 @@
         "2s": 157,
         "3s": 210
       },
-      "locations": ["residential-street"],
-      "image": "images/insects/common-blue-butterfly.png"
+      "locations": [
+        "residential-street"
+      ],
+      "image": "images/insects/common-blue-butterfly.png",
+      "weather": []
     },
     {
       "id": 4,
@@ -814,7 +843,8 @@
         "1s": 220
       },
       "locations": [],
-      "image": "images/insects/ant.png"
+      "image": "images/insects/ant.png",
+      "weather": []
     },
     {
       "id": 5,
@@ -824,7 +854,8 @@
         "2s": 247
       },
       "locations": [],
-      "image": "images/insects/waroona-cuckoo-bee.png"
+      "image": "images/insects/waroona-cuckoo-bee.png",
+      "weather": []
     },
     {
       "id": 6,
@@ -834,7 +865,8 @@
         "2s": 112
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 7,
@@ -846,7 +878,8 @@
         "4s": 300
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 8,
@@ -858,7 +891,8 @@
         "4s": 140
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 9,
@@ -867,7 +901,8 @@
         "1s": 220
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 10,
@@ -878,7 +913,8 @@
         "3s": 330
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 11,
@@ -888,7 +924,8 @@
         "2s": 165
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 12,
@@ -899,7 +936,8 @@
         "3s": 70
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 13,
@@ -908,7 +946,8 @@
         "1s": 180
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 14,
@@ -917,7 +956,8 @@
         "1s": 140
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 15,
@@ -928,7 +968,8 @@
         "3s": 90
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     }
   ],
   "fish": [
@@ -940,8 +981,11 @@
         "3s": 150,
         "2s": 112
       },
-      "locations": ["suburban-lake"],
-      "image": ""
+      "locations": [
+        "suburban-lake"
+      ],
+      "image": "",
+      "weather": []
     },
     {
       "id": 2,
@@ -951,7 +995,8 @@
         "2s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 3,
@@ -961,7 +1006,8 @@
         "2s": 112
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 4,
@@ -970,7 +1016,8 @@
         "1s": 320
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 5,
@@ -980,7 +1027,8 @@
         "2s": 345
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 6,
@@ -989,7 +1037,8 @@
         "1s": 50
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 7,
@@ -998,7 +1047,8 @@
         "1s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 8,
@@ -1007,7 +1057,8 @@
         "1s": 75
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 9,
@@ -1017,7 +1068,8 @@
         "2s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 10,
@@ -1027,7 +1079,8 @@
         "2s": 75
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 11,
@@ -1036,7 +1089,8 @@
         "1s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 12,
@@ -1045,7 +1099,8 @@
         "1s": 50
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 13,
@@ -1054,7 +1109,8 @@
         "1s": 230
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 14,
@@ -1064,7 +1120,8 @@
         "2s": 345
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 15,
@@ -1073,7 +1130,8 @@
         "1s": 105
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 16,
@@ -1083,7 +1141,8 @@
         "2s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 17,
@@ -1094,7 +1153,8 @@
         "3s": 200
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 18,
@@ -1105,7 +1165,8 @@
         "3s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 19,
@@ -1116,7 +1177,8 @@
         "3s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 20,
@@ -1125,7 +1187,8 @@
         "1s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 21,
@@ -1136,7 +1199,8 @@
         "4s": 200
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 22,
@@ -1145,7 +1209,8 @@
         "1s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 23,
@@ -1156,7 +1221,8 @@
         "3s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 24,
@@ -1167,7 +1233,8 @@
         "3s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 25,
@@ -1178,7 +1245,8 @@
         "3s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 26,
@@ -1189,7 +1257,8 @@
         "3s": 420
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 27,
@@ -1199,7 +1268,8 @@
         "2s": 225
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 28,
@@ -1210,7 +1280,8 @@
         "3s": 310
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 29,
@@ -1219,7 +1290,8 @@
         "1s": 535
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 30,
@@ -1229,7 +1301,8 @@
         "2s": 480
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 31,
@@ -1239,7 +1312,8 @@
         "2s": 150
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 32,
@@ -1249,7 +1323,8 @@
         "2s": 232
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 33,
@@ -1259,7 +1334,8 @@
         "2s": 480
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 34,
@@ -1271,7 +1347,8 @@
         "4s": 420
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 35,
@@ -1281,7 +1358,8 @@
         "3s": 640
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 36,
@@ -1290,7 +1368,8 @@
         "1s": 50
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 37,
@@ -1299,7 +1378,8 @@
         "1s": 230
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 38,
@@ -1309,7 +1389,8 @@
         "2s": 75
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 39,
@@ -1320,7 +1401,8 @@
         "3s": 1070
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 40,
@@ -1331,7 +1413,8 @@
         "3s": 300
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 41,
@@ -1340,7 +1423,8 @@
         "1s": 50
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 42,
@@ -1350,7 +1434,8 @@
         "2s": 345
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 43,
@@ -1361,7 +1446,8 @@
         "3s": 640
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 44,
@@ -1373,7 +1459,8 @@
         "5s": 2560
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 45,
@@ -1382,7 +1469,8 @@
         "1s": 100
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     },
     {
       "id": 46,
@@ -1391,7 +1479,8 @@
         "1s": 320
       },
       "locations": [],
-      "image": ""
+      "image": "",
+      "weather": []
     }
   ],
   "birds": [],
@@ -1611,5 +1700,6 @@
       "name": "Windmill Flower Field",
       "image": ""
     }
-  ]
+  ],
+  "weather": []
 }

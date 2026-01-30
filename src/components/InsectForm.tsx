@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Insect, Location } from "../types";
+import { Insect, Location, Weather } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
@@ -7,6 +7,7 @@ import { ImageUpload } from "./ImageUpload";
 interface InsectFormProps {
   insect: Insect | null;
   locations: Location[];
+  weather: Weather[];
   onSave: (insect: Insect) => void;
   onCancel: () => void;
 }
@@ -14,6 +15,7 @@ interface InsectFormProps {
 export function InsectForm({
   insect,
   locations,
+  weather,
   onSave,
   onCancel,
 }: InsectFormProps) {
@@ -23,6 +25,7 @@ export function InsectForm({
       name: "",
       sell_price: { "1s": 0 },
       locations: [],
+      weather: [],
       image: "",
     },
   );
@@ -35,6 +38,11 @@ export function InsectForm({
   const locationOptions = locations.map((loc) => ({
     value: loc.id,
     label: loc.name,
+  }));
+
+  const weatherOptions = weather.map((w) => ({
+    value: w.name,
+    label: w.name,
   }));
 
   return (
@@ -70,6 +78,21 @@ export function InsectForm({
             setFormData({ ...formData, locations: value as string[] })
           }
           placeholder="Select locations..."
+          isMulti
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Weather
+        </label>
+        <SearchableSelect
+          options={weatherOptions}
+          value={formData.weather}
+          onChange={(value) =>
+            setFormData({ ...formData, weather: value as string[] })
+          }
+          placeholder="Select weather..."
           isMulti
         />
       </div>

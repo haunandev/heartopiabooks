@@ -6,6 +6,7 @@ import {
   Insect,
   Fish,
   Bird,
+  Weather,
   SortOption,
 } from "../types";
 
@@ -16,7 +17,8 @@ type TabType =
   | "insects"
   | "fish"
   | "birds"
-  | "locations";
+  | "locations"
+  | "weather";
 
 export function useFilters() {
   const [searchQuery, setSearchQuery] = useState("");

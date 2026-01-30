@@ -1,0 +1,76 @@
+{
+  "versions": [
+    {
+      "version": "v1.2.1",
+      "label": "v1.2.1 (Latest)",
+      "color": "purple",
+      "isLatest": true,
+      "features": [
+        {
+          "title": "Rating Based on 1-Star Price",
+          "description": "S/A/B/C/D rating now calculated from 1-star price instead of max price"
+        },
+        {
+          "title": "Locations for Ingredients",
+          "description": "Ingredients now support multiple locations just like other categories"
+        },
+        {
+          "title": "Weather Master Data",
+          "description": "New Weather category for managing weather conditions with image support"
+        },
+        {
+          "title": "Weather in Birds, Fish & Insects",
+          "description": "Birds, Fish, and Insects now support multiple weather conditions"
+        },
+        {
+          "title": "Alphabetical Sorting in Selects",
+          "description": "All dropdown options now automatically sorted alphabetically"
+        }
+      ]
+    },
+    {
+      "version": "v1.2.0",
+      "label": "v1.2.0",
+      "color": "blue",
+      "isLatest": false,
+      "features": [
+        {
+          "title": "Birds Data Category",
+          "description": "New category for managing bird data with same features as fish"
+        },
+        {
+          "title": "Data Merge Preview",
+          "description": "Preview changes before applying with detailed diff and checkbox selection"
+        },
+        {
+          "title": "Cloudinary Image Upload",
+          "description": "Upload images with crop functionality or paste URL manually"
+        }
+      ]
+    },
+    {
+      "version": "v1.1.0",
+      "label": "v1.1.0",
+      "color": "green",
+      "isLatest": false,
+      "features": [
+        {
+          "title": "Rating System (S-D)",
+          "description": "Foods, insects, and fish now have quality ratings"
+        },
+        {
+          "title": "Sell Calculator",
+          "description": "Calculate total sell price with quantity and star ratings"
+        },
+        {
+          "title": "SEO Optimization",
+          "description": "Enhanced search engine visibility and meta tags"
+        },
+        {
+          "title": "Data Source Link",
+          "description": "Quick access to latest .json updates in dashboard"
+        }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,7 @@ export interface Ingredient {
   };
   buy_price: number | null;
   source: "seed" | "wild" | "buy";
+  locations: string[]; // Array of location IDs
   image: string;
 }
 
@@ -47,6 +48,12 @@ export interface Location {
   image: string;
 }
 
+export interface Weather {
+  id: number;
+  name: string;
+  image: string;
+}
+
 export interface Insect {
   id: number;
   name: string;
@@ -58,6 +65,7 @@ export interface Insect {
     "5s"?: number;
   };
   locations: string[]; // Array of location IDs
+  weather: string[]; // Array of weather names
   image: string;
 }
 
@@ -72,6 +80,7 @@ export interface Fish {
     "5s"?: number;
   };
   locations: string[]; // Array of location IDs
+  weather: string[]; // Array of weather names
   image: string;
 }
 
@@ -86,6 +95,7 @@ export interface Bird {
     "5s"?: number;
   };
   locations: string[]; // Array of location IDs
+  weather: string[]; // Array of weather names
   image: string;
 }
 
@@ -97,6 +107,7 @@ export interface GameData {
   fish: Fish[];
   birds: Bird[];
   locations: Location[];
+  weather: Weather[];
 }
 
 export type ActivityType = "add" | "edit" | "delete";
@@ -107,7 +118,8 @@ export type ItemType =
   | "insect"
   | "fish"
   | "bird"
-  | "location";
+  | "location"
+  | "weather";
 
 export interface ActivityLog {
   id: string;
