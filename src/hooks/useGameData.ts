@@ -378,7 +378,7 @@ export function useGameData() {
       insects: (gameDataJson as any).insects || [],
       fish: (gameDataJson as any).fish || [],
       locations: (gameDataJson as any).locations || [],
-      weather: [],
+      weather: (gameDataJson as any).weather || [],
     };
 
     saveData(defaultData);

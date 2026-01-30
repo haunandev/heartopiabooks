@@ -858,7 +858,7 @@
       "image": "images/insects/ant.png",
       "weather": ["Rainy", "Sunny", "Rainbow"],
       "time": ["5"],
-      "hobby_name": "Cooking",
+      "hobby_name": "Bug Catching",
       "hobby_level": 3
     },
     {
@@ -2398,13 +2398,13 @@
       "id": 2,
       "name": "Massimo",
       "location": "garden-street",
-      "bio": ""
+      "bio": "Cooking Mentor"
     },
     {
       "id": 3,
       "name": "Naniwa",
       "location": "garden-street",
-      "bio": ""
+      "bio": "Bug Catching Mentor\n"
     },
     {
       "id": 4,
@@ -2419,6 +2419,13 @@
       "image": "",
       "name": "Birdwatching",
       "npc_name": "Bailey J",
+      "max_level": 10
+    },
+    {
+      "id": 5,
+      "image": "",
+      "name": "Bug Catching",
+      "npc_name": "Naniwa",
       "max_level": 10
     },
     {
