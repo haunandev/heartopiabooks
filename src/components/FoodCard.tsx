@@ -181,7 +181,8 @@ export function FoodCard({
                   </div>
                   {totalCost > 0 && (
                     <span className="text-xs font-semibold text-blue-700">
-                      +{formatPrice(food.sell_price["1s"] - totalCost)} (
+                      {food.sell_price["1s"] - totalCost > 0 ? "+" : ""}
+                      {formatPrice(food.sell_price["1s"] - totalCost)} (
                       {Math.round(
                         ((food.sell_price["1s"] - totalCost) / totalCost) * 100,
                       )}
@@ -203,7 +204,8 @@ export function FoodCard({
                     </div>
                     {totalCost > 0 && (
                       <span className="text-xs font-semibold text-blue-700">
-                        +{formatPrice(food.sell_price["2s"] - totalCost)} (
+                        {food.sell_price["2s"] - totalCost > 0 ? "+" : ""}
+                        {formatPrice(food.sell_price["2s"] - totalCost)} (
                         {Math.round(
                           ((food.sell_price["2s"] - totalCost) / totalCost) *
                             100,
@@ -228,7 +230,8 @@ export function FoodCard({
                     </div>
                     {totalCost > 0 && (
                       <span className="text-xs font-semibold text-blue-700">
-                        +{formatPrice(food.sell_price["3s"] - totalCost)} (
+                        {food.sell_price["3s"] - totalCost > 0 ? "+" : ""}
+                        {formatPrice(food.sell_price["3s"] - totalCost)} (
                         {Math.round(
                           ((food.sell_price["3s"] - totalCost) / totalCost) *
                             100,
@@ -256,7 +259,8 @@ export function FoodCard({
                     </div>
                     {totalCost > 0 && (
                       <span className="text-xs font-semibold text-blue-700">
-                        +{formatPrice(food.sell_price["4s"] - totalCost)} (
+                        {food.sell_price["4s"] - totalCost > 0 ? "+" : ""}
+                        {formatPrice(food.sell_price["4s"] - totalCost)} (
                         {Math.round(
                           ((food.sell_price["4s"] - totalCost) / totalCost) *
                             100,
@@ -284,7 +288,8 @@ export function FoodCard({
                     </div>
                     {totalCost > 0 && (
                       <span className="text-xs font-semibold text-blue-700">
-                        +{formatPrice(food.sell_price["5s"] - totalCost)} (
+                        {food.sell_price["5s"] - totalCost > 0 ? "+" : ""}
+                        {formatPrice(food.sell_price["5s"] - totalCost)} (
                         {Math.round(
                           ((food.sell_price["5s"] - totalCost) / totalCost) *
                             100,
