@@ -128,7 +128,14 @@ export function Dashboard({ gameData, activityCount }: DashboardProps) {
         <div className="mt-4 space-y-2">
           <div className="flex items-center gap-2 text-sm">
             <Info className="w-4 h-4" />
-            <span>Version 1.2.1 • Last Updated: January 30, 2026</span>
+            <span>Version 1.3.0 • Last Updated: January 30, 2026</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <TrendingUp className="w-4 h-4" />
+            <span className="font-semibold">
+              ✨ New in v1.3.0: NPC Mentors, Hobbies, Time Periods & Enhanced
+              Data Display
+            </span>
           </div>
           <div className="flex items-center gap-2 text-sm bg-white/10 rounded-lg px-3 py-2">
             <Package className="w-4 h-4" />

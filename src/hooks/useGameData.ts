@@ -10,6 +10,9 @@ import {
   Bird,
   Location,
   Weather,
+  NPC,
+  Hobby,
+  Time,
 } from "../types";
 import gameDataJson from "../data/gameData.json";
 
@@ -30,6 +33,9 @@ export function useGameData() {
         birds: parsedData.birds || [],
         locations: parsedData.locations || gameDataJson.locations || [],
         weather: parsedData.weather || [],
+        npc: parsedData.npc || [],
+        hobby: parsedData.hobby || [],
+        time: parsedData.time || [],
       });
     }
     const savedLogs = localStorage.getItem("heartopiaLogs");
@@ -337,6 +343,9 @@ export function useGameData() {
             birds: importedData.birds || [],
             locations: importedData.locations || gameDataJson.locations || [],
             weather: importedData.weather || [],
+            npc: importedData.npc || [],
+            hobby: importedData.hobby || [],
+            time: importedData.time || [],
           };
 
           saveData(newData);
@@ -468,6 +477,112 @@ export function useGameData() {
     }
   };
 
+  // NPC CRUD
+  const addNPC = (npc: NPC) => {
+    const maxId =
+      gameData.npc.length > 0 ? Math.max(...gameData.npc.map((n) => n.id)) : 0;
+    const newNPC = { ...npc, id: maxId + 1 };
+    saveData({
+      ...gameData,
+      npc: [...gameData.npc, newNPC],
+    });
+    addLog("add", "npc", newNPC.name, { data: newNPC });
+  };
+
+  const updateNPC = (npc: NPC, oldNPC: NPC) => {
+    saveData({
+      ...gameData,
+      npc: gameData.npc.map((n) => (n.id === npc.id ? npc : n)),
+    });
+    addLog("edit", "npc", npc.name, {
+      before: oldNPC,
+      after: npc,
+    });
+  };
+
+  const deleteNPC = (id: number) => {
+    const npc = gameData.npc.find((n) => n.id === id);
+    if (npc) {
+      saveData({
+        ...gameData,
+        npc: gameData.npc.filter((n) => n.id !== id),
+      });
+      addLog("delete", "npc", npc.name, { data: npc });
+    }
+  };
+
+  // Hobby CRUD
+  const addHobby = (hobby: Hobby) => {
+    const maxId =
+      gameData.hobby.length > 0
+        ? Math.max(...gameData.hobby.map((h) => h.id))
+        : 0;
+    const newHobby = { ...hobby, id: maxId + 1 };
+    saveData({
+      ...gameData,
+      hobby: [...gameData.hobby, newHobby],
+    });
+    addLog("add", "hobby", newHobby.name, { data: newHobby });
+  };
+
+  const updateHobby = (hobby: Hobby, oldHobby: Hobby) => {
+    saveData({
+      ...gameData,
+      hobby: gameData.hobby.map((h) => (h.id === hobby.id ? hobby : h)),
+    });
+    addLog("edit", "hobby", hobby.name, {
+      before: oldHobby,
+      after: hobby,
+    });
+  };
+
+  const deleteHobby = (id: number) => {
+    const hobby = gameData.hobby.find((h) => h.id === id);
+    if (hobby) {
+      saveData({
+        ...gameData,
+        hobby: gameData.hobby.filter((h) => h.id !== id),
+      });
+      addLog("delete", "hobby", hobby.name, { data: hobby });
+    }
+  };
+
+  // Time CRUD
+  const addTime = (time: Time) => {
+    const maxId =
+      gameData.time.length > 0
+        ? Math.max(...gameData.time.map((t) => t.id))
+        : 0;
+    const newTime = { ...time, id: maxId + 1 };
+    saveData({
+      ...gameData,
+      time: [...gameData.time, newTime],
+    });
+    addLog("add", "time", newTime.name, { data: newTime });
+  };
+
+  const updateTime = (time: Time, oldTime: Time) => {
+    saveData({
+      ...gameData,
+      time: gameData.time.map((t) => (t.id === time.id ? time : t)),
+    });
+    addLog("edit", "time", time.name, {
+      before: oldTime,
+      after: time,
+    });
+  };
+
+  const deleteTime = (id: number) => {
+    const time = gameData.time.find((t) => t.id === id);
+    if (time) {
+      saveData({
+        ...gameData,
+        time: gameData.time.filter((t) => t.id !== id),
+      });
+      addLog("delete", "time", time.name, { data: time });
+    }
+  };
+
   const mergeData = (mergedData: GameData) => {
     saveData(mergedData);
     addLog("edit", "ingredient", "Data Merge", {
@@ -481,6 +596,9 @@ export function useGameData() {
         birds: mergedData.birds.length,
         locations: mergedData.locations.length,
         weather: mergedData.weather.length,
+        npc: mergedData.npc.length,
+        hobby: mergedData.hobby.length,
+        time: mergedData.time.length,
       },
     });
   };
@@ -512,6 +630,15 @@ export function useGameData() {
     addWeather,
     updateWeather,
     deleteWeather,
+    addNPC,
+    updateNPC,
+    deleteNPC,
+    addHobby,
+    updateHobby,
+    deleteHobby,
+    addTime,
+    updateTime,
+    deleteTime,
     exportData,
     importData,
     mergeData,

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Ingredient, Location } from "../types";
+import { Ingredient, Location, Hobby, Time } from "../types";
 import { Button } from "./Button";
 import { Star } from "lucide-react";
 import { ImageUpload } from "./ImageUpload";
@@ -8,6 +8,8 @@ import { SearchableSelect } from "./SearchableSelect";
 interface IngredientFormProps {
   ingredient?: Ingredient;
   locations: Location[];
+  hobbies: Hobby[];
+  times: Time[];
   onSave: (ingredient: Ingredient) => void;
   onCancel: () => void;
 }
@@ -15,6 +17,8 @@ interface IngredientFormProps {
 export function IngredientForm({
   ingredient,
   locations,
+  hobbies,
+  times,
   onSave,
   onCancel,
 }: IngredientFormProps) {
@@ -172,6 +176,76 @@ export function IngredientForm({
           placeholder="Select locations..."
           isMulti
         />
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Time
+          </label>
+          <select
+            value={formData.time || ""}
+            onChange={(e) =>
+              setFormData({ ...formData, time: e.target.value || undefined })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {times
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((t) => (
+                <option key={t.id} value={t.id.toString()}>
+                  {t.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby
+          </label>
+          <select
+            value={formData.hobby_name || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_name: e.target.value || undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {hobbies
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((h) => (
+                <option key={h.id} value={h.name}>
+                  {h.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby Level
+          </label>
+          <input
+            type="number"
+            min="0"
+            value={formData.hobby_level || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_level: e.target.value
+                  ? Number(e.target.value)
+                  : undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            placeholder="Level"
+          />
+        </div>
       </div>
 
       <ImageUpload

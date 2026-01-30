@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
-import { Insect, Location, Weather } from "../types";
-import { Edit, Trash2, Bug, MapPin, Star, CloudRain } from "lucide-react";
+import { Insect, Location, Weather, Hobby, Time } from "../types";
+import {
+  Edit,
+  Trash2,
+  Bug,
+  MapPin,
+  Star,
+  CloudRain,
+  Heart,
+  TrendingUp,
+  Clock,
+} from "lucide-react";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
 import { calculateCreatureRating, getRatingColor } from "../lib/rating";
@@ -9,6 +19,8 @@ interface InsectCardProps {
   insect: Insect;
   locations: Location[];
   weather: Weather[];
+  hobbies?: Hobby[];
+  times?: Time[];
   onEdit: () => void;
   onDelete: () => void;
 }
@@ -18,6 +30,8 @@ export function InsectCard({
   locations,
   onEdit,
   onDelete,
+  hobbies,
+  times,
 }: InsectCardProps) {
   const getLocationNames = () => {
     return insect.locations
@@ -38,6 +52,10 @@ export function InsectCard({
           : 1;
 
   const rating = calculateCreatureRating(insect);
+  const hobby = hobbies?.find((h) => h.name === insect.hobby_name);
+  const insectTimes = (insect.time as string[] | undefined)
+    ?.map((timeId: string) => times?.find((t) => t.id.toString() === timeId))
+    .filter(Boolean) as Time[];
 
   return (
     <motion.div
@@ -161,11 +179,42 @@ export function InsectCard({
                 </div>
               )}
 
+              {/* Time Periods */}
+              {insectTimes && insectTimes.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {insectTimes.map((time) => (
+                    <span
+                      key={time!.id}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full"
+                    >
+                      <Clock className="w-3 h-3" />
+                      {time!.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Hobby Info */}
+              {hobby && (
+                <div className="flex items-center gap-2 mt-2">
+                  <Heart className="w-4 h-4 text-pink-500" />
+                  <span className="text-sm text-gray-700">{hobby.name}</span>
+                  {insect.hobby_level && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                      <TrendingUp className="w-3 h-3" />
+                      Lv. {insect.hobby_level}
+                    </span>
+                  )}
+                </div>
+              )}
+
               {/* Prices */}
               <div className="mt-2 space-y-1">
                 {Object.entries(insect.sell_price).map(([star, price]) => (
                   <div key={star} className="flex justify-between text-sm">
-                    <span className="text-gray-600">{star}:</span>
+                    <span className="text-gray-600">
+                      {star ? star.replace("s", "⭐") : "⭐"}:
+                    </span>
                     <span className="font-semibold text-green-600">
                       {formatPrice(price)} 💰
                     </span>

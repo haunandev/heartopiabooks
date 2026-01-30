@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Fish, Location, Weather } from "../types";
+import { Fish, Location, Weather, Hobby, Time } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
@@ -8,6 +8,8 @@ interface FishFormProps {
   fish: Fish | null;
   locations: Location[];
   weather: Weather[];
+  hobbies: Hobby[];
+  times: Time[];
   onSave: (fish: Fish) => void;
   onCancel: () => void;
 }
@@ -16,6 +18,8 @@ export function FishForm({
   fish,
   locations,
   weather,
+  hobbies,
+  times,
   onSave,
   onCancel,
 }: FishFormProps) {
@@ -43,6 +47,11 @@ export function FishForm({
   const weatherOptions = weather.map((w) => ({
     value: w.name,
     label: w.name,
+  }));
+
+  const timeOptions = times.map((t) => ({
+    value: t.id.toString(),
+    label: t.name,
   }));
 
   return (
@@ -125,6 +134,102 @@ export function FishForm({
             />
           </div>
         ))}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Shadow Size
+        </label>
+        <select
+          value={formData.shadow || ""}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              shadow: e.target.value as
+                | "S"
+                | "M"
+                | "L"
+                | "Golden"
+                | "Blue"
+                | undefined,
+            })
+          }
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+        >
+          <option value="">Select shadow size</option>
+          <option value="S">S - Small</option>
+          <option value="M">M - Medium</option>
+          <option value="L">L - Large</option>
+          <option value="Golden">Golden</option>
+          <option value="Blue">Blue</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Time
+        </label>
+        <SearchableSelect
+          options={timeOptions}
+          value={formData.time || []}
+          onChange={(value) => {
+            const timeArray = value as string[];
+            setFormData({
+              ...formData,
+              time: timeArray.length > 0 ? timeArray : undefined,
+            });
+          }}
+          placeholder="Select time periods"
+          isMulti={true}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby
+          </label>
+          <select
+            value={formData.hobby_name || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_name: e.target.value || undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {hobbies
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((h) => (
+                <option key={h.id} value={h.name}>
+                  {h.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby Level
+          </label>
+          <input
+            type="number"
+            min="0"
+            value={formData.hobby_level || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_level: e.target.value
+                  ? Number(e.target.value)
+                  : undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            placeholder="Level"
+          />
+        </div>
       </div>
 
       <div className="flex gap-2 pt-4">

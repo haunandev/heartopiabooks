@@ -17,7 +17,10 @@ type TabType =
   | "fish"
   | "birds"
   | "locations"
-  | "weather";
+  | "weather"
+  | "npc"
+  | "hobby"
+  | "time";
 
 export function useFilters() {
   const [searchQuery, setSearchQuery] = useState("");

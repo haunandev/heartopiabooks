@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bird, Location, Weather } from "../types";
+import { Bird, Location, Weather, Hobby, Time } from "../types";
 import {
   Edit,
   Trash2,
@@ -7,6 +7,9 @@ import {
   MapPin,
   Star,
   CloudRain,
+  Heart,
+  TrendingUp,
+  Clock,
 } from "lucide-react";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
@@ -16,11 +19,20 @@ interface BirdCardProps {
   bird: Bird;
   locations: Location[];
   weather: Weather[];
+  hobbies?: Hobby[];
+  times?: Time[];
   onEdit: () => void;
   onDelete: () => void;
 }
 
-export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
+export function BirdCard({
+  bird,
+  locations,
+  onEdit,
+  onDelete,
+  hobbies,
+  times,
+}: BirdCardProps) {
   const getLocationNames = () => {
     return bird.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)
@@ -40,6 +52,10 @@ export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
           : 1;
 
   const rating = calculateCreatureRating(bird);
+  const hobby = hobbies?.find((h) => h.name === bird.hobby_name);
+  const birdTimes = (bird.time as string[] | undefined)
+    ?.map((timeId: string) => times?.find((t) => t.id.toString() === timeId))
+    .filter(Boolean) as Time[];
 
   return (
     <motion.div
@@ -163,11 +179,42 @@ export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
                 </div>
               )}
 
+              {/* Time Periods */}
+              {birdTimes && birdTimes.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {birdTimes.map((time) => (
+                    <span
+                      key={time!.id}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full"
+                    >
+                      <Clock className="w-3 h-3" />
+                      {time!.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Hobby Info */}
+              {hobby && (
+                <div className="flex items-center gap-2 mt-2">
+                  <Heart className="w-4 h-4 text-pink-500" />
+                  <span className="text-sm text-gray-700">{hobby.name}</span>
+                  {bird.hobby_level && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                      <TrendingUp className="w-3 h-3" />
+                      Lv. {bird.hobby_level}
+                    </span>
+                  )}
+                </div>
+              )}
+
               {/* Prices */}
               <div className="mt-2 space-y-1">
                 {Object.entries(bird.sell_price).map(([star, price]) => (
                   <div key={star} className="flex justify-between text-sm">
-                    <span className="text-gray-600">{star}:</span>
+                    <span className="text-gray-600">
+                      {star ? star.replace("s", "⭐") : "⭐"}:
+                    </span>
                     <span className="font-semibold text-green-600">
                       {formatPrice(price)} 💰
                     </span>

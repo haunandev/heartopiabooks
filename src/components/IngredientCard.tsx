@@ -1,4 +1,4 @@
-import { Ingredient, Seed, Location } from "../types";
+import { Ingredient, Seed, Location, Hobby, Time } from "../types";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
 import {
@@ -9,6 +9,8 @@ import {
   Trash2,
   Star,
   MapPin,
+  Heart,
+  TrendingUp,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -16,6 +18,8 @@ interface IngredientCardProps {
   ingredient: Ingredient;
   seeds: Seed[];
   locations: Location[];
+  hobbies?: Hobby[];
+  times?: Time[];
   onEdit?: () => void;
   onDelete?: () => void;
 }
@@ -24,6 +28,8 @@ export function IngredientCard({
   ingredient,
   seeds,
   locations,
+  hobbies,
+  times,
   onEdit,
   onDelete,
 }: IngredientCardProps) {
@@ -44,6 +50,9 @@ export function IngredientCard({
     ingredient.source === "seed"
       ? seeds.find((seed) => seed.name === `${ingredient.name} Seed`)
       : null;
+
+  const hobby = hobbies?.find((h) => h.name === ingredient.hobby_name);
+  const time = times?.find((t) => t.id.toString() === ingredient.time);
 
   return (
     <motion.div
@@ -270,6 +279,32 @@ export function IngredientCard({
                       </span>
                     ) : null;
                   })}
+                </div>
+              )}
+
+              {/* Hobby and Time Info */}
+              {(hobby || time) && (
+                <div className="mt-2 space-y-1">
+                  {time && (
+                    <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
+                      🕐 {time.name}
+                    </div>
+                  )}
+
+                  {hobby && (
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-4 h-4 text-pink-500" />
+                      <span className="text-sm text-gray-700">
+                        {hobby.name}
+                      </span>
+                      {ingredient.hobby_level && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                          <TrendingUp className="w-3 h-3" />
+                          Lv. {ingredient.hobby_level}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </div>

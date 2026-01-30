@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bird, Location, Weather } from "../types";
+import { Bird, Location, Weather, Hobby, Time } from "../types";
 import { Button } from "./Button";
 import { SearchableSelect } from "./SearchableSelect";
 import { ImageUpload } from "./ImageUpload";
@@ -8,6 +8,8 @@ interface BirdFormProps {
   bird: Bird | null;
   locations: Location[];
   weather: Weather[];
+  hobbies: Hobby[];
+  times: Time[];
   onSave: (bird: Bird) => void;
   onCancel: () => void;
 }
@@ -16,6 +18,8 @@ export function BirdForm({
   bird,
   locations,
   weather,
+  hobbies,
+  times,
   onSave,
   onCancel,
 }: BirdFormProps) {
@@ -43,6 +47,11 @@ export function BirdForm({
   const weatherOptions = weather.map((w) => ({
     value: w.name,
     label: w.name,
+  }));
+
+  const timeOptions = times.map((t) => ({
+    value: t.id.toString(),
+    label: t.name,
   }));
 
   return (
@@ -125,6 +134,73 @@ export function BirdForm({
             />
           </div>
         ))}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Time
+        </label>
+        <SearchableSelect
+          options={timeOptions}
+          value={formData.time || []}
+          onChange={(value) => {
+            const timeArray = value as string[];
+            setFormData({
+              ...formData,
+              time: timeArray.length > 0 ? timeArray : undefined,
+            });
+          }}
+          placeholder="Select time periods"
+          isMulti={true}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby
+          </label>
+          <select
+            value={formData.hobby_name || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_name: e.target.value || undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {hobbies
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((h) => (
+                <option key={h.id} value={h.name}>
+                  {h.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby Level
+          </label>
+          <input
+            type="number"
+            min="0"
+            value={formData.hobby_level || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_level: e.target.value
+                  ? Number(e.target.value)
+                  : undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            placeholder="Level"
+          />
+        </div>
       </div>
 
       <div className="flex gap-2 pt-4">

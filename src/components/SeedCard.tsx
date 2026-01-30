@@ -1,16 +1,28 @@
-import { Seed } from "../types";
+import { Seed, Hobby, Time } from "../types";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
-import { Edit, Trash2, Sprout } from "lucide-react";
+import { formatGrowthTime } from "../lib/timeFormat";
+import { Edit, Trash2, Sprout, Clock, Heart, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface SeedCardProps {
   seed: Seed;
+  hobbies?: Hobby[];
+  times?: Time[];
   onEdit?: () => void;
   onDelete?: () => void;
 }
 
-export function SeedCard({ seed, onEdit, onDelete }: SeedCardProps) {
+export function SeedCard({
+  seed,
+  hobbies,
+  times,
+  onEdit,
+  onDelete,
+}: SeedCardProps) {
+  const hobby = hobbies?.find((h) => h.name === seed.hobby_name);
+  const time = times?.find((t) => t.id.toString() === seed.time);
+
   return (
     <motion.div
       layout
@@ -80,13 +92,50 @@ export function SeedCard({ seed, onEdit, onDelete }: SeedCardProps) {
                 </div>
               </div>
 
-              <div className="mt-3">
+              <div className="mt-3 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Price:</span>
+                  <span className="text-sm text-gray-600">Buy Price:</span>
                   <span className="text-lg font-bold text-green-600">
                     {formatPrice(seed.price)} 💰
                   </span>
                 </div>
+
+                {seed.sell_price !== undefined && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Sell Price:</span>
+                    <span className="text-md font-semibold text-amber-600">
+                      {formatPrice(seed.sell_price)} 💰
+                    </span>
+                  </div>
+                )}
+
+                {seed.growth_time !== undefined && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm text-gray-700">
+                      {formatGrowthTime(seed.growth_time)}
+                    </span>
+                  </div>
+                )}
+
+                {time && (
+                  <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full">
+                    🕐 {time.name}
+                  </div>
+                )}
+
+                {hobby && (
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-pink-500" />
+                    <span className="text-sm text-gray-700">{hobby.name}</span>
+                    {seed.hobby_level && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                        <TrendingUp className="w-3 h-3" />
+                        Lv. {seed.hobby_level}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

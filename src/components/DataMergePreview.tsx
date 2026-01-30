@@ -82,6 +82,9 @@ export function DataMergePreview({
       "birds",
       "locations",
       "weather",
+      "npc",
+      "hobby",
+      "time",
     ];
 
     categories.forEach((category) => {
@@ -185,6 +188,9 @@ export function DataMergePreview({
       birds: [],
       locations: [],
       weather: [],
+      npc: [],
+      hobby: [],
+      time: [],
     };
 
     const categories: (keyof GameData)[] = [

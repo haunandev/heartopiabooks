@@ -12,7 +12,9 @@
         "2s": 40,
         "3s": 50
       },
-      "locations": []
+      "locations": [],
+      "hobby_name": "Gardening",
+      "hobby_level": 1
     },
     {
       "id": 2,
@@ -196,7 +198,7 @@
       "buy_price": null,
       "source": "wild",
       "image": "images/ingredients/black-truffle.png",
-      "locations": []
+      "locations": ["forest-island"]
     },
     {
       "id": 16,
@@ -541,7 +543,9 @@
         "1s": 90,
         "3s": 180
       },
-      "image": "default.png"
+      "image": "default.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
       "id": 13,
@@ -758,7 +762,9 @@
       "id": 4,
       "name": "Carrot Seed",
       "price": 50,
-      "image": "carrot-seed.png"
+      "image": "carrot-seed.png",
+      "hobby_name": "Gardening",
+      "hobby_level": 0
     },
     {
       "id": 5,
@@ -776,7 +782,8 @@
       "id": 7,
       "name": "Wheat Seed",
       "price": 95,
-      "image": "images/seeds/wheat-seed.png"
+      "image": "images/seeds/wheat-seed.png",
+      "growth_time": 240
     },
     {
       "id": 8,
@@ -788,7 +795,11 @@
       "id": 9,
       "name": "Tomato Seed",
       "price": 10,
-      "image": "tomato-seed.png"
+      "image": "tomato-seed.png",
+      "hobby_level": 1,
+      "hobby_name": "Gardening",
+      "growth_time": 15,
+      "sell_price": 5
     },
     {
       "id": 10,
@@ -830,9 +841,7 @@
         "2s": 157,
         "3s": 210
       },
-      "locations": [
-        "residential-street"
-      ],
+      "locations": ["residential-street"],
       "image": "images/insects/common-blue-butterfly.png",
       "weather": []
     },
@@ -840,11 +849,17 @@
       "id": 4,
       "name": "Ant",
       "sell_price": {
-        "1s": 220
+        "1s": 220,
+        "2s": 330,
+        "3s": 440,
+        "4s": 880
       },
-      "locations": [],
+      "locations": ["fishing-village-square"],
       "image": "images/insects/ant.png",
-      "weather": []
+      "weather": ["Rainy", "Sunny", "Rainbow"],
+      "time": ["5"],
+      "hobby_name": "Cooking",
+      "hobby_level": 3
     },
     {
       "id": 5,
@@ -977,172 +992,225 @@
       "id": 1,
       "name": "Common Chub",
       "sell_price": {
-        "1s": 0,
+        "1s": 75,
+        "2s": 112,
         "3s": 150,
-        "2s": 112
+        "4s": 300,
+        "5s": 600
       },
-      "locations": [
-        "suburban-lake"
-      ],
+      "locations": ["lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 2,
       "name": "Mussel",
       "sell_price": {
         "1s": 100,
-        "2s": 150
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Rainy", "Rainbow"]
     },
     {
       "id": 3,
       "name": "European Perch",
       "sell_price": {
         "1s": 75,
-        "2s": 112
+        "2s": 112,
+        "3s": 150,
+        "4s": 300,
+        "5s": 600
       },
-      "locations": [],
+      "locations": ["river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 4,
       "name": "Edible Frog",
       "sell_price": {
-        "1s": 320
+        "1s": 320,
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 5,
       "name": "Burbot",
       "sell_price": {
         "1s": 230,
-        "2s": 345
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
       },
-      "locations": [],
+      "locations": ["tranquil-river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 6,
       "name": "Spined Loach",
       "sell_price": {
-        "1s": 50
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["giantwood-river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 7,
       "name": "Goby",
       "sell_price": {
-        "1s": 150
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
       },
-      "locations": [],
+      "locations": ["east-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 8,
       "name": "Common Barbel",
       "sell_price": {
-        "1s": 75
+        "1s": 75,
+        "2s": 112,
+        "3s": 150,
+        "4s": 300,
+        "5s": 600
       },
-      "locations": [],
+      "locations": ["shallow-river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 9,
       "name": "Stone Loach",
       "sell_price": {
         "1s": 100,
-        "2s": 150
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 10,
       "name": "Minnow",
       "sell_price": {
-        "1s": 0,
-        "2s": 75
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["tranquil-river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 11,
       "name": "European Smelt",
       "sell_price": {
-        "1s": 100
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["meadow-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 12,
       "name": "Tench",
       "sell_price": {
-        "1s": 50
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["forest-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 13,
       "name": "Zander",
       "sell_price": {
-        "1s": 230
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
       },
-      "locations": [],
+      "locations": ["giantwood-river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainbow"]
     },
     {
       "id": 14,
       "name": "Grayling",
       "sell_price": {
         "1s": 230,
-        "2s": 345
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 15,
       "name": "Common Whitefish",
       "sell_price": {
-        "1s": 105
+        "1s": 105,
+        "2s": 157,
+        "3s": 210,
+        "4s": 420,
+        "5s": 840
       },
-      "locations": [],
+      "locations": ["onsen-mountain-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 16,
       "name": "Tadpole",
       "sell_price": {
         "1s": 100,
-        "2s": 150
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["onsen-mountain-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Rainy", "Rainbow"]
     },
     {
       "id": 17,
@@ -1150,11 +1218,13 @@
       "sell_price": {
         "1s": 100,
         "2s": 150,
-        "3s": 200
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 18,
@@ -1162,55 +1232,54 @@
       "sell_price": {
         "1s": 75,
         "2s": 112,
-        "3s": 150
+        "3s": 150,
+        "4s": 300,
+        "5s": 600
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 19,
       "name": "Common Bleak",
       "sell_price": {
-        "1s": 0,
+        "1s": 50,
         "2s": 75,
-        "3s": 100
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
-      "image": "",
-      "weather": []
-    },
-    {
-      "id": 20,
-      "name": "Common Rud",
-      "sell_price": {
-        "1s": 150
-      },
-      "locations": [],
-      "image": "",
-      "weather": []
+      "locations": ["lake"],
+      "image": ""
     },
     {
       "id": 21,
       "name": "Schneider",
       "sell_price": {
-        "1s": 0,
+        "1s": 50,
+        "2s": 75,
         "3s": 100,
-        "4s": 200
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["suburban-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 22,
       "name": "Ruffe",
       "sell_price": {
-        "1s": 100
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["onsen-mountain-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 23,
@@ -1218,11 +1287,13 @@
       "sell_price": {
         "1s": 50,
         "2s": 75,
-        "3s": 100
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["river"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 24,
@@ -1230,23 +1301,27 @@
       "sell_price": {
         "1s": 50,
         "2s": 75,
-        "3s": 100
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["ocean"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 25,
       "name": "Sea Bass",
       "sell_price": {
-        "1s": 0,
+        "1s": 75,
         "2s": 112,
-        "3s": 150
+        "3s": 150,
+        "4s": 300,
+        "5s": 600
       },
-      "locations": [],
+      "locations": ["ocean"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 26,
@@ -1254,22 +1329,27 @@
       "sell_price": {
         "1s": 210,
         "2s": 315,
-        "3s": 420
+        "3s": 420,
+        "4s": 840,
+        "5s": 1680
       },
-      "locations": [],
+      "locations": ["ocean"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 27,
       "name": "Atlantic Mackerel",
       "sell_price": {
         "1s": 150,
-        "2s": 225
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
       },
-      "locations": [],
+      "locations": ["whale-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainbow"]
     },
     {
       "id": 28,
@@ -1277,65 +1357,87 @@
       "sell_price": {
         "1s": 155,
         "2s": 232,
-        "3s": 310
+        "3s": 310,
+        "4s": 620,
+        "5s": 1240
       },
-      "locations": [],
+      "locations": ["zephyr-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 29,
       "name": "Giant Oarfish",
       "sell_price": {
-        "1s": 535
+        "1s": 535,
+        "2s": 802,
+        "3s": 1070,
+        "4s": 2140,
+        "5s": 4280
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 30,
       "name": "Common Octopus",
       "sell_price": {
         "1s": 320,
-        "2s": 480
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 31,
       "name": "Seahorse",
       "sell_price": {
         "1s": 100,
-        "2s": 150
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["whale-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 32,
       "name": "Atlantic Salmon",
       "sell_price": {
         "1s": 155,
-        "2s": 232
+        "2s": 232,
+        "3s": 310,
+        "4s": 620,
+        "5s": 1240
       },
-      "locations": [],
+      "locations": ["whale-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 33,
       "name": "Anglerfish",
       "sell_price": {
         "1s": 320,
-        "2s": 480
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"],
+      "shadow": "Golden",
+      "time": ["5"],
+      "hobby_name": "Fishing",
+      "hobby_level": 2
     },
     {
       "id": 34,
@@ -1344,53 +1446,54 @@
         "1s": 105,
         "2s": 157,
         "3s": 210,
-        "4s": 420
+        "4s": 420,
+        "5s": 840
       },
-      "locations": [],
+      "locations": ["zephyr-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 35,
       "name": "Turbot",
       "sell_price": {
         "1s": 320,
-        "3s": 640
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 36,
       "name": "Common Shrimp",
       "sell_price": {
-        "1s": 50
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["east-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 37,
       "name": "European Plaice",
       "sell_price": {
-        "1s": 230
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
       },
-      "locations": [],
+      "locations": ["old-sea"],
       "image": "",
-      "weather": []
-    },
-    {
-      "id": 38,
-      "name": "Scad",
-      "sell_price": {
-        "1s": 50,
-        "2s": 75
-      },
-      "locations": [],
-      "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 39,
@@ -1398,11 +1501,13 @@
       "sell_price": {
         "1s": 535,
         "2s": 802,
-        "3s": 1070
+        "3s": 1070,
+        "4s": 2140,
+        "5s": 4280
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 40,
@@ -1410,32 +1515,41 @@
       "sell_price": {
         "1s": 150,
         "2s": 225,
-        "3s": 300
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
       },
-      "locations": [],
+      "locations": ["zephyr-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 41,
       "name": "Sea Stickleback",
       "sell_price": {
-        "1s": 50
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
       },
-      "locations": [],
+      "locations": ["old-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 42,
       "name": "European Lobster",
       "sell_price": {
         "1s": 230,
-        "2s": 345
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
       },
-      "locations": [],
+      "locations": ["zephyr-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 43,
@@ -1443,11 +1557,13 @@
       "sell_price": {
         "1s": 320,
         "2s": 480,
-        "3s": 640
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 44,
@@ -1456,38 +1572,575 @@
         "1s": 320,
         "2s": 480,
         "3s": 640,
+        "4s": 1280,
         "5s": 2560
       },
-      "locations": [],
+      "locations": ["sea-fishing"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 45,
       "name": "Hermit Crab",
       "sell_price": {
-        "1s": 100
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
       },
-      "locations": [],
+      "locations": ["east-sea"],
       "image": "",
-      "weather": []
+      "weather": ["Sunny", "Rainy", "Rainbow"]
     },
     {
       "id": 46,
       "name": "Butterfly Koi",
       "sell_price": {
-        "1s": 320
+        "1s": 320,
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
       },
-      "locations": [],
+      "locations": ["meadow-lake"],
       "image": "",
-      "weather": []
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 47,
+      "name": "Arctic Char",
+      "sell_price": {},
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 48,
+      "name": "Blackspot Seabream",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["zephyr-sea"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 49,
+      "name": "Blue Ero Crayfish",
+      "sell_price": {
+        "1s": 250,
+        "2s": 375,
+        "3s": 500
+      },
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 50,
+      "name": "Bluefin Tuna",
+      "sell_price": {},
+      "locations": ["zephyr-sea"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 51,
+      "name": "Bluegill",
+      "sell_price": {},
+      "locations": ["onsen-mountain-lake"],
+      "image": ""
+    },
+    {
+      "id": 52,
+      "name": "Chum Salmon",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["tranquil-river"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 53,
+      "name": "Clownfish",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
+      },
+      "locations": ["old-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 54,
+      "name": "Common Carp",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["rosy-river"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 55,
+      "name": "Common Rudd",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["suburban-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 56,
+      "name": "European Crayfish",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
+      },
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 57,
+      "name": "European Eel",
+      "sell_price": {
+        "1s": 380,
+        "2s": 570,
+        "3s": 760,
+        "4s": 1520
+      },
+      "locations": ["old-sea"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 58,
+      "name": "European Mudminnow",
+      "sell_price": {
+        "1s": 250,
+        "2s": 375,
+        "3s": 500
+      },
+      "locations": ["suburban-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 59,
+      "name": "Freshwater Blenny",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["rosy-river"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 60,
+      "name": "Golden King Crab",
+      "sell_price": {
+        "1s": 850,
+        "2s": 1275,
+        "3s": 1700
+      },
+      "locations": ["sea-fishing"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 61,
+      "name": "Goldfish",
+      "sell_price": {
+        "1s": 250,
+        "2s": 375,
+        "3s": 500
+      },
+      "locations": ["meadow-lake"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 62,
+      "name": "Haddock",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["east-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 63,
+      "name": "Horse Mackerel",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
+      },
+      "locations": ["whale-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 64,
+      "name": "Huchen",
+      "sell_price": {
+        "1s": 380,
+        "2s": 570,
+        "3s": 760,
+        "4s": 1520
+      },
+      "locations": ["giantwood-river"],
+      "image": ""
+    },
+    {
+      "id": 65,
+      "name": "King Crab",
+      "sell_price": {
+        "1s": 535,
+        "2s": 802,
+        "3s": 1070,
+        "4s": 2140,
+        "5s": 4280
+      },
+      "locations": ["whale-sea"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 66,
+      "name": "Large Pearl Mussel",
+      "sell_price": {
+        "1s": 380,
+        "2s": 570,
+        "3s": 760,
+        "4s": 1520
+      },
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 67,
+      "name": "Largemouth Bass",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 68,
+      "name": "Mediterranean Killifish",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["suburban-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 69,
+      "name": "Moonfish",
+      "sell_price": {
+        "1s": 850,
+        "2s": 1275,
+        "3s": 1700
+      },
+      "locations": ["sea-fishing"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 70,
+      "name": "Mottled Sculpin",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["onsen-mountain-lake"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 71,
+      "name": "Mud Sunfish",
+      "sell_price": {
+        "1s": 100,
+        "2s": 150,
+        "3s": 200,
+        "4s": 400,
+        "5s": 800
+      },
+      "locations": ["forest-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 72,
+      "name": "Northern Pike",
+      "sell_price": {
+        "1s": 610,
+        "2s": 915,
+        "3s": 2440
+      },
+      "locations": ["suburban-lake"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 73,
+      "name": "Ocean Sunfish",
+      "sell_price": {
+        "1s": 850,
+        "2s": 1275,
+        "3s": 1700
+      },
+      "locations": ["east-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 74,
+      "name": "Puffer Fish",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["old-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 75,
+      "name": "Pumpkinseed",
+      "sell_price": {
+        "1s": 250,
+        "2s": 375,
+        "3s": 500
+      },
+      "locations": ["onsen-mountain-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 76,
+      "name": "Rabbit Fish",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
+      },
+      "locations": ["ocean"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 77,
+      "name": "Red-Bellied Piranha",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["giantwood-river"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 78,
+      "name": "Seabream",
+      "sell_price": {},
+      "locations": ["zephyr-sea"],
+      "image": ""
+    },
+    {
+      "id": 79,
+      "name": "Shortfin Mako Shark",
+      "sell_price": {},
+      "locations": ["sea-fishing"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 80,
+      "name": "Smooth Hammerhead",
+      "sell_price": {},
+      "locations": ["old-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 81,
+      "name": "Streber",
+      "sell_price": {
+        "1s": 50,
+        "2s": 75,
+        "3s": 100,
+        "4s": 200,
+        "5s": 400
+      },
+      "locations": ["rosy-river"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 82,
+      "name": "Swordfish",
+      "sell_price": {},
+      "locations": ["whale-sea"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 83,
+      "name": "Three-Spined Stickleback",
+      "sell_price": {
+        "1s": 150,
+        "2s": 225,
+        "3s": 300,
+        "4s": 600,
+        "5s": 1200
+      },
+      "locations": ["shallow-river"],
+      "image": "",
+      "weather": ["Rainy", "Rainbow"]
+    },
+    {
+      "id": 84,
+      "name": "Tilapia",
+      "sell_price": {
+        "1s": 320,
+        "2s": 480,
+        "3s": 640,
+        "4s": 1280,
+        "5s": 2560
+      },
+      "locations": ["river"],
+      "image": "",
+      "weather": ["Sunny", "Rainy", "Rainbow"]
+    },
+    {
+      "id": 85,
+      "name": "Trout",
+      "sell_price": {
+        "1s": 230,
+        "2s": 345,
+        "3s": 460,
+        "4s": 920,
+        "5s": 1840
+      },
+      "locations": ["meadow-lake"],
+      "image": "",
+      "weather": ["Sunny", "Rainbow"]
+    },
+    {
+      "id": 86,
+      "name": "Tub Gurnard",
+      "sell_price": {
+        "1s": 380,
+        "2s": 570,
+        "3s": 760,
+        "4s": 1520
+      },
+      "locations": ["east-sea"],
+      "image": "",
+      "weather": ["Rainbow"]
+    },
+    {
+      "id": 87,
+      "name": "Wels Catfish",
+      "sell_price": {},
+      "locations": ["meadow-lake"],
+      "image": ""
     }
   ],
-  "birds": [],
+  "birds": [
+    {
+      "id": 1,
+      "name": "African Olive Pigeon",
+      "sell_price": {
+        "1s": 27,
+        "2s": 110,
+        "3s": 220
+      },
+      "locations": ["onsen-mountain-lake"],
+      "weather": ["Rainbow", "Sunny", "Rainy"],
+      "image": "",
+      "hobby_level": 5,
+      "hobby_name": "Birdwatching",
+      "time": ["5"]
+    }
+  ],
   "locations": [
     {
-      "id": "old-sea",
-      "name": "Old Sea",
+      "id": "amethyst-beach",
+      "name": "Amethyst Beach",
+      "image": ""
+    },
+    {
+      "id": "art-street",
+      "name": "Art Street",
+      "image": ""
+    },
+    {
+      "id": "central-square",
+      "name": "Central Square",
       "image": ""
     },
     {
@@ -1496,13 +2149,63 @@
       "image": ""
     },
     {
-      "id": "stone-cliff",
-      "name": "Stone Cliff",
+      "id": "deer-tower",
+      "name": "Deer Tower",
       "image": ""
     },
     {
-      "id": "onsen-mountain-lake",
-      "name": "Onsen Mountain Lake",
+      "id": "east-pier-of-fishing-village",
+      "name": "East Pier of Fishing Village",
+      "image": ""
+    },
+    {
+      "id": "east-sea",
+      "name": "East Sea",
+      "image": ""
+    },
+    {
+      "id": "fishing-village-square",
+      "name": "Fishing Village Square",
+      "image": ""
+    },
+    {
+      "id": "forest-island",
+      "name": "Forest Island",
+      "image": ""
+    },
+    {
+      "id": "forest-lake",
+      "name": "Forest Lake",
+      "image": ""
+    },
+    {
+      "id": "garden-street",
+      "name": "Garden Street",
+      "image": ""
+    },
+    {
+      "id": "giantwood-river",
+      "name": "Giantwood River",
+      "image": ""
+    },
+    {
+      "id": "jump-puzzle",
+      "name": "Jump Puzzle",
+      "image": ""
+    },
+    {
+      "id": "lighthouse",
+      "name": "Lighthouse",
+      "image": ""
+    },
+    {
+      "id": "meadow-lake",
+      "name": "Meadow Lake",
+      "image": ""
+    },
+    {
+      "id": "old-sea",
+      "name": "Old Sea",
       "image": ""
     },
     {
@@ -1511,8 +2214,33 @@
       "image": ""
     },
     {
+      "id": "onsen-mountain-lake",
+      "name": "Onsen Mountain Lake",
+      "image": ""
+    },
+    {
+      "id": "pet-store-(upstairs)",
+      "name": "Pet Store (upstairs)",
+      "image": ""
+    },
+    {
       "id": "plot-1",
       "name": "Plot 1",
+      "image": ""
+    },
+    {
+      "id": "plot-10",
+      "name": "Plot 10",
+      "image": ""
+    },
+    {
+      "id": "plot-11",
+      "name": "Plot 11",
+      "image": ""
+    },
+    {
+      "id": "plot-12",
+      "name": "Plot 12",
       "image": ""
     },
     {
@@ -1556,18 +2284,38 @@
       "image": ""
     },
     {
-      "id": "plot-10",
-      "name": "Plot 10",
+      "id": "residential-street",
+      "name": "Residential Street",
       "image": ""
     },
     {
-      "id": "plot-11",
-      "name": "Plot 11",
+      "id": "riverside-dock",
+      "name": "Riverside Dock",
       "image": ""
     },
     {
-      "id": "plot-12",
-      "name": "Plot 12",
+      "id": "rosy-river",
+      "name": "Rosy River",
+      "image": ""
+    },
+    {
+      "id": "sea-fishing",
+      "name": "Sea Fishing Event",
+      "image": ""
+    },
+    {
+      "id": "shallow-river",
+      "name": "Shallow River",
+      "image": ""
+    },
+    {
+      "id": "spirit-oak-pine-forest",
+      "name": "Spirit-Oak Pine Forest",
+      "image": ""
+    },
+    {
+      "id": "stone-cliff",
+      "name": "Stone Cliff",
       "image": ""
     },
     {
@@ -1576,28 +2324,13 @@
       "image": ""
     },
     {
-      "id": "residential-street",
-      "name": "Residential Street",
+      "id": "suburbs",
+      "name": "Suburbs",
       "image": ""
     },
     {
-      "id": "garden-street",
-      "name": "Garden Street",
-      "image": ""
-    },
-    {
-      "id": "central-square",
-      "name": "Central Square",
-      "image": ""
-    },
-    {
-      "id": "art-street",
-      "name": "Art Street",
-      "image": ""
-    },
-    {
-      "id": "rosy-river",
-      "name": "Rosy River",
+      "id": "tranquil-river",
+      "name": "Tranquil River",
       "image": ""
     },
     {
@@ -1611,95 +2344,135 @@
       "image": ""
     },
     {
-      "id": "meadow-lake",
-      "name": "Meadow Lake",
-      "image": ""
-    },
-    {
-      "id": "suburbs",
-      "name": "Suburbs",
-      "image": ""
-    },
-    {
-      "id": "shallow-river",
-      "name": "Shallow River",
-      "image": ""
-    },
-    {
-      "id": "deer-tower",
-      "name": "Deer Tower",
-      "image": ""
-    },
-    {
-      "id": "spirit-oak-pine-forest",
-      "name": "Spirit-Oak Pine Forest",
-      "image": ""
-    },
-    {
-      "id": "east-sea",
-      "name": "East Sea",
-      "image": ""
-    },
-    {
-      "id": "forest-island",
-      "name": "Forest Island",
-      "image": ""
-    },
-    {
-      "id": "forest-lake",
-      "name": "Forest Lake",
-      "image": ""
-    },
-    {
-      "id": "jump-puzzle",
-      "name": "Jump Puzzle",
-      "image": ""
-    },
-    {
-      "id": "giantwood-river",
-      "name": "Giantwood River",
-      "image": ""
-    },
-    {
-      "id": "east-pier-of-fishing-village",
-      "name": "East Pier of Fishing Village",
-      "image": ""
-    },
-    {
-      "id": "fishing-village-square",
-      "name": "Fishing Village Square",
-      "image": ""
-    },
-    {
       "id": "wharf",
       "name": "Wharf",
-      "image": ""
-    },
-    {
-      "id": "tranquil-river",
-      "name": "Tranquil River",
-      "image": ""
-    },
-    {
-      "id": "lighthouse",
-      "name": "Lighthouse",
-      "image": ""
-    },
-    {
-      "id": "zephyr-sea",
-      "name": "Zephyr Sea",
-      "image": ""
-    },
-    {
-      "id": "amethyst-beach",
-      "name": "Amethyst Beach",
       "image": ""
     },
     {
       "id": "windmill-flower-field",
       "name": "Windmill Flower Field",
       "image": ""
+    },
+    {
+      "id": "zephyr-sea",
+      "name": "Zephyr Sea",
+      "image": ""
     }
   ],
-  "weather": []
+  "weather": [
+    {
+      "id": 1,
+      "name": "Sunny",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Rainy",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Cloudy",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "Rainbow",
+      "image": ""
+    }
+  ],
+  "npc": [
+    {
+      "id": 5,
+      "name": "Bailey J",
+      "location": "pet-store-(upstairs)",
+      "bio": "Birdwatching Mentor"
+    },
+    {
+      "id": 1,
+      "name": "Blanc",
+      "location": "garden-street",
+      "bio": "Gardening Mentor"
+    },
+    {
+      "id": 2,
+      "name": "Massimo",
+      "location": "garden-street",
+      "bio": ""
+    },
+    {
+      "id": 3,
+      "name": "Naniwa",
+      "location": "garden-street",
+      "bio": ""
+    },
+    {
+      "id": 4,
+      "name": "Vanya",
+      "location": "riverside-dock",
+      "bio": "Fishing Mentor"
+    }
+  ],
+  "hobby": [
+    {
+      "id": 4,
+      "image": "",
+      "name": "Birdwatching",
+      "npc_name": "Bailey J",
+      "max_level": 10
+    },
+    {
+      "id": 2,
+      "image": "",
+      "name": "Cooking",
+      "npc_name": "Massimo",
+      "max_level": 10
+    },
+    {
+      "id": 3,
+      "image": "",
+      "name": "Fishing",
+      "npc_name": "Vanya",
+      "max_level": 10
+    },
+    {
+      "id": 1,
+      "image": "",
+      "name": "Gardening",
+      "npc_name": "Blanc",
+      "max_level": 10
+    }
+  ],
+  "time": [
+    {
+      "id": 5,
+      "image": "",
+      "name": "All Day",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "image": "",
+      "name": "Dawn",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "image": "",
+      "name": "Day",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "image": "",
+      "name": "Dusk",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "image": "",
+      "name": "Night",
+      "description": ""
+    }
+  ]
 }

@@ -1,13 +1,15 @@
-import { Food, Ingredient } from "../types";
+import { Food, Ingredient, Hobby, Time } from "../types";
 import { Card, CardContent } from "./Card";
 import { formatPrice } from "../lib/utils";
-import { Star, Edit, Trash2, ChefHat } from "lucide-react";
+import { Star, Edit, Trash2, ChefHat, Heart, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { calculateFoodRating, getRatingColor } from "../lib/rating";
 
 interface FoodCardProps {
   food: Food;
   ingredients: Ingredient[];
+  hobbies?: Hobby[];
+  times?: Time[];
   onEdit?: () => void;
   onDelete?: () => void;
 }
@@ -15,6 +17,8 @@ interface FoodCardProps {
 export function FoodCard({
   food,
   ingredients,
+  hobbies,
+  times,
   onEdit,
   onDelete,
 }: FoodCardProps) {
@@ -42,6 +46,8 @@ export function FoodCard({
 
   const totalCost = calculateCost();
   const rating = calculateFoodRating(food, ingredients);
+  const hobby = hobbies?.find((h) => h.name === food.hobby_name);
+  const time = times?.find((t) => t.id.toString() === food.time);
 
   return (
     <motion.div
@@ -252,6 +258,30 @@ export function FoodCard({
                     </span>
                   </div>
                 )}
+
+                {/* Hobby and Time Info */}
+                <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
+                  {time && (
+                    <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
+                      🕐 {time.name}
+                    </div>
+                  )}
+
+                  {hobby && (
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-4 h-4 text-pink-500" />
+                      <span className="text-sm text-gray-700">
+                        {hobby.name}
+                      </span>
+                      {food.hobby_level && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                          <TrendingUp className="w-3 h-3" />
+                          Lv. {food.hobby_level}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

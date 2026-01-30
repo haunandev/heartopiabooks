@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { Food, FoodIngredient, Ingredient } from "../types";
+import { Food, FoodIngredient, Ingredient, Hobby, Time } from "../types";
 import { Button } from "./Button";
 import { Plus, Trash2 } from "lucide-react";
 import { ImageUpload } from "./ImageUpload";
+import { SearchableSelect } from "./SearchableSelect";
 
 interface FoodFormProps {
   food?: Food;
   ingredients: Ingredient[];
+  hobbies: Hobby[];
+  times: Time[];
   onSave: (food: Food) => void;
   onCancel: () => void;
 }
@@ -14,6 +17,8 @@ interface FoodFormProps {
 export function FoodForm({
   food,
   ingredients,
+  hobbies,
+  times,
   onSave,
   onCancel,
 }: FoodFormProps) {
@@ -24,6 +29,15 @@ export function FoodForm({
     sell_price: { "1s": 0 },
     image: "default.png",
   });
+
+  // Sort ingredients alphabetically
+  const sortedIngredients = [...ingredients].sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+  const ingredientOptions = sortedIngredients.map((ing) => ({
+    value: ing.name,
+    label: ing.name,
+  }));
 
   useEffect(() => {
     if (food) {
@@ -98,21 +112,15 @@ export function FoodForm({
         <div className="space-y-2">
           {formData.ingredients.map((ing, index) => (
             <div key={index} className="flex gap-2 items-center">
-              <select
-                value={ing.name}
-                onChange={(e) =>
-                  updateIngredient(index, "name", e.target.value)
-                }
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                required
-              >
-                <option value="">Select ingredient</option>
-                {ingredients.map((ingredient) => (
-                  <option key={ingredient.id} value={ingredient.name}>
-                    {ingredient.name}
-                  </option>
-                ))}
-              </select>
+              <div className="flex-1">
+                <SearchableSelect
+                  options={ingredientOptions}
+                  value={ing.name}
+                  onChange={(value) => updateIngredient(index, "name", value)}
+                  placeholder="Select ingredient"
+                  isMulti={false}
+                />
+              </div>
               <input
                 type="number"
                 min="1"
@@ -234,6 +242,76 @@ export function FoodForm({
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
             />
           </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Time
+          </label>
+          <select
+            value={formData.time || ""}
+            onChange={(e) =>
+              setFormData({ ...formData, time: e.target.value || undefined })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {times
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((t) => (
+                <option key={t.id} value={t.id.toString()}>
+                  {t.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby
+          </label>
+          <select
+            value={formData.hobby_name || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_name: e.target.value || undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          >
+            <option value="">None</option>
+            {hobbies
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((h) => (
+                <option key={h.id} value={h.name}>
+                  {h.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Hobby Level
+          </label>
+          <input
+            type="number"
+            min="0"
+            value={formData.hobby_level || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                hobby_level: e.target.value
+                  ? Number(e.target.value)
+                  : undefined,
+              })
+            }
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            placeholder="Level"
+          />
         </div>
       </div>
 

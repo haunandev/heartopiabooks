@@ -1,10 +1,54 @@
 {
   "versions": [
     {
-      "version": "v1.2.1",
-      "label": "v1.2.1 (Latest)",
-      "color": "purple",
+      "version": "v1.3.0",
+      "label": "v1.3.0 (Latest)",
+      "color": "indigo",
       "isLatest": true,
+      "features": [
+        {
+          "title": "NPC Mentor Master Data",
+          "description": "New NPC character system with name, location, bio, and images. NPCs serve as mentors for hobbies."
+        },
+        {
+          "title": "Hobby Master Data",
+          "description": "Track hobbies with associated NPC mentors, max levels, and images."
+        },
+        {
+          "title": "Time Period Master Data",
+          "description": "Manage time periods (morning, afternoon, night, etc.) with images and descriptions."
+        },
+        {
+          "title": "Enhanced Data Display",
+          "description": "Seeds now show growth time, sell price, hobby, and hobby level. All items display related hobby and time information."
+        },
+        {
+          "title": "Multiple Time Selection",
+          "description": "Insects, Fish, and Birds now support multiple time periods (like weather)."
+        },
+        {
+          "title": "Shadow Size for Fish",
+          "description": "Fish now have shadow size property (S/M/L/Golden/Blue) for better categorization."
+        },
+        {
+          "title": "Searchable Inputs",
+          "description": "NPC location and Hobby NPC inputs are now searchable for better UX."
+        },
+        {
+          "title": "Star Rating Display",
+          "description": "Star ratings now use ★ symbol instead of 's' for clearer visual representation."
+        },
+        {
+          "title": "Update default / reset game data json",
+          "description": "The default game data json has been updated to include the new fields, categories and new 85 Fish item. You can download the latest json data from the Official Folder in GDrive Community."
+        }
+      ]
+    },
+    {
+      "version": "v1.2.1",
+      "label": "v1.2.1",
+      "color": "purple",
+      "isLatest": false,
       "features": [
         {
           "title": "Rating Based on 1-Star Price",

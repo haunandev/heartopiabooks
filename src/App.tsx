@@ -8,6 +8,9 @@ import { FishCard } from "./components/FishCard";
 import { BirdCard } from "./components/BirdCard";
 import { LocationCard } from "./components/LocationCard";
 import { WeatherCard } from "./components/WeatherCard";
+import { NPCCard } from "./components/NPCCard";
+import { HobbyCard } from "./components/HobbyCard";
+import { TimeCard } from "./components/TimeCard";
 import { DataTable } from "./components/DataTable";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
@@ -19,6 +22,9 @@ import { FishForm } from "./components/FishForm";
 import { BirdForm } from "./components/BirdForm";
 import { LocationForm } from "./components/LocationForm";
 import { WeatherForm } from "./components/WeatherForm";
+import { NPCForm } from "./components/NPCForm";
+import { HobbyForm } from "./components/HobbyForm";
+import { TimeForm } from "./components/TimeForm";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { ActivityLog } from "./components/ActivityLog";
 import { DataSync } from "./components/DataSync";
@@ -34,7 +40,7 @@ import { useGameData } from "./hooks/useGameData";
 import { useFilters } from "./hooks/useFilters";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
-import { GameData, Bird, Weather } from "./types";
+import { GameData, Bird, Weather, NPC, Hobby, Time } from "./types";
 
 type TabType =
   | "dashboard"
@@ -45,7 +51,10 @@ type TabType =
   | "fish"
   | "birds"
   | "locations"
-  | "weather";
+  | "weather"
+  | "npc"
+  | "hobby"
+  | "time";
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabType>("dashboard");
@@ -82,6 +91,15 @@ function App() {
     addWeather,
     updateWeather,
     deleteWeather,
+    addNPC,
+    updateNPC,
+    deleteNPC,
+    addHobby,
+    updateHobby,
+    deleteHobby,
+    addTime,
+    updateTime,
+    deleteTime,
     exportData,
     importData,
     mergeData,
@@ -289,6 +307,69 @@ function App() {
     setIsConfirmOpen(true);
   };
 
+  // NPC handlers
+  const handleAddNPC = (npc: NPC) => {
+    addNPC(npc);
+    setIsModalOpen(false);
+  };
+
+  const handleUpdateNPC = (npc: NPC) => {
+    updateNPC(npc, editingItem);
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleDeleteNPC = (id: number) => {
+    setConfirmMessage("Are you sure you want to delete this NPC?");
+    setConfirmAction(() => () => {
+      deleteNPC(id);
+      setIsConfirmOpen(false);
+    });
+    setIsConfirmOpen(true);
+  };
+
+  // Hobby handlers
+  const handleAddHobby = (hobby: Hobby) => {
+    addHobby(hobby);
+    setIsModalOpen(false);
+  };
+
+  const handleUpdateHobby = (hobby: Hobby) => {
+    updateHobby(hobby, editingItem);
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleDeleteHobby = (id: number) => {
+    setConfirmMessage("Are you sure you want to delete this hobby?");
+    setConfirmAction(() => () => {
+      deleteHobby(id);
+      setIsConfirmOpen(false);
+    });
+    setIsConfirmOpen(true);
+  };
+
+  // Time handlers
+  const handleAddTime = (time: Time) => {
+    addTime(time);
+    setIsModalOpen(false);
+  };
+
+  const handleUpdateTime = (time: Time) => {
+    updateTime(time, editingItem);
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleDeleteTime = (id: number) => {
+    setConfirmMessage("Are you sure you want to delete this time?");
+    setConfirmAction(() => () => {
+      deleteTime(id);
+      setIsConfirmOpen(false);
+    });
+    setIsConfirmOpen(true);
+  };
+
   // Apply filters and sorting
   const filteredIngredients = applySorting(
     applyFilters(gameData.ingredients || [], "ingredients"),
@@ -318,6 +399,18 @@ function App() {
   const filteredLocations = applySorting(
     applyFilters(gameData.locations || [], "locations"),
     "locations",
+  );
+  const filteredNPCs = applySorting(
+    applyFilters(gameData.npc || [], "npc"),
+    "npc",
+  );
+  const filteredHobbies = applySorting(
+    applyFilters(gameData.hobby || [], "hobby"),
+    "hobby",
+  );
+  const filteredTimes = applySorting(
+    applyFilters(gameData.time || [], "time"),
+    "time",
   );
 
   // Handle merge
@@ -383,6 +476,9 @@ function App() {
             birds: gameData.birds?.length || 0,
             locations: gameData.locations?.length || 0,
             weather: gameData.weather?.length || 0,
+            npc: gameData.npc?.length || 0,
+            hobby: gameData.hobby?.length || 0,
+            time: gameData.time?.length || 0,
           }}
         />
 
@@ -628,6 +724,8 @@ function App() {
                           ingredient={ingredient}
                           seeds={gameData.seeds}
                           locations={gameData.locations}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(ingredient)}
                           onDelete={() => handleDeleteIngredient(ingredient.id)}
                         />
@@ -639,6 +737,8 @@ function App() {
                           key={food.id}
                           food={food}
                           ingredients={gameData.ingredients}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(food)}
                           onDelete={() => handleDeleteFood(food.id)}
                         />
@@ -649,6 +749,8 @@ function App() {
                         <SeedCard
                           key={seed.id}
                           seed={seed}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(seed)}
                           onDelete={() => handleDeleteSeed(seed.id)}
                         />
@@ -661,6 +763,8 @@ function App() {
                           insect={insect}
                           locations={gameData.locations || []}
                           weather={gameData.weather || []}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(insect)}
                           onDelete={() => handleDeleteInsect(insect.id)}
                         />
@@ -673,6 +777,8 @@ function App() {
                           fish={fish}
                           locations={gameData.locations || []}
                           weather={gameData.weather || []}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(fish)}
                           onDelete={() => handleDeleteFish(fish.id)}
                         />
@@ -685,6 +791,8 @@ function App() {
                           bird={bird}
                           locations={gameData.locations || []}
                           weather={gameData.weather || []}
+                          hobbies={gameData.hobby}
+                          times={gameData.time}
                           onEdit={() => openEditModal(bird)}
                           onDelete={() => handleDeleteBird(bird.id)}
                         />
@@ -707,6 +815,37 @@ function App() {
                           weather={weather}
                           onEdit={() => openEditModal(weather)}
                           onDelete={() => handleDeleteWeather(weather.id)}
+                        />
+                      ))}
+
+                    {activeTab === "npc" &&
+                      filteredNPCs.map((npc) => (
+                        <NPCCard
+                          key={npc.id}
+                          npc={npc}
+                          locations={gameData.locations || []}
+                          onEdit={() => openEditModal(npc)}
+                          onDelete={() => handleDeleteNPC(npc.id)}
+                        />
+                      ))}
+
+                    {activeTab === "hobby" &&
+                      filteredHobbies.map((hobby) => (
+                        <HobbyCard
+                          key={hobby.id}
+                          hobby={hobby}
+                          onEdit={() => openEditModal(hobby)}
+                          onDelete={() => handleDeleteHobby(hobby.id)}
+                        />
+                      ))}
+
+                    {activeTab === "time" &&
+                      filteredTimes.map((time) => (
+                        <TimeCard
+                          key={time.id}
+                          time={time}
+                          onEdit={() => openEditModal(time)}
+                          onDelete={() => handleDeleteTime(time.id)}
                         />
                       ))}
                   </div>
@@ -792,7 +931,10 @@ function App() {
                 (activeTab === "birds" && filteredBirds.length === 0) ||
                 (activeTab === "locations" && filteredLocations.length === 0) ||
                 (activeTab === "weather" &&
-                  (gameData.weather?.length || 0) === 0)) && (
+                  (gameData.weather?.length || 0) === 0) ||
+                (activeTab === "npc" && filteredNPCs.length === 0) ||
+                (activeTab === "hobby" && filteredHobbies.length === 0) ||
+                (activeTab === "time" && filteredTimes.length === 0)) && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 mb-2">
                     <Search className="w-16 h-16 mx-auto" />
@@ -810,12 +952,7 @@ function App() {
           <footer className="bg-white border-t border-gray-200 mt-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
               <p className="text-center text-gray-600 text-sm">
-                Made with ❤️ for Heartopia Game • Built with Tauri + React +
-                TypeScript
-              </p>
-              {/* creator */}
-              <p className="text-center text-gray-500 text-xs mt-1">
-                by{" "}
+                Made with ❤️ for Heartopia Game by{" "}
                 <a
                   target="blank"
                   href="https://github.com/haunandev/heartopiabooks"
@@ -842,6 +979,8 @@ function App() {
           <IngredientForm
             ingredient={editingItem}
             locations={gameData.locations}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateIngredient : handleAddIngredient}
             onCancel={() => {
               setIsModalOpen(false);
@@ -864,6 +1003,8 @@ function App() {
           <FoodForm
             food={editingItem}
             ingredients={gameData.ingredients}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateFood : handleAddFood}
             onCancel={() => {
               setIsModalOpen(false);
@@ -884,6 +1025,8 @@ function App() {
         >
           <SeedForm
             seed={editingItem}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateSeed : handleAddSeed}
             onCancel={() => {
               setIsModalOpen(false);
@@ -906,6 +1049,8 @@ function App() {
             insect={editingItem}
             locations={gameData.locations || []}
             weather={gameData.weather}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateInsect : handleAddInsect}
             onCancel={() => {
               setIsModalOpen(false);
@@ -928,6 +1073,8 @@ function App() {
             fish={editingItem}
             locations={gameData.locations || []}
             weather={gameData.weather}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateFish : handleAddFish}
             onCancel={() => {
               setIsModalOpen(false);
@@ -950,6 +1097,8 @@ function App() {
             bird={editingItem}
             locations={gameData.locations || []}
             weather={gameData.weather}
+            hobbies={gameData.hobby}
+            times={gameData.time}
             onSave={editingItem ? handleUpdateBird : handleAddBird}
             onCancel={() => {
               setIsModalOpen(false);
@@ -991,6 +1140,68 @@ function App() {
           <WeatherForm
             weather={editingItem}
             onSave={editingItem ? handleUpdateWeather : handleAddWeather}
+            onCancel={() => {
+              setIsModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </Modal>
+      )}
+
+      {activeTab === "npc" && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingItem(null);
+          }}
+          title={editingItem ? "Edit NPC" : "Add New NPC"}
+        >
+          <NPCForm
+            npc={editingItem}
+            locations={gameData.locations || []}
+            onSave={editingItem ? handleUpdateNPC : handleAddNPC}
+            onCancel={() => {
+              setIsModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </Modal>
+      )}
+
+      {activeTab === "hobby" && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingItem(null);
+          }}
+          title={editingItem ? "Edit Hobby" : "Add New Hobby"}
+        >
+          <HobbyForm
+            hobby={editingItem}
+            npcs={gameData.npc || []}
+            onSave={editingItem ? handleUpdateHobby : handleAddHobby}
+            onCancel={() => {
+              setIsModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        </Modal>
+      )}
+
+      {activeTab === "time" && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingItem(null);
+          }}
+          title={editingItem ? "Edit Time" : "Add New Time"}
+        >
+          <TimeForm
+            time={editingItem}
+            onSave={editingItem ? handleUpdateTime : handleAddTime}
             onCancel={() => {
               setIsModalOpen(false);
               setEditingItem(null);

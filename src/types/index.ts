@@ -13,6 +13,9 @@ export interface Ingredient {
   buy_price: number | null;
   source: "seed" | "wild" | "buy";
   locations: string[]; // Array of location IDs
+  time?: string; // Time ID
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -32,6 +35,9 @@ export interface Food {
     "4s"?: number;
     "5s"?: number;
   };
+  time?: string; // Time ID
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -39,6 +45,11 @@ export interface Seed {
   id: number;
   name: string;
   price: number;
+  sell_price?: number;
+  growth_time?: number; // in minutes
+  time?: string; // Time ID
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -54,6 +65,29 @@ export interface Weather {
   image: string;
 }
 
+export interface NPC {
+  id: number;
+  name: string;
+  location: string; // Location ID
+  bio: string;
+  image?: string;
+}
+
+export interface Hobby {
+  id: number;
+  image: string;
+  name: string;
+  npc_name: string; // NPC name relation
+  max_level: number;
+}
+
+export interface Time {
+  id: number;
+  image: string;
+  name: string;
+  description: string;
+}
+
 export interface Insect {
   id: number;
   name: string;
@@ -66,6 +100,9 @@ export interface Insect {
   };
   locations: string[]; // Array of location IDs
   weather: string[]; // Array of weather names
+  time?: string[]; // Array of time IDs
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -81,6 +118,10 @@ export interface Fish {
   };
   locations: string[]; // Array of location IDs
   weather: string[]; // Array of weather names
+  shadow?: "S" | "M" | "L" | "Golden" | "Blue";
+  time?: string[]; // Array of time IDs
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -96,6 +137,9 @@ export interface Bird {
   };
   locations: string[]; // Array of location IDs
   weather: string[]; // Array of weather names
+  time?: string[]; // Array of time IDs
+  hobby_level?: number;
+  hobby_name?: string; // Hobby name relation
   image: string;
 }
 
@@ -108,6 +152,9 @@ export interface GameData {
   birds: Bird[];
   locations: Location[];
   weather: Weather[];
+  npc: NPC[];
+  hobby: Hobby[];
+  time: Time[];
 }
 
 export type ActivityType = "add" | "edit" | "delete";
@@ -119,7 +166,10 @@ export type ItemType =
   | "fish"
   | "bird"
   | "location"
-  | "weather";
+  | "weather"
+  | "npc"
+  | "hobby"
+  | "time";
 
 export interface ActivityLog {
   id: string;

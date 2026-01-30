@@ -8,6 +8,9 @@ import {
   Bird,
   MapPin,
   CloudRain,
+  User,
+  Heart,
+  Clock,
   Menu,
   X,
 } from "lucide-react";
@@ -22,7 +25,10 @@ type TabType =
   | "fish"
   | "birds"
   | "locations"
-  | "weather";
+  | "weather"
+  | "npc"
+  | "hobby"
+  | "time";
 
 interface SidebarProps {
   activeTab: TabType;
@@ -36,6 +42,9 @@ interface SidebarProps {
     birds: number;
     locations: number;
     weather: number;
+    npc: number;
+    hobby: number;
+    time: number;
   };
 }
 
@@ -86,6 +95,24 @@ export function Sidebar({ activeTab, onTabChange, counts }: SidebarProps) {
       label: "Weather",
       icon: CloudRain,
       count: counts.weather,
+    },
+    {
+      id: "npc" as TabType,
+      label: "NPC",
+      icon: User,
+      count: counts.npc,
+    },
+    {
+      id: "hobby" as TabType,
+      label: "Hobbies",
+      icon: Heart,
+      count: counts.hobby,
+    },
+    {
+      id: "time" as TabType,
+      label: "Time",
+      icon: Clock,
+      count: counts.time,
     },
   ];
 
