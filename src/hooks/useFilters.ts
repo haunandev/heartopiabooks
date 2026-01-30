@@ -6,7 +6,6 @@ import {
   Insect,
   Fish,
   Bird,
-  Weather,
   SortOption,
 } from "../types";
 

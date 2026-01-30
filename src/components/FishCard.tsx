@@ -20,13 +20,7 @@ interface FishCardProps {
   onDelete: () => void;
 }
 
-export function FishCard({
-  fish,
-  locations,
-  weather,
-  onEdit,
-  onDelete,
-}: FishCardProps) {
+export function FishCard({ fish, locations, onEdit, onDelete }: FishCardProps) {
   const getLocationNames = () => {
     return fish.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)

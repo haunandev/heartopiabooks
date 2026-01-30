@@ -20,13 +20,7 @@ interface BirdCardProps {
   onDelete: () => void;
 }
 
-export function BirdCard({
-  bird,
-  locations,
-  weather,
-  onEdit,
-  onDelete,
-}: BirdCardProps) {
+export function BirdCard({ bird, locations, onEdit, onDelete }: BirdCardProps) {
   const getLocationNames = () => {
     return bird.locations
       .map((locId) => locations.find((l) => l.id === locId)?.name)

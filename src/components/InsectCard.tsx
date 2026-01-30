@@ -16,7 +16,6 @@ interface InsectCardProps {
 export function InsectCard({
   insect,
   locations,
-  weather,
   onEdit,
   onDelete,
 }: InsectCardProps) {
