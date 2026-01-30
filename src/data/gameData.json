@@ -256,7 +256,7 @@
     },
     {
       "id": 22,
-      "name": "Mushroom",
+      "name": "Any Mushroom",
       "sell_price": 16,
       "buy_price": null,
       "source": "wild",
@@ -269,7 +269,7 @@
       "sell_price": null,
       "buy_price": null,
       "source": "seed",
-      "image": "default.png",
+      "image": "images/ingredients/eggplant.png",
       "sell_price_stars": {
         "1s": 406,
         "2s": 544,
@@ -279,7 +279,7 @@
     },
     {
       "id": 24,
-      "name": "Coffee Bean",
+      "name": "Coffee Beans",
       "sell_price": null,
       "buy_price": 50,
       "source": "buy",
@@ -288,122 +288,169 @@
     },
     {
       "id": 25,
-      "name": "Fish",
+      "name": "Any Fish",
       "sell_price": 150,
       "buy_price": null,
       "source": "wild",
-      "image": "default.png",
+      "image": "images/ingredients/fish.png",
       "locations": []
+    },
+    {
+      "id": 26,
+      "name": "Cooking Oil",
+      "sell_price": null,
+      "buy_price": 150,
+      "source": "buy",
+      "image": "images/ingredients/cooking-oil.png",
+      "locations": []
+    },
+    {
+      "id": 27,
+      "name": "Button Mushroom",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "images/ingredients/cooking-oil.png",
+      "locations": []
+    },
+    {
+      "id": 28,
+      "name": "Oyster Mushroom",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "images/ingredients/oyster-mushroom.png",
+      "locations": []
+    },
+    {
+      "id": 29,
+      "name": "Shiitake",
+      "sell_price": 16,
+      "buy_price": null,
+      "source": "wild",
+      "image": "images/ingredients/shiitake.png",
+      "locations": []
+    },
+    {
+      "id": 30,
+      "name": "Blue Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 31,
+      "name": "Cocoa",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 32,
+      "name": "Shellfish",
+      "sell_price": 100,
+      "buy_price": null,
+      "source": "wild",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 33,
+      "name": "Green Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 34,
+      "name": "Orange Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 35,
+      "name": "Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 36,
+      "name": "Red Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 37,
+      "name": "Violet Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
+    },
+    {
+      "id": 38,
+      "name": "Yellow Sugar",
+      "sell_price": null,
+      "buy_price": null,
+      "source": "buy",
+      "locations": [],
+      "image": "default.png"
     }
   ],
   "foods": [
     {
       "id": 1,
-      "name": "Black Truffle Pie",
-      "ingredients": [
-        {
-          "name": "Black Truffle",
-          "quantity": 2
-        },
-        {
-          "name": "Wheat",
-          "quantity": 1
-        },
-        {
-          "name": "Egg",
-          "quantity": 1
-        }
-      ],
+      "name": "Afternoon Tea",
+      "ingredients": [],
       "sell_price": {
-        "1s": 830,
-        "2s": 1245,
-        "3s": 1660,
-        "4s": 3320
+        "1s": 710,
+        "2s": 1065,
+        "3s": 1420,
+        "4s": 2840,
+        "5s": 5680
       },
-      "image": "images/foods/black-truffle-pie.png"
+      "image": "images/foods/afternoon-tea.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 7
     },
     {
       "id": 2,
-      "name": "Black Truffle Cream Pasta",
+      "name": "Apple Jam",
       "ingredients": [
         {
-          "name": "Black Truffle",
-          "quantity": 1
-        },
-        {
-          "name": "Wheat",
-          "quantity": 2
-        },
-        {
-          "name": "Milk",
-          "quantity": 1
-        }
-      ],
-      "sell_price": {
-        "1s": 900
-      },
-      "image": "images/foods/black-truffle-cream-pasta.png"
-    },
-    {
-      "id": 3,
-      "name": "Mushroom Pie",
-      "ingredients": [
-        {
-          "name": "Mushroom",
-          "quantity": 2
-        },
-        {
-          "name": "Wheat",
-          "quantity": 1
-        },
-        {
-          "name": "Egg",
-          "quantity": 1
-        }
-      ],
-      "sell_price": {
-        "1s": 500
-      },
-      "image": "images/foods/mushroom-pie.png"
-    },
-    {
-      "id": 4,
-      "name": "Penny Bun Pie",
-      "ingredients": [
-        {
-          "name": "Penny Bun",
-          "quantity": 2
-        },
-        {
-          "name": "Wheat",
-          "quantity": 1
-        },
-        {
-          "name": "Egg",
-          "quantity": 1
-        }
-      ],
-      "sell_price": {
-        "1s": 500
-      },
-      "image": "images/foods/penny-bun-pie.png"
-    },
-    {
-      "id": 5,
-      "name": "Grilled Mushrooms",
-      "ingredients": [
-        {
-          "name": "Mushroom",
+          "name": "Apple",
           "quantity": 4
         }
       ],
       "sell_price": {
-        "1s": 180
+        "1s": 270,
+        "2s": 405,
+        "3s": 540,
+        "4s": 1080,
+        "5s": 2160
       },
-      "image": "images/foods/grilled-mushrooms.png"
+      "image": "images/foods/apple-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 6,
+      "id": 3,
       "name": "Apple Pie",
       "ingredients": [
         {
@@ -424,67 +471,312 @@
         }
       ],
       "sell_price": {
-        "1s": 730
+        "1s": 730,
+        "2s": 1095,
+        "3s": 1460,
+        "4s": 2920,
+        "5s": 5840
       },
-      "image": "images/foods/apple-pie.png"
+      "image": "images/foods/apple-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 5
+    },
+    {
+      "id": 4,
+      "name": "Baked Eggplant w/ Meat",
+      "ingredients": [
+        {
+          "name": "Eggplant",
+          "quantity": 1
+        },
+        {
+          "name": "Meat",
+          "quantity": 1
+        },
+        {
+          "name": "Cooking Oil",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 1230,
+        "2s": 1845,
+        "3s": 2460
+      },
+      "image": "images/foods/baked-eggplant-with-meat.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 9
+    },
+    {
+      "id": 5,
+      "name": "Bizarre Food",
+      "ingredients": [],
+      "sell_price": {
+        "1s": 30
+      },
+      "image": "images/foods/bizarre-food.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 6,
+      "name": "Black Truffle Cream Pasta",
+      "ingredients": [
+        {
+          "name": "Black Truffle",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 2
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 900,
+        "2s": 1350,
+        "3s": 1800,
+        "4s": 3600,
+        "5s": 7200
+      },
+      "image": "images/foods/black-truffle-cream-pasta.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 3
     },
     {
       "id": 7,
-      "name": "Apple Jam",
+      "name": "Black Truffle Pie",
       "ingredients": [
         {
-          "name": "Apple",
-          "quantity": 4
+          "name": "Black Truffle",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
         }
       ],
       "sell_price": {
-        "1s": 270
+        "1s": 830,
+        "2s": 1245,
+        "3s": 1660,
+        "4s": 3320,
+        "5s": 6640
       },
-      "image": "images/foods/apple-jam.png",
-      "hobby_name": "Cooking"
+      "image": "images/foods/black-truffle-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
       "id": 8,
-      "name": "Mandarin Jam",
+      "name": "Blue Roll Cake",
       "ingredients": [
         {
-          "name": "Mandarin",
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Blue Sugar",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 570,
+        "2s": 855,
+        "3s": 1140,
+        "4s": 2280
+      },
+      "image": "images/foods/blue-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 9,
+      "name": "Blueberry Jam",
+      "ingredients": [
+        {
+          "name": "Blueberry",
           "quantity": 4
         }
       ],
       "sell_price": {
-        "1s": 270
+        "1s": 170,
+        "2s": 255,
+        "3s": 340,
+        "4s": 680,
+        "5s": 1360
       },
-      "image": "images/foods/mandarin-jam.png"
+      "image": "images/foods/blueberry-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 9,
-      "name": "Mixed Jam",
+      "id": 10,
+      "name": "Button Mushroom Pie",
       "ingredients": [
         {
-          "name": "Apple",
+          "name": "Button Mushroom",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
           "quantity": 1
         },
         {
-          "name": "Mandarin",
-          "quantity": 1
-        },
-        {
-          "name": "Blueberry",
-          "quantity": 1
-        },
-        {
-          "name": "Raspberry",
+          "name": "Egg",
           "quantity": 1
         }
       ],
       "sell_price": {
-        "1s": 160
+        "1s": 500,
+        "2s": 750,
+        "3s": 1000,
+        "4s": 2000
       },
-      "image": "images/foods/mixed-jam.png"
+      "image": "images/foods/button-mushroom-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 10,
+      "id": 11,
+      "name": "Candlelight Dinner",
+      "ingredients": [],
+      "sell_price": {
+        "1s": 1760,
+        "2s": 2640,
+        "3s": 3520,
+        "4s": 7040,
+        "5s": 14080
+      },
+      "image": "images/foods/candlelight-dinner.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 9
+    },
+    {
+      "id": 12,
+      "name": "Carrot Cake",
+      "ingredients": [
+        {
+          "name": "Carrot",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 840,
+        "2s": 1260,
+        "3s": 1680,
+        "4s": 3360,
+        "5s": 6720
+      },
+      "image": "images/foods/carrot-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 5
+    },
+    {
+      "id": 13,
+      "name": "Cheese Cake",
+      "ingredients": [
+        {
+          "name": "Cheese",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 480,
+        "2s": 720,
+        "3s": 960,
+        "4s": 1920
+      },
+      "image": "images/foods/cheese-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 2
+    },
+    {
+      "id": 14,
+      "name": "Chocolate Sauce",
+      "ingredients": [
+        {
+          "name": "Cocoa",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {},
+      "image": "images/foods/chocolate-sauce.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 15,
+      "name": "Coffee",
+      "ingredients": [
+        {
+          "name": "Coffee Beans",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 290,
+        "2s": 435,
+        "3s": 580,
+        "4s": 1160
+      },
+      "image": "images/foods/coffee.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 16,
+      "name": "Coffee Latte",
+      "ingredients": [
+        {
+          "name": "Coffee Beans",
+          "quantity": 2
+        },
+        {
+          "name": "Milk",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 300,
+        "2s": 450,
+        "3s": 600,
+        "4s": 1200,
+        "5s": 2400
+      },
+      "image": "images/foods/coffee-latte.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 17,
       "name": "Corn Soup",
       "ingredients": [
         {
@@ -501,12 +793,245 @@
         }
       ],
       "sell_price": {
-        "1s": 1340
+        "1s": 1340,
+        "2s": 2010,
+        "3s": 2680,
+        "4s": 5360
       },
-      "image": "images/foods/corn-soup.png"
+      "image": "images/foods/corn-soup.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 5
     },
     {
-      "id": 11,
+      "id": 18,
+      "name": "Crayfish Sashimi",
+      "ingredients": [
+        {
+          "name": "Shellfish",
+          "quantity": 3
+        },
+        {
+          "name": "Lettuce",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 850,
+        "2s": 1275,
+        "3s": 1700,
+        "4s": 3400
+      },
+      "image": "images/foods/crayfish-sashimi.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 8
+    },
+    {
+      "id": 19,
+      "name": "Deluxe Seafood Platter",
+      "ingredients": [
+        {
+          "name": "Shellfish",
+          "quantity": 2
+        },
+        {
+          "name": "Any Fish",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 410,
+        "2s": 615,
+        "3s": 820,
+        "4s": 1640,
+        "5s": 3280
+      },
+      "image": "images/foods/deluxe-seafood-platter.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 6
+    },
+    {
+      "id": 20,
+      "name": "Fish N Chips",
+      "ingredients": [
+        {
+          "name": "Any Fish",
+          "quantity": 2
+        },
+        {
+          "name": "Potato",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 310,
+        "2s": 465,
+        "3s": 620,
+        "4s": 1240,
+        "5s": 2480
+      },
+      "image": "images/foods/fish-n-chips.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 21,
+      "name": "Grape Jam",
+      "ingredients": [
+        {
+          "name": "Grape",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 2020,
+        "2s": 3030,
+        "3s": 4040,
+        "4s": 16160
+      },
+      "image": "images/foods/grape-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 22,
+      "name": "Green Roll Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Green Sugar",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 670,
+        "2s": 1005,
+        "3s": 1340,
+        "4s": 2680
+      },
+      "image": "images/foods/green-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 23,
+      "name": "Grilled Button Mushroom",
+      "ingredients": [
+        {
+          "name": "Button Mushroom",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1440
+      },
+      "image": "images/foods/grilled-button-mushroom.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 24,
+      "name": "House Salad",
+      "ingredients": [
+        {
+          "name": "Tomato",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 90,
+        "2s": 135,
+        "3s": 180,
+        "4s": 360
+      },
+      "image": "images/foods/house-salad.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 25,
+      "name": "Indigo Roll Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 570,
+        "2s": 855,
+        "3s": 1140,
+        "4s": 2280,
+        "5s": 4560
+      },
+      "image": "images/foods/indigo-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 26,
+      "name": "Mandarin Jam",
+      "ingredients": [
+        {
+          "name": "Mandarin",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 270,
+        "2s": 405,
+        "3s": 540,
+        "4s": 1080,
+        "5s": 2160
+      },
+      "image": "images/foods/mandarin-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 27,
+      "name": "Meat Burger",
+      "ingredients": [
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Lettuce",
+          "quantity": 1
+        },
+        {
+          "name": "Meat",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 1350,
+        "2s": 2025,
+        "3s": 2700,
+        "4s": 5400,
+        "5s": 10800
+      },
+      "image": "images/foods/meat-burger.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 8
+    },
+    {
+      "id": 28,
       "name": "Meat Sauce Pasta",
       "ingredients": [
         {
@@ -527,129 +1052,201 @@
         }
       ],
       "sell_price": {
-        "1s": 670
+        "1s": 670,
+        "2s": 1005,
+        "3s": 1340,
+        "4s": 2680,
+        "5s": 5360
       },
-      "image": "images/foods/meat-sauce-pasta.png"
+      "image": "images/foods/meat-sauce-pasta.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 4
     },
     {
-      "id": 12,
-      "name": "House Salad",
+      "id": 29,
+      "name": "Mixed Jam",
       "ingredients": [
         {
-          "name": "Tomato",
-          "quantity": 2
+          "name": "Raspberry",
+          "quantity": 1
+        },
+        {
+          "name": "Blueberry",
+          "quantity": 1
+        },
+        {
+          "name": "Apple",
+          "quantity": 1
+        },
+        {
+          "name": "Mandarin",
+          "quantity": 1
         }
       ],
       "sell_price": {
-        "1s": 90,
-        "3s": 180
+        "1s": 160,
+        "2s": 240,
+        "3s": 320,
+        "4s": 640,
+        "5s": 1280
       },
-      "image": "default.png",
+      "image": "images/foods/mixed-jam.png",
       "hobby_name": "Cooking",
       "hobby_level": 1
     },
     {
-      "id": 13,
-      "name": "Latte",
+      "id": 30,
+      "name": "Mushroom Pie",
       "ingredients": [
         {
-          "name": "Milk",
+          "name": "Any Mushroom",
           "quantity": 2
-        },
-        {
-          "name": "Coffee Bean",
-          "quantity": 2
-        }
-      ],
-      "sell_price": {
-        "1s": 300,
-        "2s": 450,
-        "3s": 600
-      },
-      "image": "default.png"
-    },
-    {
-      "id": 14,
-      "name": "Carrot Cake",
-      "ingredients": [
-        {
-          "name": "Egg",
-          "quantity": 1
         },
         {
           "name": "Wheat",
           "quantity": 1
         },
         {
-          "name": "Carrot",
+          "name": "Egg",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 500,
+        "2s": 750,
+        "3s": 1000,
+        "4s": 2000
+      },
+      "image": "images/foods/mushroom-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 31,
+      "name": "Orange Roll Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Orange Sugar",
           "quantity": 2
         }
       ],
       "sell_price": {
-        "1s": 840,
-        "2s": 1260,
-        "4s": 3360
+        "1s": 670,
+        "2s": 1005,
+        "3s": 1340,
+        "4s": 2680
       },
-      "image": "default.png"
+      "image": "images/foods/orange-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 15,
-      "name": "Raspberry Jam",
+      "id": 32,
+      "name": "Original Roll Cake",
       "ingredients": [
         {
-          "name": "Raspberry",
-          "quantity": 4
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Sugar",
+          "quantity": 2
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 550,
+        "2s": 825,
+        "3s": 1100,
+        "4s": 2200,
+        "5s": 4400
       },
-      "image": "default.png"
+      "image": "images/foods/original-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 16,
-      "name": "Tomato Sauce",
+      "id": 33,
+      "name": "Oyster Mushroom Pie",
       "ingredients": [
         {
-          "name": "Tomato",
-          "quantity": 4
+          "name": "Oyster Mushroom",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 500,
+        "2s": 750,
+        "3s": 1000,
+        "4s": 2000
       },
-      "image": "default.png"
+      "image": "images/foods/oyster-mushroom-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 17,
-      "name": "Blueberry Jam",
+      "id": 34,
+      "name": "Penny Bun Pie",
       "ingredients": [
         {
-          "name": "Blueberry",
-          "quantity": 4
+          "name": "Penny Bun",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 500,
+        "2s": 750,
+        "3s": 1000,
+        "4s": 2000
       },
-      "image": "default.png"
+      "image": "images/foods/penny-bun-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 18,
-      "name": "Strawberry Jam",
-      "ingredients": [
-        {
-          "name": "Strawberry",
-          "quantity": 4
-        }
-      ],
+      "id": 35,
+      "name": "Picnic Set",
+      "ingredients": [],
       "sell_price": {
-        "1s": 0
+        "1s": 2260,
+        "2s": 3390,
+        "3s": 4520,
+        "4s": 9040,
+        "5s": 18080
       },
-      "image": "default.png"
+      "image": "images/foods/picnic-set.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 7
     },
     {
-      "id": 19,
+      "id": 36,
       "name": "Pineapple Jam",
       "ingredients": [
         {
@@ -658,48 +1255,42 @@
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 280,
+        "2s": 420,
+        "3s": 560,
+        "4s": 1120,
+        "5s": 2240
       },
-      "image": "default.png"
+      "image": "images/foods/pineapple-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 20,
-      "name": "Grape Jam",
+      "id": 37,
+      "name": "Raspberry Jam",
       "ingredients": [
         {
-          "name": "Grape",
+          "name": "Raspberry",
           "quantity": 4
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 250,
+        "2s": 375,
+        "3s": 500,
+        "4s": 1000,
+        "5s": 2000
       },
-      "image": "default.png"
+      "image": "images/foods/raspberry-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 21,
-      "name": "Fish & Chips",
+      "id": 38,
+      "name": "Red Roll Cake",
       "ingredients": [
         {
-          "name": "Fish",
-          "quantity": 2
-        },
-        {
-          "name": "Potato",
-          "quantity": 2
-        }
-      ],
-      "sell_price": {
-        "1s": 0
-      },
-      "image": "default.png"
-    },
-    {
-      "id": 22,
-      "name": "Cheese Cake",
-      "ingredients": [
-        {
-          "name": "Cheese",
+          "name": "Egg",
           "quantity": 1
         },
         {
@@ -707,17 +1298,22 @@
           "quantity": 1
         },
         {
-          "name": "Wheat",
-          "quantity": 1
+          "name": "Red Sugar",
+          "quantity": 2
         }
       ],
       "sell_price": {
-        "1s": 0
+        "1s": 670,
+        "2s": 1005,
+        "3s": 1340,
+        "4s": 2680
       },
-      "image": "default.png"
+      "image": "images/foods/red-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     },
     {
-      "id": 23,
+      "id": 39,
       "name": "Rustic Ratatouille",
       "ingredients": [
         {
@@ -735,9 +1331,347 @@
       ],
       "sell_price": {
         "1s": 640,
-        "2s": 960
+        "2s": 960,
+        "3s": 1280,
+        "4s": 2560,
+        "5s": 5120
       },
-      "image": "default.png"
+      "image": "images/foods/rustic-ratatouille.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 3
+    },
+    {
+      "id": 40,
+      "name": "Seafood Pizza",
+      "ingredients": [
+        {
+          "name": "Cheese",
+          "quantity": 1
+        },
+        {
+          "name": "Jam",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Any Fish",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 780,
+        "2s": 1170,
+        "3s": 1560,
+        "4s": 3120
+      },
+      "image": "images/foods/seafood-pizza.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 4
+    },
+    {
+      "id": 41,
+      "name": "Seafood Risotto",
+      "ingredients": [
+        {
+          "name": "Shellfish",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Tomato",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 490,
+        "2s": 735,
+        "3s": 980,
+        "4s": 1960
+      },
+      "image": "images/foods/seafood-risotto.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 3
+    },
+    {
+      "id": 42,
+      "name": "Shiitake Pie",
+      "ingredients": [
+        {
+          "name": "Shiitake",
+          "quantity": 2
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 500,
+        "2s": 750,
+        "3s": 1000,
+        "4s": 2000
+      },
+      "image": "images/foods/shiitake-pie.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 43,
+      "name": "Smoked Fish Bagel",
+      "ingredients": [
+        {
+          "name": "Any Fish",
+          "quantity": 1
+        },
+        {
+          "name": "Cheese",
+          "quantity": 1
+        },
+        {
+          "name": "Carrot",
+          "quantity": 1
+        },
+        {
+          "name": "Wheat",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 520,
+        "2s": 780,
+        "3s": 1040,
+        "4s": 2080
+      },
+      "image": "images/foods/smoked-fish-bagel.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 2
+    },
+    {
+      "id": 44,
+      "name": "Strawberry Jam",
+      "ingredients": [
+        {
+          "name": "Strawberry",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 1580,
+        "2s": 2370,
+        "3s": 3160,
+        "4s": 6320,
+        "5s": 12640
+      },
+      "image": "images/foods/strawberry-jam.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 45,
+      "name": "Tiramisu",
+      "ingredients": [
+        {
+          "name": "Coffee Beans",
+          "quantity": 1
+        },
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Cheese",
+          "quantity": 1
+        }
+      ],
+      "sell_price": {
+        "1s": 530,
+        "2s": 795,
+        "3s": 1060,
+        "4s": 2120,
+        "5s": 4240
+      },
+      "image": "images/foods/tiramisu.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 6
+    },
+    {
+      "id": 46,
+      "name": "Tomato Sauce",
+      "ingredients": [
+        {
+          "name": "Tomato",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1440
+      },
+      "image": "images/foods/tomato-sauce.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 47,
+      "name": "Violet Roll Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Violet Sugar",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 570,
+        "2s": 855,
+        "3s": 1140,
+        "4s": 2280
+      },
+      "image": "images/foods/violet-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 48,
+      "name": "Yellow Roll Cake",
+      "ingredients": [
+        {
+          "name": "Egg",
+          "quantity": 1
+        },
+        {
+          "name": "Milk",
+          "quantity": 1
+        },
+        {
+          "name": "Yellow Sugar",
+          "quantity": 2
+        }
+      ],
+      "sell_price": {
+        "1s": 670,
+        "2s": 1005,
+        "3s": 1340,
+        "4s": 2680
+      },
+      "image": "images/foods/yellow-roll-cake.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 49,
+      "name": "Bizarre Drink",
+      "ingredients": [],
+      "sell_price": {
+        "1s": 30
+      },
+      "image": "images/foods/bizarre-drink.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 50,
+      "name": "Grilled Mushroom",
+      "ingredients": [
+        {
+          "name": "Any Mushroom",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1437
+      },
+      "image": "default.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 51,
+      "name": "Grilled Oyster Mushroom",
+      "ingredients": [
+        {
+          "name": "Oyster Mushroom",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1438
+      },
+      "image": "default.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 52,
+      "name": "Grilled Penny Bun",
+      "ingredients": [
+        {
+          "name": "Penny Bun",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1440
+      },
+      "image": "default.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
+    },
+    {
+      "id": 53,
+      "name": "Grilled Shiitake Mushroom",
+      "ingredients": [
+        {
+          "name": "Shiitake",
+          "quantity": 4
+        }
+      ],
+      "sell_price": {
+        "1s": 180,
+        "2s": 270,
+        "3s": 360,
+        "4s": 720,
+        "5s": 1440
+      },
+      "image": "default.png",
+      "hobby_name": "Cooking",
+      "hobby_level": 1
     }
   ],
   "seeds": [
