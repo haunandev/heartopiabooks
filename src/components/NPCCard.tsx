@@ -76,13 +76,6 @@ export function NPCCard({ npc, locations, onEdit, onDelete }: NPCCardProps) {
                     {npc.bio}
                   </p>
                 )}
-
-                {/* ID Badge */}
-                <div className="mt-3">
-                  <span className="inline-block px-2 py-0.5 bg-indigo-100 text-indigo-700 text-xs rounded-full">
-                    Mentor: {npc.name}
-                  </span>
-                </div>
               </div>
             </div>
 

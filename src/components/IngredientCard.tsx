@@ -126,6 +126,59 @@ export function IngredientCard({
                 </div>
               </div>
 
+              <div className="flex items-center gap-2">
+                <div
+                  className={`mt-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${sourceColors[ingredient.source]}`}
+                >
+                  {sourceIcons[ingredient.source]}
+                  <span className="capitalize">{ingredient.source}</span>
+                </div>
+
+                {/* Hobby and Time Info */}
+                {(hobby || time) && (
+                  <div className="mt-2 space-y-1">
+                    {time && (
+                      <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
+                        🕐 {time.name}
+                      </div>
+                    )}
+
+                    {hobby && (
+                      <div className="flex items-center gap-2">
+                        <Heart className="w-4 h-4 text-pink-500" />
+                        <span className="text-sm text-gray-700">
+                          {hobby.name}
+                        </span>
+                        {ingredient.hobby_level && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                            <TrendingUp className="w-3 h-3" />
+                            Lv. {ingredient.hobby_level}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Locations */}
+              {ingredient.locations && ingredient.locations.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {ingredient.locations.map((locId) => {
+                    const location = locations.find((l) => l.id === locId);
+                    return location ? (
+                      <span
+                        key={locId}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-700 rounded text-xs"
+                      >
+                        <MapPin className="w-3 h-3" />
+                        {location.name}
+                      </span>
+                    ) : null;
+                  })}
+                </div>
+              )}
+
               <div className="mt-2 space-y-1">
                 {/* Sell price for seed type with stars */}
                 {ingredient.source === "seed" &&
@@ -256,57 +309,6 @@ export function IngredientCard({
                     </div>
                   )}
               </div>
-
-              <div
-                className={`mt-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${sourceColors[ingredient.source]}`}
-              >
-                {sourceIcons[ingredient.source]}
-                <span className="capitalize">{ingredient.source}</span>
-              </div>
-
-              {/* Locations */}
-              {ingredient.locations && ingredient.locations.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-1">
-                  {ingredient.locations.map((locId) => {
-                    const location = locations.find((l) => l.id === locId);
-                    return location ? (
-                      <span
-                        key={locId}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-700 rounded text-xs"
-                      >
-                        <MapPin className="w-3 h-3" />
-                        {location.name}
-                      </span>
-                    ) : null;
-                  })}
-                </div>
-              )}
-
-              {/* Hobby and Time Info */}
-              {(hobby || time) && (
-                <div className="mt-2 space-y-1">
-                  {time && (
-                    <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
-                      🕐 {time.name}
-                    </div>
-                  )}
-
-                  {hobby && (
-                    <div className="flex items-center gap-2">
-                      <Heart className="w-4 h-4 text-pink-500" />
-                      <span className="text-sm text-gray-700">
-                        {hobby.name}
-                      </span>
-                      {ingredient.hobby_level && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
-                          <TrendingUp className="w-3 h-3" />
-                          Lv. {ingredient.hobby_level}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </CardContent>

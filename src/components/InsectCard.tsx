@@ -135,6 +135,20 @@ export function InsectCard({
                 </div>
               </div>
 
+              {/* Hobby Info */}
+              {hobby && (
+                <div className="flex items-center gap-2 mt-2">
+                  <Heart className="w-4 h-4 text-pink-500" />
+                  <span className="text-sm text-gray-700">{hobby.name}</span>
+                  {insect.hobby_level && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                      <TrendingUp className="w-3 h-3" />
+                      Lv. {insect.hobby_level}
+                    </span>
+                  )}
+                </div>
+              )}
+
               {/* Stars */}
               <div className="flex gap-0.5 mt-2">
                 {[...Array(5)].map((_, i) => (
@@ -164,21 +178,6 @@ export function InsectCard({
                 </div>
               )}
 
-              {/* Weather */}
-              {insect.weather && insect.weather.length > 0 && (
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {insect.weather.map((weatherName) => (
-                    <span
-                      key={weatherName}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs"
-                    >
-                      <CloudRain className="w-3 h-3" />
-                      {weatherName}
-                    </span>
-                  ))}
-                </div>
-              )}
-
               {/* Time Periods */}
               {insectTimes && insectTimes.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-2">
@@ -194,17 +193,18 @@ export function InsectCard({
                 </div>
               )}
 
-              {/* Hobby Info */}
-              {hobby && (
-                <div className="flex items-center gap-2 mt-2">
-                  <Heart className="w-4 h-4 text-pink-500" />
-                  <span className="text-sm text-gray-700">{hobby.name}</span>
-                  {insect.hobby_level && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
-                      <TrendingUp className="w-3 h-3" />
-                      Lv. {insect.hobby_level}
+              {/* Weather */}
+              {insect.weather && insect.weather.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {insect.weather.map((weatherName) => (
+                    <span
+                      key={weatherName}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs"
+                    >
+                      <CloudRain className="w-3 h-3" />
+                      {weatherName}
                     </span>
-                  )}
+                  ))}
                 </div>
               )}
 

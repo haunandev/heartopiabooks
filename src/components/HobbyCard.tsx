@@ -79,7 +79,9 @@ export function HobbyCard({ hobby, onEdit, onDelete }: HobbyCardProps) {
               {/* NPC Name */}
               {hobby.npc_name && (
                 <div className="flex items-center gap-1 text-sm text-gray-600 mt-1">
-                  <span>NPC: {hobby.npc_name}</span>
+                  <span>
+                    Hobby Mentor: <b>{hobby.npc_name}</b>
+                  </span>
                 </div>
               )}
 

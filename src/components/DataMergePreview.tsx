@@ -147,6 +147,9 @@ export function DataMergePreview({
       "birds",
       "locations",
       "weather",
+      "npc",
+      "hobby",
+      "time",
     ];
 
     return categories.map((category) => {
@@ -202,6 +205,9 @@ export function DataMergePreview({
       "birds",
       "locations",
       "weather",
+      "npc",
+      "hobby",
+      "time",
     ];
 
     categories.forEach((category) => {

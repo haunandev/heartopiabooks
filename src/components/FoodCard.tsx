@@ -126,6 +126,28 @@ export function FoodCard({
                 </div>
               </div>
 
+              {/* Hobby and Time Info */}
+              <div className="pt-3space-y-2">
+                {time && (
+                  <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
+                    🕐 {time.name}
+                  </div>
+                )}
+
+                {hobby && (
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-pink-500" />
+                    <span className="text-sm text-gray-700">{hobby.name}</span>
+                    {food.hobby_level && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                        <TrendingUp className="w-3 h-3" />
+                        Lv. {food.hobby_level}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {/* Ingredients */}
               <div className="mt-2 flex flex-wrap gap-1">
                 {food.ingredients.map((ing, idx) => (
@@ -258,30 +280,6 @@ export function FoodCard({
                     </span>
                   </div>
                 )}
-
-                {/* Hobby and Time Info */}
-                <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
-                  {time && (
-                    <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full mr-2">
-                      🕐 {time.name}
-                    </div>
-                  )}
-
-                  {hobby && (
-                    <div className="flex items-center gap-2">
-                      <Heart className="w-4 h-4 text-pink-500" />
-                      <span className="text-sm text-gray-700">
-                        {hobby.name}
-                      </span>
-                      {food.hobby_level && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
-                          <TrendingUp className="w-3 h-3" />
-                          Lv. {food.hobby_level}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           </div>

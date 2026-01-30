@@ -92,7 +92,19 @@ export function SeedCard({
                 </div>
               </div>
 
-              <div className="mt-3 space-y-2">
+              <div className="mt-1 space-y-2">
+                {hobby && (
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-pink-500" />
+                    <span className="text-sm text-gray-700">{hobby.name}</span>
+                    {seed.hobby_level ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                        <TrendingUp className="w-3 h-3" />
+                        Lv. {seed.hobby_level}
+                      </span>
+                    ) : null}
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Buy Price:</span>
                   <span className="text-lg font-bold text-green-600">
@@ -121,19 +133,6 @@ export function SeedCard({
                 {time && (
                   <div className="inline-block px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full">
                     🕐 {time.name}
-                  </div>
-                )}
-
-                {hobby && (
-                  <div className="flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-pink-500" />
-                    <span className="text-sm text-gray-700">{hobby.name}</span>
-                    {seed.hobby_level && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
-                        <TrendingUp className="w-3 h-3" />
-                        Lv. {seed.hobby_level}
-                      </span>
-                    )}
                   </div>
                 )}
               </div>

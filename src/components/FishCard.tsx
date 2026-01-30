@@ -136,6 +136,20 @@ export function FishCard({
                 </div>
               </div>
 
+              {/* Hobby Info */}
+              {hobby && (
+                <div className="flex items-center gap-2 mt-2">
+                  <Heart className="w-4 h-4 text-pink-500" />
+                  <span className="text-sm text-gray-700">{hobby.name}</span>
+                  {fish.hobby_level && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
+                      <TrendingUp className="w-3 h-3" />
+                      Lv. {fish.hobby_level}
+                    </span>
+                  )}
+                </div>
+              )}
+
               {/* Stars */}
               <div className="flex gap-0.5 mt-2">
                 {[...Array(5)].map((_, i) => (
@@ -150,16 +164,43 @@ export function FishCard({
                 ))}
               </div>
 
-              {/* Locations */}
-              {locationNames.length > 0 && (
+              <div className="flex items-center gap-2">
+                {/* Locations */}
+                {locationNames.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {locationNames.map((name, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full"
+                      >
+                        <MapPin className="w-3 h-3" />
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Shadow Size */}
+                {fish.shadow && (
+                  <div className="mt-2">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-700 text-xs rounded-full">
+                      <Circle className="w-3 h-3" />
+                      Shadow: {fish.shadow}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Time Periods */}
+              {fishTimes && fishTimes.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-2">
-                  {locationNames.map((name, idx) => (
+                  {fishTimes.map((time) => (
                     <span
-                      key={idx}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full"
+                      key={time!.id}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full"
                     >
-                      <MapPin className="w-3 h-3" />
-                      {name}
+                      <Clock className="w-3 h-3" />
+                      {time!.name}
                     </span>
                   ))}
                 </div>
@@ -177,45 +218,6 @@ export function FishCard({
                       {weatherName}
                     </span>
                   ))}
-                </div>
-              )}
-
-              {/* Shadow Size */}
-              {fish.shadow && (
-                <div className="mt-2">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-700 text-xs rounded-full">
-                    <Circle className="w-3 h-3" />
-                    Shadow: {fish.shadow}
-                  </span>
-                </div>
-              )}
-
-              {/* Time Periods */}
-              {fishTimes && fishTimes.length > 0 && (
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {fishTimes.map((time) => (
-                    <span
-                      key={time!.id}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full"
-                    >
-                      <Clock className="w-3 h-3" />
-                      {time!.name}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* Hobby Info */}
-              {hobby && (
-                <div className="flex items-center gap-2 mt-2">
-                  <Heart className="w-4 h-4 text-pink-500" />
-                  <span className="text-sm text-gray-700">{hobby.name}</span>
-                  {fish.hobby_level && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-pink-100 text-pink-700 text-xs rounded-full">
-                      <TrendingUp className="w-3 h-3" />
-                      Lv. {fish.hobby_level}
-                    </span>
-                  )}
                 </div>
               )}
 
