@@ -216,7 +216,7 @@ export function InsectCard({
                       {star ? star.replace("s", "⭐") : "⭐"}:
                     </span>
                     <span className="font-semibold text-green-600">
-                      {formatPrice(price)} 💰
+                      {formatPrice(price || null)} 💰
                     </span>
                   </div>
                 ))}

@@ -176,16 +176,18 @@ export function FoodCard({
                   <div className="flex items-center gap-2">
                     <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
                     <span className="font-semibold text-green-700">
-                      {formatPrice(food.sell_price["1s"])} 💰
+                      {formatPrice(food.sell_price["1s"] || null)} 💰
                     </span>
                   </div>
-                  <span className="text-xs font-semibold text-blue-700">
-                    +{formatPrice(food.sell_price["1s"] - totalCost)} (
-                    {Math.round(
-                      ((food.sell_price["1s"] - totalCost) / totalCost) * 100,
-                    )}
-                    %)
-                  </span>
+                  {totalCost > 0 && (
+                    <span className="text-xs font-semibold text-blue-700">
+                      +{formatPrice(food.sell_price["1s"] - totalCost)} (
+                      {Math.round(
+                        ((food.sell_price["1s"] - totalCost) / totalCost) * 100,
+                      )}
+                      %)
+                    </span>
+                  )}
                 </div>
 
                 {food.sell_price["2s"] && (
@@ -196,16 +198,19 @@ export function FoodCard({
                         <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
                       </div>
                       <span className="font-semibold text-green-700">
-                        {formatPrice(food.sell_price["2s"])} 💰
+                        {formatPrice(food.sell_price["2s"] || null)} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-blue-700">
-                      +{formatPrice(food.sell_price["2s"] - totalCost)} (
-                      {Math.round(
-                        ((food.sell_price["2s"] - totalCost) / totalCost) * 100,
-                      )}
-                      %)
-                    </span>
+                    {totalCost > 0 && (
+                      <span className="text-xs font-semibold text-blue-700">
+                        +{formatPrice(food.sell_price["2s"] - totalCost)} (
+                        {Math.round(
+                          ((food.sell_price["2s"] - totalCost) / totalCost) *
+                            100,
+                        )}
+                        %)
+                      </span>
+                    )}
                   </div>
                 )}
 
@@ -218,16 +223,19 @@ export function FoodCard({
                         <Star className="w-4 h-4 text-yellow-600 fill-yellow-500" />
                       </div>
                       <span className="font-semibold text-green-700">
-                        {formatPrice(food.sell_price["3s"])} 💰
+                        {formatPrice(food.sell_price["3s"] || null)} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-blue-700">
-                      +{formatPrice(food.sell_price["3s"] - totalCost)} (
-                      {Math.round(
-                        ((food.sell_price["3s"] - totalCost) / totalCost) * 100,
-                      )}
-                      %)
-                    </span>
+                    {totalCost > 0 && (
+                      <span className="text-xs font-semibold text-blue-700">
+                        +{formatPrice(food.sell_price["3s"] - totalCost)} (
+                        {Math.round(
+                          ((food.sell_price["3s"] - totalCost) / totalCost) *
+                            100,
+                        )}
+                        %)
+                      </span>
+                    )}
                   </div>
                 )}
 
@@ -243,16 +251,19 @@ export function FoodCard({
                         ))}
                       </div>
                       <span className="font-semibold text-green-700">
-                        {formatPrice(food.sell_price["4s"])} 💰
+                        {formatPrice(food.sell_price["4s"] || null)} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-blue-700">
-                      +{formatPrice(food.sell_price["4s"] - totalCost)} (
-                      {Math.round(
-                        ((food.sell_price["4s"] - totalCost) / totalCost) * 100,
-                      )}
-                      %)
-                    </span>
+                    {totalCost > 0 && (
+                      <span className="text-xs font-semibold text-blue-700">
+                        +{formatPrice(food.sell_price["4s"] - totalCost)} (
+                        {Math.round(
+                          ((food.sell_price["4s"] - totalCost) / totalCost) *
+                            100,
+                        )}
+                        %)
+                      </span>
+                    )}
                   </div>
                 )}
 
@@ -268,16 +279,19 @@ export function FoodCard({
                         ))}
                       </div>
                       <span className="font-semibold text-green-700">
-                        {formatPrice(food.sell_price["5s"])} 💰
+                        {formatPrice(food.sell_price["5s"] || null)} 💰
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-blue-700">
-                      +{formatPrice(food.sell_price["5s"] - totalCost)} (
-                      {Math.round(
-                        ((food.sell_price["5s"] - totalCost) / totalCost) * 100,
-                      )}
-                      %)
-                    </span>
+                    {totalCost > 0 && (
+                      <span className="text-xs font-semibold text-blue-700">
+                        +{formatPrice(food.sell_price["5s"] - totalCost)} (
+                        {Math.round(
+                          ((food.sell_price["5s"] - totalCost) / totalCost) *
+                            100,
+                        )}
+                        %)
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
