@@ -276,7 +276,7 @@ export function IngredientCard({
 
                 {matchingSeed && (
                   <div className="text-sm">
-                    <span className="text-gray-600">Seed: </span>
+                    <span className="text-gray-600">Seed Buy: </span>
                     <span className="font-semibold text-blue-600">
                       {formatPrice(matchingSeed.price)} 💰
                     </span>
