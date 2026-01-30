@@ -440,7 +440,8 @@
       "sell_price": {
         "1s": 270
       },
-      "image": "images/foods/apple-jam.png"
+      "image": "images/foods/apple-jam.png",
+      "hobby_name": "Cooking"
     },
     {
       "id": 8,
@@ -2139,6 +2140,11 @@
       "image": ""
     },
     {
+      "id": "cafe",
+      "name": "Cafe",
+      "image": ""
+    },
+    {
       "id": "central-square",
       "name": "Central Square",
       "image": ""
@@ -2397,7 +2403,7 @@
     {
       "id": 2,
       "name": "Massimo",
-      "location": "garden-street",
+      "location": "cafe",
       "bio": "Cooking Mentor"
     },
     {
